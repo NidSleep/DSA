@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package control;
+package entity;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ public class Programme implements Serializable {
 
     // There are many programme
     // A programme consists of many tutorial group 
-    private String programmeId;
+    private String programmeCode;
     private String programmeName;
     private String programmeDescription;
     //List<TutorialGroup> tutorialGroups;
@@ -23,19 +23,19 @@ public class Programme implements Serializable {
     }
 
     //public Programme(int programmeId, String programmeName, String programmeDescription, List<TutorialGroup> tutorialGroups) {
-    public Programme(String programmeId, String programmeName, String programmeDescription) {
-        this.programmeId = programmeId;
+    public Programme(String programmeCode, String programmeName, String programmeDescription) {
+        this.programmeCode = programmeCode;
         this.programmeName = programmeName;
         this.programmeDescription = programmeDescription;
         //this.tutorialGroups = tutorialGroups;
     }
 
-    public String getProgrammeId() {
-        return programmeId;
+    public String getProgrammeCode() {
+        return programmeCode;
     }
 
     public void setProgrammeId(String programmeId) {
-        this.programmeId = programmeId;
+        this.programmeCode = programmeId;
     }
 
     public String getProgrammeName() {
@@ -56,7 +56,7 @@ public class Programme implements Serializable {
 
     @Override
     public String toString() {
-        return "Programme{" + "programmeId=" + programmeId + ", programmeName=" + programmeName + ", programmeDescription=" + programmeDescription + '}';
+        return "Programme{" + "programmeId=" + programmeCode + ", programmeName=" + programmeName + ", programmeDescription=" + programmeDescription + '}';
     }
     
     
