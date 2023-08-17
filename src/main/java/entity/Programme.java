@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 /**
  *
- * @author user
+ * @author userfvjvadjksfvkajsvfkv
  */
 public class Programme implements Serializable {
 
