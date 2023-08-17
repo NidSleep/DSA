@@ -6,7 +6,7 @@ package entity;
 
 /**
  *
- * @author kenne
+ * @author dfsdfds fddsfd
  */
 public class Tutor {
     
