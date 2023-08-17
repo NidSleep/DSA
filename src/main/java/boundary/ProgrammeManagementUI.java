@@ -67,10 +67,21 @@ public class ProgrammeManagementUI {
         return name;
     }
 
+    public String inputNewProgrammeName() {
+        System.out.print("Enter new programme name: ");
+        String name = scanner.nextLine();
+        return name;
+    }
+
     public String inputDescription() {
         System.out.print("Enter description: ");
         String des = scanner.nextLine();
-        scanner.nextLine();
+        return des;
+    }
+
+    public String inputNewDescription() {
+        System.out.print("Enter new description: ");
+        String des = scanner.nextLine();
         return des;
     }
 
@@ -79,6 +90,17 @@ public class ProgrammeManagementUI {
         String programmeName = inputProgrammeName();
         String programmeDescription = inputDescription();
         System.out.println();
-        return new Programme(programmeCode,programmeName,programmeDescription);
+        return new Programme(programmeCode, programmeName, programmeDescription);
     }
+
+    public String deleteConfirmation() {
+       String response;
+        do {
+            System.out.print("Are you sure you want to delete? (Y/N): ");
+            response = scanner.nextLine().trim().toLowerCase();
+        } while (!response.equals("y") && !response.equals("n"));
+
+        return response;
+    }
+    
 }

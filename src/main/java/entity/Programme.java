@@ -5,7 +5,7 @@
 package entity;
 
 import java.io.Serializable;
-
+import java.util.Objects;
 /**
  *
  * @author user
@@ -34,8 +34,8 @@ public class Programme implements Serializable {
         return programmeCode;
     }
 
-    public void setProgrammeId(String programmeId) {
-        this.programmeCode = programmeId;
+    public void setProgrammeCode(String programmeCode) {
+        this.programmeCode = programmeCode;
     }
 
     public String getProgrammeName() {
@@ -56,7 +56,7 @@ public class Programme implements Serializable {
 
     @Override
     public String toString() {
-        return "Programme{" + "programmeId=" + programmeCode + ", programmeName=" + programmeName + ", programmeDescription=" + programmeDescription + '}';
+        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n";
     }
     
     
