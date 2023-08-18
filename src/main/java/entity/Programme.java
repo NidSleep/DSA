@@ -4,11 +4,13 @@
  */
 package entity;
 
+import adt.ArrayList;
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
- * @author userfvjvadjksfvkajsvfkv
+ * @author 
  */
 public class Programme implements Serializable {
 
@@ -17,6 +19,7 @@ public class Programme implements Serializable {
     private String programmeCode;
     private String programmeName;
     private String programmeDescription;
+    private ArrayList<Course> courses;
     //List<TutorialGroup> tutorialGroups;
 
     public Programme() {
@@ -54,10 +57,14 @@ public class Programme implements Serializable {
         this.programmeDescription = programmeDescription;
     }
 
+    // no wonder u need or not just leave it
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+    
     @Override
     public String toString() {
         return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n";
     }
-    
-    
+
 }
