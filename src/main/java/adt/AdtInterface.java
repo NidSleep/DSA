@@ -6,7 +6,7 @@ package adt;
 
 /**
  *
- * @author user
+ * @author user Qing Yap
  */
 public interface AdtInterface<T> {
     
