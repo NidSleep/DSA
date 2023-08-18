@@ -6,11 +6,10 @@ package entity;
 
 import adt.ArrayList;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
- * @author 
+ * @author userfvjvadjksfvkajsvfkv
  */
 public class Programme implements Serializable {
 
@@ -19,18 +18,27 @@ public class Programme implements Serializable {
     private String programmeCode;
     private String programmeName;
     private String programmeDescription;
-    private ArrayList<Course> courses;
-    //List<TutorialGroup> tutorialGroups;
+    public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
+    public static ArrayList<Programme> programmeList = new ArrayList<>();
+    public TutorialGroup tutorialGroup;
 
     public Programme() {
     }
 
-    //public Programme(int programmeId, String programmeName, String programmeDescription, List<TutorialGroup> tutorialGroups) {
     public Programme(String programmeCode, String programmeName, String programmeDescription) {
+        //public Programme(String programmeCode, String programmeName, String programmeDescription,TutorialGroup tutorialGroups) {
         this.programmeCode = programmeCode;
         this.programmeName = programmeName;
         this.programmeDescription = programmeDescription;
-        //this.tutorialGroups = tutorialGroups;
+        this.tutorialGroups = new ArrayList<>();
+    }
+
+    public void addTutorialGroup(TutorialGroup tutorialGroup) {
+        tutorialGroups.add(tutorialGroup);
+    }
+
+    public void removeTutorialGroup(int i) {
+        tutorialGroups.remove(i);
     }
 
     public String getProgrammeCode() {
@@ -57,14 +65,30 @@ public class Programme implements Serializable {
         this.programmeDescription = programmeDescription;
     }
 
-    // no wonder u need or not just leave it
-    public void addCourse(Course course) {
-        courses.add(course);
+    public ArrayList<TutorialGroup> getTutorialGroups() {
+        return tutorialGroups;
     }
-    
+
+    public TutorialGroup getTutorialGroup() {
+        return tutorialGroup;
+    }
+
+    public boolean programmeExists(String inputID) {
+        boolean found = false;
+        System.out.println(programmeList);
+        for (int index = 1; index <= programmeList.getNumberOfEntries(); index++) {
+                        System.out.println("checkpoint");
+            Programme checkExists = programmeList.getEntry(index);
+            if (inputID.equals(checkExists.getProgrammeCode())) {
+                found = true;
+            }
+        }
+        return found;
+    }
+
     @Override
     public String toString() {
-        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n";
+        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n" + "Programme Group List: " + "\n" + tutorialGroups + "\n";
     }
 
 }

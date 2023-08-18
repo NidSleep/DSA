@@ -5,6 +5,7 @@
 package boundary;
 
 import entity.Programme;
+import entity.TutorialGroup;
 
 import java.util.Scanner;
 
@@ -48,11 +49,31 @@ public class ProgrammeManagementUI {
         System.out.println("\nList of Programme:\n" + outputStr);
     }
 
+    public void listTutorialGroup(String whichProgramme,String outputStr) {
+        //String whichProgramme = inputProgrammeID();
+        System.out.println("\nList of Tutorial Group for " + whichProgramme + ":\n" + outputStr);
+    }
+
     public void printProgrammeDetails(Programme programme) {
         System.out.println("Programme Details");
-        System.out.println("Programme code:" + programme.getProgrammeCode());
+        System.out.println("Enter Tutorial Group ID: " + programme.getProgrammeCode());
         System.out.println("Programme name: " + programme.getProgrammeName());
         System.out.println("Programme Description: " + programme.getProgrammeDescription());
+        //printTutorialGroupDetails(programme.getTutorialGroups());    
+    }
+
+//    public void printTutorialGroupDetails(TutorialGroup tutorialGroup) {
+//        System.out.println("Tutorial Group Details");
+//        System.out.println("Tutorial Group ID: " + tutorialGroup.getGroupID());
+//        System.out.println("Group Average Grade: " + tutorialGroup.getGroupAverageGrade());
+//        System.out.println("Group Average Attendace: " + tutorialGroup.getGroupAverageAttendace());
+//    }
+    public int invalidChoiceInput() {
+        int choice;
+        System.out.println("Invalid input. Please enter a valid integer choice.");
+        choice = scanner.nextInt();
+        scanner.nextLine(); // Clear the input buffer
+        return choice;
     }
 
     public String inputProgrammeID() {
@@ -67,10 +88,28 @@ public class ProgrammeManagementUI {
         return name;
     }
 
+    public String inputTutorialGroupID() {
+        System.out.print("Enter Tutorial Group ID: ");
+        String groupID = scanner.nextLine();
+        return groupID;
+    }
+
+    public double inputGroupAverageGrade() {
+        System.out.print("Enter Group Average Grade: ");
+        double groupAverageGrade = scanner.nextDouble();
+        return groupAverageGrade;
+    }
+
     public String inputNewProgrammeName() {
         System.out.print("Enter new programme name: ");
         String name = scanner.nextLine();
         return name;
+    }
+
+    public double inputGroupAverageAttendace() {
+        System.out.print("Enter Group Average Attendace: ");
+        double groupAverageAttendace = scanner.nextDouble();
+        return groupAverageAttendace;
     }
 
     public String inputDescription() {
@@ -90,11 +129,21 @@ public class ProgrammeManagementUI {
         String programmeName = inputProgrammeName();
         String programmeDescription = inputDescription();
         System.out.println();
+        // only save a group already exists in the system 
+
         return new Programme(programmeCode, programmeName, programmeDescription);
     }
 
+    public TutorialGroup inputTutorialGroupDetails() {
+        String groupID = inputTutorialGroupID();
+        double groupAverageGrade = inputGroupAverageGrade();
+        double groupAverageAttendace = inputGroupAverageAttendace();
+        System.out.println();
+        return new TutorialGroup(groupID, groupAverageGrade, groupAverageAttendace);
+    }
+
     public String deleteConfirmation() {
-       String response;
+        String response;
         do {
             System.out.print("Are you sure you want to delete? (Y/N): ");
             response = scanner.nextLine().trim().toLowerCase();
@@ -102,5 +151,36 @@ public class ProgrammeManagementUI {
 
         return response;
     }
-    
+
+    public String addTutorialGroupConfirmation() {
+        String response;
+        do {
+            System.out.print("Are you sure you want to add? (Y/N): ");
+            response = scanner.nextLine().trim().toLowerCase();
+        } while (!response.equals("y") && !response.equals("n"));
+
+        return response;
+    }
+
+    public String removeTutorialGroupConfirmation() {
+        String response;
+        do {
+            System.out.print("Are you sure you want to remove? (Y/N): ");
+            response = scanner.nextLine().trim().toLowerCase();
+        } while (!response.equals("y") && !response.equals("n"));
+
+        return response;
+    }
+
+    public String InputSelectTutorialGroup() {
+        String chooseTutorialGroup;
+
+            System.out.print("Choose a tutorial group to remove: ");
+            chooseTutorialGroup = scanner.nextLine();
+                    //.trim().toLowerCase();
+
+
+        return chooseTutorialGroup;
+    }
+
 }
