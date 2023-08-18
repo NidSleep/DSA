@@ -6,7 +6,7 @@ package adt;
 
 /**
  *
- * @author user Qing Yap
+ * @author
  */
 public interface AdtInterface<T> {
     
@@ -101,4 +101,7 @@ public interface AdtInterface<T> {
    * @return true if the list is full, or false if not
    */
   public boolean isFull();
+  
+  public void listAll();
+
 }
