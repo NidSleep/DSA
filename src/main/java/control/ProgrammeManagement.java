@@ -242,61 +242,76 @@ public class ProgrammeManagement {
 //    Remove a tutorial group from a programme
     public void removeTutorialGroup() {
         String inputID = programmeUI.inputProgrammeID();
-        boolean found = false;
+        boolean foundProgramme = false, foundTutorialGroup = false;
         if (inputID == null) {
             MessageUI.displayInvalidInputMessage();
         }// Handle invalid input if necessary
         while (!inputID.equals("x")) {
-
             for (int j = 1; j < programmeList.getNumberOfEntries(); j++) {
                 Programme userfind = programmeList.getEntry(j);
                 if (userfind != null && userfind.getProgrammeCode().equals(inputID)) {
                     System.out.println("## Program Found");
                     System.out.println(userfind);
+                    foundProgramme = true;
                     //found = true;
                     // let user choose a tutorial group in that programme.
                     String whichGroup = programmeUI.InputSelectTutorialGroup();
-                    for (int i = 1; i < userfind.getTutorialGroups().getNumberOfEntries(); i++) {
-                        ArrayList<TutorialGroup> whichTutorialGroups = userfind.getTutorialGroups();
-                        String findTutorialGroupID = whichTutorialGroups.getEntry(i).getGroupID();
-                        System.out.println("CheckPoint:" + whichTutorialGroups.getEntry(i));
-                        if (findTutorialGroupID.equals(whichGroup)) {
-                            TutorialGroup theTutorialGroup = whichTutorialGroups.getEntry(i);
-                            System.out.println("## Tutorial Found");
-                            System.out.println(theTutorialGroup);
-                            String userResponse = programmeUI.removeTutorialGroupConfirmation();
-                            if (userResponse.equals("y")) {
-                                userfind.getTutorialGroups().remove(i);
-                                System.out.println(userfind);
-                                //ArrayList<TutorialGroup> allGroupInAProgramme = programme.getTutorialGroups();
+                    while (!whichGroup.equals("x")) {
+                        for (int i = 1; i <= userfind.getTutorialGroups().getNumberOfEntries()+1; i++) {
+                            ArrayList<TutorialGroup> whichTutorialGroups = userfind.getTutorialGroups();
+                            String findTutorialGroupID = whichTutorialGroups.getEntry(i).getGroupID();
+                            System.out.println("CheckPoint:" + whichTutorialGroups.getEntry(i));
+                            //System.out.println("Num:" + whichTutorialGroups.getNumberOfEntries());
+                            if (findTutorialGroupID.equals(whichGroup)) {
+                                TutorialGroup theTutorialGroup = whichTutorialGroups.getEntry(i);
+                                System.out.println("## Tutorial Found");
+                                System.out.println(theTutorialGroup);
+                                String userResponse = programmeUI.removeTutorialGroupConfirmation();
+                                if (userResponse.equals("y")) {
+                                    userfind.getTutorialGroups().remove(i);
+                                    System.out.println(userfind);
+                                    //ArrayList<TutorialGroup> allGroupInAProgramme = programme.getTutorialGroups();
 //                        System.out.println(allGroupInAProgramme);
 //                        selectTutorialGroup(allGroupInAProgramme);
-                                System.out.println("Deleting...");
-                                System.out.println("Operation coompleted.");
-                                found = true;
+                                    System.out.println("Deleting...");
+                                    System.out.println("Operation completed.");
+                                    foundTutorialGroup = true;
+                                } else if(userResponse.equals("n")) {
+                                    System.out.println("Operation canceled.");
+                                    foundTutorialGroup = true;
+                                    whichGroup = "x";
+                                    break;
+                                }
+                                
+                            }}
+                            if (!foundTutorialGroup) {
+                                System.out.print("Tutorial Group does not exist. Enter Programme Code again or press 'x' to cancel: ");
+                                whichGroup = scanner.nextLine();
                             } else {
-                                System.out.println("Operation canceled.");
-                                found = true;
-                                break;
+                                break; // This will break the outer loop and exit if a program is found
                             }
-                        }
+                            //;
+                        
 //                        whichTutorialGroup.
                         // if the groupid = which groupid then only ## Tutorial Group Found 
                         // let user confirm
                         // delete the tutorial Group 
+                        //System.out.println("cheeck");
 
                     }
                     //programmeList.getEntry(j).getTutorialGroups();
+                    break;
 
                 }
             }
 
-            if (!found) {
+            if (!foundProgramme) {
                 System.out.print("Programme Code does not exist. Enter Programme Code again or press 'x' to cancel: ");
                 inputID = scanner.nextLine();
             } else {
                 break; // This will break the outer loop and exit if a program is found
             }
+
         }
 
         System.out.println("Exiting program.");
