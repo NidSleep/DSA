@@ -59,7 +59,7 @@ public class Teaching implements Serializable{
     
     //Assign a tutor to a tutorial group
     public void assignTutorToTutorial(Tutor tutor, TutorialGroup tutorialgroup){
-        //tutor.assignTutor(tutorialgroup);
+        //tutor.TutorialGroup(tutorialgroup);
     }
 }
 
@@ -67,7 +67,6 @@ public class Teaching implements Serializable{
     Teaching Assignment Subsystem
     
     Assign tutorial groups to tutor
-Assign a tutor to a tutorial group
 Search courses under a tutor
 Search tutors for a course
 List all tutors for a course
