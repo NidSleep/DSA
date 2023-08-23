@@ -10,6 +10,17 @@ package entity;
  */
 public class Teaching {
 
+     public Teaching()
+    {
+        
+    }
+    
+    public Teaching(String tutorID,String name, String IC)
+    {
+        this.tutorID= tutorID;
+        this.name=name;
+        
+    }
     /*
     Teaching Assignment Subsystem
 Assign tutor to course
