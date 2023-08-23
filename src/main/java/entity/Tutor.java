@@ -36,4 +36,30 @@ Generate relevant reports
         this.IC=IC;
     }
     
+    // Getter and Setter methods for tutorID
+    public String getTutorID() {
+        return tutorID;
+    }
+
+    public void setTutorID(String tutorID) {
+        this.tutorID = tutorID;
+    }
+
+    // Getter and Setter methods for name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter and Setter methods for IC
+    public String getIC() {
+        return IC;
+    }
+
+    public void setIC(String IC) {
+        this.IC = IC;
+    }
 }
