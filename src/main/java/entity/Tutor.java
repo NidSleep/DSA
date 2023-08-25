@@ -9,7 +9,8 @@ package entity;
  * @author dfsdfds fddsfd
  */
 public class Tutor {
-   /*
+
+    /*
     Tutor Management Subsystem
 Add a new tutor
 Remove a tutor
@@ -19,24 +20,25 @@ List all tutors
 Filter tutors based on criteria
 Generate relevant reports
 
-    */
+     */
     private String tutorID;
     private String name;
     private String IC;
-    
-    public Tutor()
-    {
-        
+    private String courseID;
+    private String programmeID;
+    private double salary;
+    private String address;
+
+    public Tutor() {
+
     }
-    
-    public Tutor(String tutorID,String name, String IC)
-    {
-        this.tutorID= tutorID;
-        this.name=name;
-        this.IC=IC;
+
+    public Tutor(String tutorID, String name, String IC) {
+        this.tutorID = tutorID;
+        this.name = name;
+        this.IC = IC;
     }
-    
-    // Getter and Setter methods for tutorID
+
     public String getTutorID() {
         return tutorID;
     }
@@ -45,7 +47,6 @@ Generate relevant reports
         this.tutorID = tutorID;
     }
 
-    // Getter and Setter methods for name
     public String getName() {
         return name;
     }
@@ -54,7 +55,6 @@ Generate relevant reports
         this.name = name;
     }
 
-    // Getter and Setter methods for IC
     public String getIC() {
         return IC;
     }
@@ -62,4 +62,39 @@ Generate relevant reports
     public void setIC(String IC) {
         this.IC = IC;
     }
+
+    public String getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
+    }
+
+    public String getProgrammeID() {
+        return programmeID;
+    }
+
+    public void setProgrammeID(String programmeID) {
+        this.programmeID = programmeID;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    
+
 }
