@@ -12,39 +12,51 @@ import adt.ArrayList;
  */
 public class Course {
 
-    private String courseID;
-    private String name;
-    private ArrayList<Programme> programs;
+        /*
+    Course Management Subsystem
+Add a new course
+Remove a course
+Find course
+Amend course details
+List all courses
+Add programme to a course
+Remove a programme from a course
+Generate relevant reports
 
-    public Course() {
-    }
+         */
+        private String courseID;
+        private String name;
+        private ArrayList<Programme> programs;
 
-    public Course(String courseID, String name) {
-        this.courseID = courseID;
-        this.name = name;
-        this.programs = new ArrayList<>();
-    }
+        public Course() {
+        }
 
-    public String getCourseID() {
-        return courseID;
-    }
+        public Course(String courseID, String name) {
+            this.courseID = courseID;
+            this.name = name;
+            this.programs = new ArrayList<>();
+        }
 
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
-    }
+        public String getCourseID() {
+            return courseID;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public void setCourseID(String courseID) {
+            this.courseID = courseID;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void addProgram(Programme program) {
-        programs.add(program);
-    }
-    // Example codes: 
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void addProgram(Programme program) {
+            programs.add(program);
+        }
+        // Example codes: 
 //    Program program1 = new Program(1, "Computer Science");
 //    Program program2 = new Program(2, "Engineering");
 //
@@ -52,4 +64,4 @@ public class Course {
 //    mathCourse.addProgram (program1);
 //    mathCourse.addProgram (program2);
 
-}
+    }

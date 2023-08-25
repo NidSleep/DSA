@@ -4,6 +4,8 @@
  */
 package boundary;
 
+import boundary.tutor.tutorUI;
+
 /**
  *
  * @author kenne
@@ -38,16 +40,31 @@ public class mainPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("jButton2");
+        jButton2.setText("remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 240, 200));
 
-        jButton3.setText("jButton2");
+        jButton3.setText("TUTOR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 240, 200));
 
-        jButton4.setText("jButton2");
+        jButton4.setText("display");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 240, 200));
 
-        jButton5.setText("jButton2");
+        jButton5.setText("search");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 240, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -64,7 +81,26 @@ public class mainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        setVisible(false);
+        tutorUI t = new tutorUI();
+        t.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    /*
      * @param args the command line arguments
      */
     public static void main(String args[]) {
