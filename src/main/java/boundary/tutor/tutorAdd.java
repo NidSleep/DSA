@@ -7,14 +7,15 @@ package boundary.tutor;
 import adt.AdtInterface;
 import adt.ArrayList;
 import entity.Tutor;
+import utility.insertData;
 
 /**
  *
  * @author kenne
  */
 public class tutorAdd extends javax.swing.JFrame {
-
-    public static AdtInterface<Tutor> tutorList = new ArrayList<>();
+    
+    public static AdtInterface<Tutor> tutorList = insertData.tutorList;
 
     /**
      * Creates new form tutorAdd
@@ -159,24 +160,30 @@ public class tutorAdd extends javax.swing.JFrame {
 
     private void backTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTextFieldActionPerformed
         // TODO add your handling code here:
-
-
+        setVisible(false);
+        tutorUI t = new tutorUI();
+        t.setVisible(true);
     }//GEN-LAST:event_backTextFieldActionPerformed
 
     private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
         // TODO add your handling code here:
-
+        
         String name = nameTextField.getText();
         String address = addressTextField.getText();
         double salary = Double.parseDouble(salaryTextField.getText());
         String position = positionComboBox.getItemAt(positionComboBox.getSelectedIndex());
         int total = tutorList.getNumberOfEntries() + 1;
-
+        
         tutorList.add(new Tutor("T" + total, name, salary, address, position));
+        
         jLabel1.setText("Added Successfully");
         nameTextField.setText("");
         addressTextField.setText("");
         salaryTextField.setText("");
+        
+        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+            System.out.println("tutorID : " + tutorList.getEntry(i + 1).getTutorID());
+        }
     }//GEN-LAST:event_add1ActionPerformed
 
     /**

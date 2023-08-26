@@ -95,6 +95,14 @@ Generate relevant reports
         return address;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }

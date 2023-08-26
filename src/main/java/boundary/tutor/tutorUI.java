@@ -133,13 +133,14 @@ public class tutorUI extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        tutorAdd t = new tutorAdd();
-        t.setVisible(true);
+        
     }//GEN-LAST:event_addActionPerformed
 
     private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        tutorAdd t = new tutorAdd();
+        t.setVisible(true);
     }//GEN-LAST:event_add1ActionPerformed
 
     private void add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add2ActionPerformed
@@ -148,6 +149,9 @@ public class tutorUI extends javax.swing.JFrame {
 
     private void add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add3ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        tutorDisplayAll t = new tutorDisplayAll();
+        t.setVisible(true);
     }//GEN-LAST:event_add3ActionPerformed
 
     private void add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add4ActionPerformed

@@ -20,6 +20,8 @@ public class insertData {
 
     public insertData() {
         insertTutor();
+        insertProgram();
+        insertCourse();
     }
 
     public void insertTutor() {
@@ -33,12 +35,11 @@ public class insertData {
         programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
         programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
     }
-    
+
     public void insertCourse() {
         courseList.add(new Course("BACS3074", "Artificial Intelligence"));
         courseList.add(new Course("AAMS3184", "Discrete Mathematics"));
         courseList.add(new Course("BACS3013", "Data Science"));
     }
-    
 
 }

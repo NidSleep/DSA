@@ -5,6 +5,7 @@
 package boundary;
 
 import boundary.tutor.tutorUI;
+import utility.insertData;
 
 /**
  *
@@ -91,13 +92,12 @@ public class mainPage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+
         setVisible(false);
         tutorUI t = new tutorUI();
         t.setVisible(true);
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /*
@@ -130,7 +130,7 @@ public class mainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                insertData i = new insertData();
                 new mainPage().setVisible(true);
             }
         });
