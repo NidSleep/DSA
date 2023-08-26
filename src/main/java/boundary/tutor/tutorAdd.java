@@ -4,11 +4,17 @@
  */
 package boundary.tutor;
 
+import adt.AdtInterface;
+import adt.ArrayList;
+import entity.Tutor;
+
 /**
  *
  * @author kenne
  */
 public class tutorAdd extends javax.swing.JFrame {
+
+    public static AdtInterface<Tutor> tutorList = new ArrayList<>();
 
     /**
      * Creates new form tutorAdd
@@ -28,18 +34,19 @@ public class tutorAdd extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        addressTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        backTextField = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        add1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        salaryTextField = new javax.swing.JTextField();
+        positionComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,75 +60,84 @@ public class tutorAdd extends javax.swing.JFrame {
         jLabel2.setText("TUTOR - ADD");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setToolTipText("");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 340, 40));
+        nameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        nameTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameTextField.setForeground(new java.awt.Color(0, 0, 0));
+        nameTextField.setToolTipText("");
+        nameTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 340, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("NAME : ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("IC : ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
-
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setToolTipText("");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 340, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("ADDRESS : ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setToolTipText("");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 340, 40));
+        addressTextField.setBackground(new java.awt.Color(255, 255, 255));
+        addressTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addressTextField.setForeground(new java.awt.Color(0, 0, 0));
+        addressTextField.setToolTipText("");
+        addressTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 340, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("COURSE : ");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, 40));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setToolTipText("");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 340, 40));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("ADDRESS : ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setToolTipText("");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 340, 40));
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("SALARY :");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
+        jLabel8.setText("POSITION :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("PROGRAMME : ");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, 40));
+
+        backTextField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        backTextField.setText("BACK");
+        backTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backTextFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 670, 140, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 720, -1, -1));
+
+        add1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        add1.setText("ADD");
+        add1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("SALARY :");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+
+        salaryTextField.setBackground(new java.awt.Color(255, 255, 255));
+        salaryTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        salaryTextField.setForeground(new java.awt.Color(0, 0, 0));
+        salaryTextField.setToolTipText("");
+        salaryTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(salaryTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 340, 40));
+
+        positionComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        positionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        positionComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LECTURER", "TUTOR", " " }));
+        jPanel1.add(positionComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 340, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +156,28 @@ public class tutorAdd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTextFieldActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_backTextFieldActionPerformed
+
+    private void add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add1ActionPerformed
+        // TODO add your handling code here:
+
+        String name = nameTextField.getText();
+        String address = addressTextField.getText();
+        double salary = Double.parseDouble(salaryTextField.getText());
+        String position = positionComboBox.getItemAt(positionComboBox.getSelectedIndex());
+        int total = tutorList.getNumberOfEntries() + 1;
+
+        tutorList.add(new Tutor("T" + total, name, salary, address, position));
+        jLabel1.setText("Added Successfully");
+        nameTextField.setText("");
+        addressTextField.setText("");
+        salaryTextField.setText("");
+    }//GEN-LAST:event_add1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,19 +215,20 @@ public class tutorAdd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add1;
+    private javax.swing.JTextField addressTextField;
+    private javax.swing.JButton backTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JComboBox<String> positionComboBox;
+    private javax.swing.JTextField salaryTextField;
     // End of variables declaration//GEN-END:variables
 }
