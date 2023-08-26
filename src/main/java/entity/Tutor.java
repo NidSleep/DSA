@@ -23,20 +23,32 @@ Generate relevant reports
      */
     private String tutorID;
     private String name;
-    private String IC;
-    private String courseID;
-    private String programmeID;
     private double salary;
     private String address;
+    private String position;
+
+    private String courseID;
+    private String programmeID;
 
     public Tutor() {
 
     }
 
-    public Tutor(String tutorID, String name, String IC) {
+    public Tutor(String tutorID, String name, double salary, String address, String position) {
         this.tutorID = tutorID;
         this.name = name;
-        this.IC = IC;
+        this.salary = salary;
+        this.address = address;
+        this.position = position;
+
+    }
+
+    public Tutor(String name, double salary, String address, String position) {
+        this.name = name;
+        this.salary = salary;
+        this.address = address;
+        this.position = position;
+
     }
 
     public String getTutorID() {
@@ -53,14 +65,6 @@ Generate relevant reports
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getIC() {
-        return IC;
-    }
-
-    public void setIC(String IC) {
-        this.IC = IC;
     }
 
     public String getCourseID() {
@@ -94,7 +98,5 @@ Generate relevant reports
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
 
 }
