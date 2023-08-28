@@ -1,8 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.dsa;
+
+import boundary.mainPage;
+import utility.insertData;
 
 /**
  *
@@ -11,6 +13,8 @@ package com.mycompany.dsa;
 public class DSA {
 
     public static void main(String[] args) {
-        System.out.println("System");
+        insertData i = new insertData();
+
+        mainPage mp = new mainPage();
     }
 }
