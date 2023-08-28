@@ -114,6 +114,7 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable {
         }
         return found;
     }
+    
 
     @Override
     public int getNumberOfEntries() {

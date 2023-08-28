@@ -5,7 +5,6 @@
 package boundary;
 
 import boundary.tutor.tutorUI;
-import utility.insertData;
 
 /**
  *
@@ -17,6 +16,7 @@ public class mainPage extends javax.swing.JFrame {
      * Creates new form mainPage
      */
     public mainPage() {
+        setVisible(true);
         initComponents();
     }
 
@@ -130,7 +130,6 @@ public class mainPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                insertData i = new insertData();
                 new mainPage().setVisible(true);
             }
         });
