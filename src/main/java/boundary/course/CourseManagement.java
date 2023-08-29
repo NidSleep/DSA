@@ -55,6 +55,11 @@ public class CourseManagement extends javax.swing.JFrame {
         removeCourseButton.setBackground(new java.awt.Color(204, 204, 204));
         removeCourseButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         removeCourseButton.setText("REMOVE");
+        removeCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCourseButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(removeCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 170, 330, 150));
 
         updateCourseButton.setBackground(new java.awt.Color(204, 204, 204));
@@ -65,6 +70,11 @@ public class CourseManagement extends javax.swing.JFrame {
         displayAllCourseButton.setBackground(new java.awt.Color(204, 204, 204));
         displayAllCourseButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         displayAllCourseButton.setText("DISPLAY ALL");
+        displayAllCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayAllCourseButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(displayAllCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 370, 330, 150));
 
         reportCourseButton.setBackground(new java.awt.Color(204, 204, 204));
@@ -123,6 +133,18 @@ public class CourseManagement extends javax.swing.JFrame {
         t.setVisible(true);
 
     }//GEN-LAST:event_addCourseButton1ActionPerformed
+
+    private void displayAllCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayAllCourseButtonActionPerformed
+        setVisible(false);
+        courseDisplayAll t = new courseDisplayAll();
+        t.setVisible(true);
+    }//GEN-LAST:event_displayAllCourseButtonActionPerformed
+
+    private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
+        setVisible(false);
+        courseRemove t = new courseRemove();
+        t.setVisible(true);
+    }//GEN-LAST:event_removeCourseButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
