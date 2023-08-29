@@ -7,7 +7,6 @@ package boundary.course;
 import adt.ArrayList;
 import adt.AdtInterface;
 import entity.*;
-import javax.swing.DefaultComboBoxModel;
 import utility.*;
 
 /**
@@ -16,38 +15,13 @@ import utility.*;
  */
 public class courseAdd extends javax.swing.JFrame {
 
-    private AdtInterface<Course> courseList = new ArrayList<>();
-    private AdtInterface<Programme> programmeList = new ArrayList<>();
-
+    public static AdtInterface<Course> courseList = insertData.courseList;
+    
     /**
      * Creates new form courseAdd
      */
     public courseAdd() {
         initComponents();
-
-//        insertData dataInserter = new insertData();
-//        dataInserter.insertProgram();
-        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
-        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
-        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
-
-        setupProgrammeComboBox(); // Call the method to set up the combobox
-
-    }
-
-    private void setupProgrammeComboBox() {
-        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-
-        for (int i = 1; i <= programmeList.getNumberOfEntries(); i++) {
-            Programme programme = programmeList.getEntry(i);
-            comboBoxModel.addElement(programme.getProgrammeName());
-        }
-        Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
-
-        //Checking - Print the individual programme names
-        for (int i = 0; i < comboBoxModel.getSize(); i++) {
-            System.out.println("Programme Name: " + comboBoxModel.getElementAt(i));
-        }
     }
 
     /**
@@ -65,8 +39,6 @@ public class courseAdd extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtfCourseCode = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        Jcombo = new javax.swing.JComboBox<>();
         ConformButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
@@ -98,14 +70,6 @@ public class courseAdd extends javax.swing.JFrame {
         jtfCourseCode.setToolTipText("");
         jtfCourseCode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(jtfCourseCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 340, 40));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("PROGRAMME :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, 40));
-
-        Jcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Jcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(Jcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
 
         ConformButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         ConformButton.setText("Confirm");
@@ -205,12 +169,10 @@ public class courseAdd extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConformButton;
-    private javax.swing.JComboBox<String> Jcombo;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtfCourseCode;
     private javax.swing.JTextField jtfCourseName;
