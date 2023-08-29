@@ -85,6 +85,11 @@ public class CourseManagement extends javax.swing.JFrame {
         searchCourseButton.setBackground(new java.awt.Color(204, 204, 204));
         searchCourseButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         searchCourseButton.setText("SEARCH");
+        searchCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCourseButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(searchCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 330, 150));
 
         addCourseButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -100,6 +105,11 @@ public class CourseManagement extends javax.swing.JFrame {
         addProgrammeToCourseButton1.setBackground(new java.awt.Color(204, 204, 204));
         addProgrammeToCourseButton1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         addProgrammeToCourseButton1.setText("ADD Programme To Course");
+        addProgrammeToCourseButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProgrammeToCourseButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(addProgrammeToCourseButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 540, 150));
 
         removeProgFromCourseButton.setBackground(new java.awt.Color(204, 204, 204));
@@ -145,6 +155,18 @@ public class CourseManagement extends javax.swing.JFrame {
         courseRemove t = new courseRemove();
         t.setVisible(true);
     }//GEN-LAST:event_removeCourseButtonActionPerformed
+
+    private void searchCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCourseButtonActionPerformed
+        setVisible(false);
+        courseSearch t = new courseSearch();
+        t.setVisible(true);
+    }//GEN-LAST:event_searchCourseButtonActionPerformed
+
+    private void addProgrammeToCourseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProgrammeToCourseButton1ActionPerformed
+        setVisible(false);
+        courseAddProgToCourse t = new courseAddProgToCourse();
+        t.setVisible(true);
+    }//GEN-LAST:event_addProgrammeToCourseButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

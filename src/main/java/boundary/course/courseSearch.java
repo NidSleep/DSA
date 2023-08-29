@@ -4,15 +4,18 @@
  */
 package boundary.course;
 
+import adt.AdtInterface;
+import entity.Course;
+import utility.insertData;
+
 /**
  *
- * @author User
+ * @author trp
  */
 public class courseSearch extends javax.swing.JFrame {
 
-    /**
-     * Creates new form courseSearch
-     */
+    public static AdtInterface<Course> courseList = insertData.courseList;
+
     public courseSearch() {
         initComponents();
     }
@@ -26,21 +29,139 @@ public class courseSearch extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
+        jtfCourseID = new javax.swing.JTextField();
+        label4 = new javax.swing.JLabel();
+        jtfCourseName = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        label3 = new javax.swing.JLabel();
+        errorMsg = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1500, 800));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        jLabel1.setText("COURSE - SEARCH Course ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+
+        label2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        label2.setText("ENTER COURSE ID : ");
+        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+
+        jtfCourseID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseID.setToolTipText("");
+        jtfCourseID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfCourseID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCourseIDActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtfCourseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 340, 40));
+
+        label4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        label4.setText("PROGRAMMES : ");
+        jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+
+        jtfCourseName.setEditable(false);
+        jtfCourseName.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCourseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseName.setToolTipText("");
+        jtfCourseName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfCourseName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCourseNameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 340, 40));
+
+        searchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchButton.setText("SEARCH");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 100, 40));
+
+        label3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        label3.setText("COURSE NAME :");
+        jPanel1.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+        jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
+
+        backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 670, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCourseIDActionPerformed
+
+    private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCourseNameActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String id = jtfCourseID.getText().trim();
+
+        if (!id.isEmpty()) {
+            errorMsg.setText(""); // Clear any previous error messages
+            boolean found = false; // Flag to indicate if a matching course is found
+
+            for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+                if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
+                    jtfCourseName.setText(courseList.getEntry(i + 1).getName());
+                    errorMsg.setText(""); // Clear error message if found
+                    found = true;
+                    break; // Exit the loop since a match is found
+                }
+            }
+
+            if (!found) {
+                jtfCourseName.setText("");
+                errorMsg.setText("No such Course");
+            }
+        } else {
+            errorMsg.setText("Please enter a course ID");
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        setVisible(false);
+        CourseManagement t = new CourseManagement();
+        t.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +199,15 @@ public class courseSearch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel errorMsg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jtfCourseID;
+    private javax.swing.JTextField jtfCourseName;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel label4;
+    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
