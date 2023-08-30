@@ -4,6 +4,8 @@
  */
 package entity;
 
+import adt.ArrayList;
+
 /**
  *
  * @author dfsdfds fddsfd
@@ -29,6 +31,8 @@ Generate relevant reports
 
     private String courseID;
     private String programmeID;
+    public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
+    public TutorialGroup tutorialGroup;
 
     public Tutor() {
 
