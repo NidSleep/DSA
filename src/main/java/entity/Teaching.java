@@ -69,8 +69,8 @@ public class Teaching implements Serializable{
     }
     
     //Assign a tutor to a tutorial group
-    public void addTutorToTutorial(Tutor tutor, TutorialGroup tutorialgroup){
-        //tutor.addTutorialGroup(tutorialgroup);
+    public void addTutorToTutorial(Tutor tutors, TutorialGroup tutorialgroup){
+        tutorialgroup.addTutorialGroup(tutors);
     }
 }
 
