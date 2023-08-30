@@ -4,6 +4,7 @@
  */
 package entity;
 
+import adt.ArrayList;
 import java.io.Serializable;
 
 /**
@@ -14,10 +15,16 @@ public class Teaching implements Serializable{
     private String tutorID;
     private String tutorialID;
     private String courseID;
+    public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
+    public ArrayList<Course> courses = new ArrayList<>();
+    public ArrayList<Tutor> tutors = new ArrayList<>();
+    public static ArrayList<Teaching> teachingList = new ArrayList<>();
     
      public Teaching()
     {
-        
+        tutorialGroups = new ArrayList<>();
+        courses = new ArrayList<>();
+        tutors = new ArrayList<>();
     }
     
     public Teaching(String tutorID,String tutorialID, String courseID)
@@ -25,6 +32,10 @@ public class Teaching implements Serializable{
        this.tutorID = tutorID;
        this.tutorialID = tutorialID;
        this.courseID = courseID;   
+       tutorialGroups = new ArrayList<>();
+       courses = new ArrayList<>();
+       tutors = new ArrayList<>();
+       
     }
     
     public String getTutorID() {
@@ -52,14 +63,14 @@ public class Teaching implements Serializable{
     }
 
   
-    public void assignTutorToCourse(Tutor tutor, Course course) {
+    public void addTutorToCourse(Tutor tutor, Course course) {
         //Assign tutor to course
-        //course.assignTutor(tutor);
+        course.addTutor(tutor);
     }
     
     //Assign a tutor to a tutorial group
-    public void assignTutorToTutorial(Tutor tutor, TutorialGroup tutorialgroup){
-        //tutor.TutorialGroup(tutorialgroup);
+    public void addTutorToTutorial(Tutor tutor, TutorialGroup tutorialgroup){
+        tutor.addTutorialGroup(tutorialgroup);
     }
 }
 
