@@ -11,16 +11,25 @@ import javax.swing.table.DefaultTableModel;
 import utility.insertData;
 
 public class courseDisplayAll extends javax.swing.JFrame {
+
     public static AdtInterface<Course> courseList = insertData.courseList;
 
     public courseDisplayAll() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) courseTable.getModel();
         Object rowData[] = new Object[3];
+        int k = 0;
         for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-            rowData[0] = courseList.getEntry(i + 1).getCourseID();
+//            do{
+//                
+//            }while(courseList.getEntry(i + 1).getPrograms().getEntry(k).)
+            rowData[0] = courseList.getEntry(i + 1).getCourseID()+ "\n";
             rowData[1] = courseList.getEntry(i + 1).getName();
-            rowData[2] = courseList.getEntry(i + 1).getPrograms();
+            rowData[2] = courseList.getEntry(i + 1).getPrograms()+ "\n";
+
+//            rowData[0] = courseList.getEntry(i + 1).getCourseID();
+//            rowData[1] = courseList.getEntry(i + 1).getName();
+//            rowData[2] = courseList.getEntry(i + 1).getPrograms()
             model.addRow(rowData);
         }
         courseTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));

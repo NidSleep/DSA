@@ -77,7 +77,7 @@ public class Programme implements Serializable {
         boolean found = false;
         System.out.println(programmeList);
         for (int index = 1; index <= programmeList.getNumberOfEntries(); index++) {
-                        System.out.println("checkpoint");
+            System.out.println("checkpoint");
             Programme checkExists = programmeList.getEntry(index);
             if (inputID.equals(checkExists.getProgrammeCode())) {
                 found = true;
@@ -86,9 +86,18 @@ public class Programme implements Serializable {
         return found;
     }
 
+    public static ArrayList<Programme> getProgrammeList() {
+        return programmeList;
+    }
+
+    public static void setProgrammeList(ArrayList<Programme> programmeList) {
+        Programme.programmeList = programmeList;
+    }
+
     @Override
     public String toString() {
-        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n" + "Programme Group List: " + "\n" + tutorialGroups + "\n";
+//        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n" + "Programme Group List: " + "\n" + tutorialGroups + "\n";
+        return programmeCode + " ";
     }
 
 }
