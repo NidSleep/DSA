@@ -400,7 +400,7 @@ public class ProgrammeManagement {
         programme1.addTutorialGroup(tutorialGroup2);
         programmeList.add(programme1);
         System.out.println(programme1);
-
+        
         // Add the initial data with useful descriptions
         //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
         programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
