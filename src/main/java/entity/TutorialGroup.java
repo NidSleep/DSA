@@ -4,15 +4,19 @@
  */
 package entity;
 
+import adt.ArrayList;
+
 
 /**
  *
  * @author user
  */
 public class TutorialGroup {
+    
     private String groupID;
     private double groupAverageGrade;
     private double groupAverageAttendace;
+    private ArrayList<Tutor> tutors; 
 
     public TutorialGroup() {
     }
@@ -21,6 +25,7 @@ public class TutorialGroup {
         this.groupID = groupID;
         this.groupAverageGrade = groupAverageGrade;
         this.groupAverageAttendace = groupAverageAttendace;
+        this.tutors = new ArrayList<>();
     }
 
     public String getGroupID() {
@@ -52,7 +57,9 @@ public class TutorialGroup {
         return "Group ID: " + groupID + "\n" + "Group Average Grade: " + groupAverageGrade + "\n" + "Group Average Attendace: " + groupAverageAttendace + "\n";
     }
     
-    
+    public void addTutorialGroup(Tutor tutor) {
+        tutors.add(tutor);
+    }
     
     
 }
