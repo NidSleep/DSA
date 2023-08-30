@@ -4,6 +4,7 @@
  */
 package boundary;
 
+import boundary.course.CourseManagement;
 import boundary.tutor.tutorUI;
 
 /**
@@ -41,7 +42,7 @@ public class mainPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("remove");
+        jButton2.setText("COURSE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -84,6 +85,11 @@ public class mainPage extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        CourseManagement CM = new CourseManagement();
+        CM.setVisible(true);
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
