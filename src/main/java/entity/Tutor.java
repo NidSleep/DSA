@@ -107,4 +107,11 @@ Generate relevant reports
         this.address = address;
     }
 
+    public void printTutorInfo() {
+        System.out.println("Tutor ID: " + tutorID);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+        System.out.println("Address: " + address);
+        System.out.println("Position: " + position);
+    }
 }
