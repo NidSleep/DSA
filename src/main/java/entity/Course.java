@@ -27,6 +27,7 @@ Generate relevant reports
     private String courseID;
     private String name;
     private ArrayList<Programme> programs;
+    private ArrayList<Tutor> tutors; 
 
     public Course() {
     }
@@ -35,6 +36,7 @@ Generate relevant reports
         this.courseID = courseID;
         this.name = name;
         this.programs = new ArrayList<>();
+        this.tutors = new ArrayList<>();
     }
 
     public String getCourseID() {
@@ -64,5 +66,8 @@ Generate relevant reports
     public void addProgram(Programme program) {
         programs.add(program);
     }
-
+    
+    public void addTutor(Tutor tutor) {
+        tutors.add(tutor);
+    }
 }
