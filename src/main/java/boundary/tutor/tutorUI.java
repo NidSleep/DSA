@@ -147,6 +147,10 @@ public class tutorUI extends javax.swing.JFrame {
 
     private void add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add2ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        tutorUpdate t = new tutorUpdate();
+        t.setVisible(true);
+
     }//GEN-LAST:event_add2ActionPerformed
 
     private void add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add3ActionPerformed
