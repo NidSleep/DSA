@@ -96,8 +96,8 @@ public class Programme implements Serializable {
 
     @Override
     public String toString() {
-//        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n" + "Programme Group List: " + "\n" + tutorialGroups + "\n";
-        return programmeCode + " ";
+        return "Programme Code: " + programmeCode + "\n" + "Programme Name: " + programmeName + "\n" + "Programme Description: " + programmeDescription + "\n" + "Programme Group List: " + "\n" + tutorialGroups + "\n";
+//        return programmeCode + " ";
     }
 
 }
