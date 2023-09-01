@@ -146,7 +146,7 @@ public class CourseManagement extends javax.swing.JFrame {
 
     private void displayAllCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayAllCourseButtonActionPerformed
         setVisible(false);
-        courseDisplayAll t = new courseDisplayAll();
+        CourseDisplayAll t = new CourseDisplayAll();
         t.setVisible(true);
     }//GEN-LAST:event_displayAllCourseButtonActionPerformed
 

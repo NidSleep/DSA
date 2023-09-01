@@ -1,37 +1,59 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * AAMS3184
  */
 package boundary.course;
 
 import adt.AdtInterface;
+import adt.ArrayList;
 import entity.Course;
+import entity.Programme;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 import utility.insertData;
 
-public class courseDisplayAll extends javax.swing.JFrame {
+public class CourseDisplayAll extends javax.swing.JFrame {
 
     public static AdtInterface<Course> courseList = insertData.courseList;
 
-    public courseDisplayAll() {
+    public CourseDisplayAll() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) courseTable.getModel();
-        Object rowData[] = new Object[3];
-        int k = 0;
-        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-//            do{
-//                
-//            }while(courseList.getEntry(i + 1).getPrograms().getEntry(k).)
-            rowData[0] = courseList.getEntry(i + 1).getCourseID()+ "\n";
-            rowData[1] = courseList.getEntry(i + 1).getName();
-            rowData[2] = courseList.getEntry(i + 1).getPrograms()+ "\n";
 
-//            rowData[0] = courseList.getEntry(i + 1).getCourseID();
+//        Object rowData[] = new Object[3];
+//        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+//            rowData[0] = courseList.getEntry(i + 1).getCourseID()+ "\n";
 //            rowData[1] = courseList.getEntry(i + 1).getName();
-//            rowData[2] = courseList.getEntry(i + 1).getPrograms()
+//            rowData[2] = courseList.getEntry(i + 1).getPrograms()+ "\n";
+//            model.addRow(rowData);
+//        }
+        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+            Course course = courseList.getEntry(i + 1);
+            String courseID = course.getCourseID();
+            String courseName = course.getName();
+
+            ArrayList<Programme> programs = course.getPrograms();
+//            System.out.println("programs: " + programs);
+            StringBuilder programNames = new StringBuilder();
+
+            if (programs != null && !programs.isEmpty()) {
+                for (int j = 0; j < programs.getNumberOfEntries(); j++) {
+                    if (j > 0) {
+                        programNames.append(", ");
+                    }
+                    programNames.append(programs.getEntry(j + 1).getProgrammeCode());
+                }
+            } else {
+                programNames.append(""); // or any suitable message
+            }
+            Object[] rowData = new Object[3];
+            rowData[0] = courseID;
+            rowData[1] = courseName;
+            rowData[2] = programNames.toString();
             model.addRow(rowData);
         }
+
         courseTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
 
     }
@@ -87,7 +109,7 @@ public class courseDisplayAll extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -154,37 +176,30 @@ public class courseDisplayAll extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(courseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CourseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(courseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CourseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(courseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CourseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(courseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CourseDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new courseDisplayAll().setVisible(true);
+                new CourseDisplayAll().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TableTitle;
-    private javax.swing.JButton back;
-    private javax.swing.JButton back1;
     private javax.swing.JButton backButton;
     private javax.swing.JTable courseTable;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

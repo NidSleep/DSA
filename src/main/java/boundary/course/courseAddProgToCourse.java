@@ -40,10 +40,10 @@ public class courseAddProgToCourse extends javax.swing.JFrame {
         }
         Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
 
-        //Checking - Print the individual programme names
-        for (int i = 0; i < comboBoxModel.getSize(); i++) {
-            System.out.println("Programme Name: " + comboBoxModel.getElementAt(i));
-        }
+//        //Checking - Print the individual programme names
+//        for (int i = 0; i < comboBoxModel.getSize(); i++) {
+//            System.out.println("Programme Name: " + comboBoxModel.getElementAt(i));
+//        }
     }
 
     /**
@@ -196,7 +196,7 @@ public class courseAddProgToCourse extends javax.swing.JFrame {
                             Programme programme = programmeList.getEntry(j);
                             if (selectedProgram.equals(programme.getProgrammeName())) {
                                 selectedProgramme = programme;
-                                System.out.println("selectedProgramme: " + selectedProgramme); 
+                                System.out.println("selectedProgramme: " + selectedProgramme); // selectedProgramme: RIS 
                                 break;
                             }
                         }
