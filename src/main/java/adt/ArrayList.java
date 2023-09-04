@@ -197,4 +197,9 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable {
         }
         System.out.println("=====================");
     }
+
+    @Override
+    public boolean isExists(String newCode) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -6,13 +6,17 @@ package boundary;
 
 import boundary.course.CourseManagement;
 import boundary.tutor.tutorUI;
+import utility.insertData;
+
 
 /**
  *
  * @author kenne
  */
 public class mainPage extends javax.swing.JFrame {
-
+    public insertData ini = new insertData();
+    
+    
     /**
      * Creates new form mainPage
      */
@@ -33,7 +37,7 @@ public class mainPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBtProgramme = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,8 +62,13 @@ public class mainPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 240, 200));
 
-        jButton4.setText("display");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 240, 200));
+        jBtProgramme.setText("PROGRAMME");
+        jBtProgramme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtProgrammeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBtProgramme, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 240, 200));
 
         jButton5.setText("search");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +115,13 @@ public class mainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jBtProgrammeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtProgrammeActionPerformed
+        // TODO add your handling code here:        
+        setVisible(false);
+        ProgrammeManagementMenu t = new ProgrammeManagementMenu();
+        t.setVisible(true);
+    }//GEN-LAST:event_jBtProgrammeActionPerformed
+
     /*
      * @param args the command line arguments
      */
@@ -142,9 +158,9 @@ public class mainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtProgramme;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

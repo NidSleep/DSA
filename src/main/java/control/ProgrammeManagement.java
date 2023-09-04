@@ -12,6 +12,8 @@ import entity.TutorialGroup;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import utility.MessageUI;
+import utility.ValidationException;
+import utility.insertData;
 
 /**
  *
@@ -19,7 +21,7 @@ import utility.MessageUI;
  */
 public class ProgrammeManagement {
 
-    public static AdtInterface<Programme> programmeList = new ArrayList<>();
+    public static AdtInterface<Programme> programmeList = insertData.programmeList;
     public static AdtInterface<TutorialGroup> tutorialGroupList = new ArrayList<>();
     //private ProductDAO productDAO = new ProductDAO();
     private ProgrammeManagementUI programmeUI = new ProgrammeManagementUI();
@@ -131,6 +133,16 @@ public class ProgrammeManagement {
 
     }
 
+    public void removeInGUI(String codeToRemove) {
+        String code = codeToRemove;
+        for (int i = 1; i <= programmeList.getNumberOfEntries(); i++) {
+            Programme userDelete = programmeList.getEntry(i);
+            if (userDelete.getProgrammeCode().equals(code)) {
+                programmeList.remove(i); // Delete the program from the list
+            }
+        }
+    }
+
     //    Find programme
     public void findProgram() {
         String code = programmeUI.inputProgrammeID();
@@ -150,6 +162,26 @@ public class ProgrammeManagement {
             System.out.println("Program with ID " + code + " was not found."); // Program with the given ID was not found
         }
 
+    }
+
+    public Programme searchProgram(String programmeID) {
+        String code = programmeID;
+        boolean found = false;
+        if (code == null) {
+            MessageUI.displayInvalidInputMessage(); // Handle invalid input if necessary
+        }
+        for (int j = 1; j <= programmeList.getNumberOfEntries(); j++) {
+            Programme userfind = programmeList.getEntry(j);
+            if (userfind != null && userfind.getProgrammeCode().equals(code)) {
+
+                found = true;
+                return userfind;
+            }
+        }
+        if (!found) {
+            System.out.println("Program with ID " + code + " was not found."); // Program with the given ID was not found
+        }
+        return null;
     }
 
     //    Amend programme details
@@ -189,7 +221,7 @@ public class ProgrammeManagement {
     }
 
     //    List all programmes (Maybe add the group oso Tutorial Group : G1 G2 G3 G4)
-    public String getAllProgramme() {
+    public static String getAllProgramme() {
         String outputStr = "";
         for (int i = 1; i <= programmeList.getNumberOfEntries(); i++) {
             //outputStr += "Programme" + programmeList.getEntry(i). + "\n";
@@ -257,7 +289,7 @@ public class ProgrammeManagement {
                     // let user choose a tutorial group in that programme.
                     String whichGroup = programmeUI.InputSelectTutorialGroup();
                     while (!whichGroup.equals("x")) {
-                        for (int i = 1; i <= userfind.getTutorialGroups().getNumberOfEntries()+1; i++) {
+                        for (int i = 1; i <= userfind.getTutorialGroups().getNumberOfEntries() + 1; i++) {
                             ArrayList<TutorialGroup> whichTutorialGroups = userfind.getTutorialGroups();
                             String findTutorialGroupID = whichTutorialGroups.getEntry(i).getGroupID();
                             System.out.println("CheckPoint:" + whichTutorialGroups.getEntry(i));
@@ -276,28 +308,28 @@ public class ProgrammeManagement {
                                     System.out.println("Deleting...");
                                     System.out.println("Operation completed.");
                                     foundTutorialGroup = true;
-                                } else if(userResponse.equals("n")) {
+                                } else if (userResponse.equals("n")) {
                                     System.out.println("Operation canceled.");
                                     foundTutorialGroup = true;
                                     whichGroup = "x";
                                     break;
                                 }
-                                
-                            }}
-                            if (!foundTutorialGroup) {
-                                System.out.print("Tutorial Group does not exist. Enter Programme Code again or press 'x' to cancel: ");
-                                whichGroup = scanner.nextLine();
-                            } else {
-                                break; // This will break the outer loop and exit if a program is found
+
                             }
-                            //;
-                        
+                        }
+                        if (!foundTutorialGroup) {
+                            System.out.print("Tutorial Group does not exist. Enter Programme Code again or press 'x' to cancel: ");
+                            whichGroup = scanner.nextLine();
+                        } else {
+                            break; // This will break the outer loop and exit if a program is found
+                        }
+                        //;
+
 //                        whichTutorialGroup.
                         // if the groupid = which groupid then only ## Tutorial Group Found 
                         // let user confirm
                         // delete the tutorial Group 
                         //System.out.println("cheeck");
-
                     }
                     //programmeList.getEntry(j).getTutorialGroups();
                     break;
@@ -393,22 +425,25 @@ public class ProgrammeManagement {
     public static void main(String[] args) {
         ProgrammeManagement test1 = new ProgrammeManagement();
 
-        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
-        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
-        programme1.addTutorialGroup(tutorialGroup);
-        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
-        programme1.addTutorialGroup(tutorialGroup2);
-        programmeList.add(programme1);
-        System.out.println(programme1);
-        
-        // Add the initial data with useful descriptions
-        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
-        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
+//        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
+//        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
+//        programme1.addTutorialGroup(tutorialGroup);
+//        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
+//        programme1.addTutorialGroup(tutorialGroup2);
+//        programmeList.add(programme1);
+//        System.out.println(programme1);
+//        
+//        // Add the initial data with useful descriptions
+//        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
+//        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
+//
+//        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
+//
+//        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
+        insertData dataInitializer = new insertData();
 
-        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
-
-        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
-
+        // Call the initialize method to populate the data
+        dataInitializer.initialize();
         //tutorialGroupList.add(new TutorialGroup("G7", 3.7, 0.7));
         test1.runProgrammeManagement();
     }

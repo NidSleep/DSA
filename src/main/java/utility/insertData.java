@@ -19,6 +19,10 @@ public class insertData {
     public static AdtInterface<Course> courseList = new ArrayList<>();
 
     public insertData() {
+        
+    }
+
+    public void initialize() {
         insertTutor();
         insertProgram();
         insertCourse();

@@ -103,5 +103,13 @@ public interface AdtInterface<T> {
   public boolean isFull();
   
   public void listAll();
+  
+    /**
+   * Task: Check the duplicated record
+   *
+     * @param newCode
+   * @return true if the list's code is duplicated, or false if not
+   */
+  public boolean isExists(String newCode);
 
 }
