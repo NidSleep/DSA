@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package boundary;
+package boundary.programme;
 
 import adt.AdtInterface;
+import boundary.mainPage;
 import boundary.tutor.*;
 import control.ProgrammeManagement;
 import entity.Programme;
@@ -93,7 +94,7 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
 
         displayAllProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
         displayAllProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        displayAllProgrammeButton.setText("DISPALY ALL");
+        displayAllProgrammeButton.setText("DISPLAY ALL");
         displayAllProgrammeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayAllProgrammeButtonActionPerformed(evt);
@@ -219,8 +220,6 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        insertData dataInitializer = new insertData();
-        dataInitializer.initialize();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

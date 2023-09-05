@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.tutor;
+import boundary.mainPage;
+
 
 /**
  *
@@ -34,6 +36,7 @@ public class tutorUI extends javax.swing.JFrame {
         add3 = new javax.swing.JButton();
         add4 = new javax.swing.JButton();
         add5 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +116,15 @@ public class tutorUI extends javax.swing.JFrame {
         });
         jPanel1.add(add5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 330, 230));
 
+        backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 720, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,6 +180,12 @@ public class tutorUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_add5ActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        setVisible(false);
+        mainPage t = new mainPage();
+        t.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,6 +228,7 @@ public class tutorUI extends javax.swing.JFrame {
     private javax.swing.JButton add3;
     private javax.swing.JButton add4;
     private javax.swing.JButton add5;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -4,6 +4,7 @@
  */
 package boundary;
 
+import boundary.programme.ProgrammeManagementMenu;
 import boundary.course.CourseManagement;
 import boundary.tutor.tutorUI;
 import utility.insertData;
@@ -14,7 +15,6 @@ import utility.insertData;
  * @author kenne
  */
 public class mainPage extends javax.swing.JFrame {
-    public insertData ini = new insertData();
     
     
     /**

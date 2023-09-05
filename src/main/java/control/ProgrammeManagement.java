@@ -6,7 +6,7 @@ package control;
 
 import adt.AdtInterface;
 import adt.ArrayList;
-import boundary.ProgrammeManagementUI;
+import boundary.programme.ProgrammeManagementUI;
 import entity.Programme;
 import entity.TutorialGroup;
 import java.util.InputMismatchException;
@@ -422,29 +422,29 @@ public class ProgrammeManagement {
         return similarityScore;
     }
      */
-    public static void main(String[] args) {
-        ProgrammeManagement test1 = new ProgrammeManagement();
-
-//        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
-//        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
-//        programme1.addTutorialGroup(tutorialGroup);
-//        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
-//        programme1.addTutorialGroup(tutorialGroup2);
-//        programmeList.add(programme1);
-//        System.out.println(programme1);
-//        
-//        // Add the initial data with useful descriptions
-//        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
-//        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
+//    public static void main(String[] args) {
+//        ProgrammeManagement test1 = new ProgrammeManagement();
 //
-//        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
+////        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
+////        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
+////        programme1.addTutorialGroup(tutorialGroup);
+////        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
+////        programme1.addTutorialGroup(tutorialGroup2);
+////        programmeList.add(programme1);
+////        System.out.println(programme1);
+////        
+////        // Add the initial data with useful descriptions
+////        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
+////        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
+////
+////        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
+////
+////        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
+//        insertData dataInitializer = new insertData();
 //
-//        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
-        insertData dataInitializer = new insertData();
-
-        // Call the initialize method to populate the data
-        dataInitializer.initialize();
-        //tutorialGroupList.add(new TutorialGroup("G7", 3.7, 0.7));
-        test1.runProgrammeManagement();
-    }
+//        // Call the initialize method to populate the data
+//        dataInitializer.initialize();
+//        //tutorialGroupList.add(new TutorialGroup("G7", 3.7, 0.7));
+//        test1.runProgrammeManagement();
+//    }
 }
