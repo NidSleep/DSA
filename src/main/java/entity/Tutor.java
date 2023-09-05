@@ -118,10 +118,18 @@ Generate relevant reports
         System.out.println("Address: " + address);
         System.out.println("Position: " + position);
     }
-    
-    
-    
-    
+
+    void addTutorialGroups(TutorialGroup group) {
+        tutorialGroups.add(group);
+    }
+
+    public void addCourse(Course course) {
+        course.addTutor(this); // Add the tutor to the course
+        this.setCourseID(course.getCourseID()); // Set the courseID for the tutor
+    }
+
+//    public boolean hasCourse(Course course) {
+//        // Check if the tutor is assigned to the specified course
+//        return course.hasTutor(this);
+//    }
 }
-
-
