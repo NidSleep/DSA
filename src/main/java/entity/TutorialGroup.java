@@ -58,9 +58,9 @@ public class TutorialGroup {
         return "Group ID: " + groupID + "\n" + "Group Average Grade: " + groupAverageGrade + "\n" + "Group Average Attendace: " + groupAverageAttendace + "\n";
     }
     
-    public void addTutorialGroup(Tutor tutor) {
+    public void addTutors(Tutor tutor) {
         tutors.add(tutor);
     }
-    
+
     
 }
