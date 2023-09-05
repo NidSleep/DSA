@@ -4,7 +4,6 @@
  */
 package boundary.teaching;
 
-import boundary.course.*;
 import adt.AdtInterface;
 import entity.*;
 import javax.swing.DefaultComboBoxModel;
@@ -18,21 +17,22 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<Course> courseList = insertData.courseList;
+    public static AdtInterface<Teaching> teachingList = insertData.teachingList;
 
     public TeachingAddTutorToCourse() {
         initComponents();
-        setupProgrammeComboBox(); // Call the method to set up the combobox
+        setupCourseComboBox(); // Call the method to set up the combobox
 
     }
 
-    private void setupProgrammeComboBox() {
+    private void setupCourseComboBox() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
 
         for (int i = 1; i <= tutorList.getNumberOfEntries(); i++) {
             Tutor tutor = tutorList.getEntry(i);
-            comboBoxModel.addElement(tutor.getCourseID());
+            comboBoxModel.addElement(tutor.getName());
         }
-        Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
+        TutorJcombo.setModel(comboBoxModel); // Set the model for the JComboBox
 
 //        //Checking - Print the individual programme names
 //        for (int i = 0; i < comboBoxModel.getSize(); i++) {
@@ -54,12 +54,12 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Jcombo = new javax.swing.JComboBox<>();
+        TutorJcombo = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         ConfirmButton = new javax.swing.JButton();
-        jtfTutorID = new javax.swing.JTextField();
+        jtfCourseID = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        jtfTutorName = new javax.swing.JTextField();
+        jtfCourseName = new javax.swing.JTextField();
         errorMsg = new javax.swing.JLabel();
         errorMsg1 = new javax.swing.JLabel();
         msg = new javax.swing.JLabel();
@@ -76,25 +76,25 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         jPanel1.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Tutor ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
+        jLabel1.setText("Course ID");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Tutor NAME :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+        jLabel2.setText("Course NAME :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel3.setText("ADD COURSE :");
+        jLabel3.setText("ADD Tutor :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 180, 50));
 
-        Jcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Jcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Jcombo.addActionListener(new java.awt.event.ActionListener() {
+        TutorJcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        TutorJcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TutorJcombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JcomboActionPerformed(evt);
+                TutorJcomboActionPerformed(evt);
             }
         });
-        jPanel1.add(Jcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
+        jPanel1.add(TutorJcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         backButton.setText("Back");
@@ -114,15 +114,15 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         });
         jPanel1.add(ConfirmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 700, 150, -1));
 
-        jtfTutorID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfTutorID.setToolTipText("");
-        jtfTutorID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfTutorID.addActionListener(new java.awt.event.ActionListener() {
+        jtfCourseID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseID.setToolTipText("");
+        jtfCourseID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfCourseID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTutorIDActionPerformed(evt);
+                jtfCourseIDActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfTutorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 340, 40));
+        jPanel1.add(jtfCourseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 340, 40));
 
         searchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         searchButton.setText("SEARCH");
@@ -133,17 +133,17 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         });
         jPanel1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 100, 40));
 
-        jtfTutorName.setEditable(false);
-        jtfTutorName.setBackground(new java.awt.Color(255, 255, 255));
-        jtfTutorName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfTutorName.setToolTipText("");
-        jtfTutorName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfTutorName.addActionListener(new java.awt.event.ActionListener() {
+        jtfCourseName.setEditable(false);
+        jtfCourseName.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCourseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseName.setToolTipText("");
+        jtfCourseName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfCourseName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTutorNameActionPerformed(evt);
+                jtfCourseNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfTutorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 340, 40));
+        jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 340, 40));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 340, 20));
         jPanel1.add(errorMsg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
         jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 740, 270, 30));
@@ -169,32 +169,33 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         setVisible(false);
-        //TeachingManagement t = new TeachingManagement();
-        //t.setVisible(true);
+        TeachingManagement t = new TeachingManagement();
+        t.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
-        String selectedProgram = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
+        String selectedTutors = TutorJcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
 
-        if (!selectedProgram.isEmpty()) {
-            String courseID = jtfTutorID.getText().trim();
+        if (!selectedTutors.isEmpty()) {
+            String courseID = jtfCourseID.getText().trim();
 
             if (!courseID.isEmpty()) {
                 errorMsg.setText(""); // Clear any previous error messages
 
                 for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                     if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-                        // Find the course and add the selected Tutor to it
+                        
+                        // Find the tutor and add the selected Course to it
                         Tutor selectedTutor = null;
                         for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
                             Tutor tutor = tutorList.getEntry(j);
-                            if (selectedTutor.equals(tutor.getName())) {
+                            if (selectedTutors.equals(tutor.getName())) {
                                 selectedTutor = tutor;
-                                System.out.println("selectedProgramme: " + selectedTutor); // selectedTutor: 
+                                System.out.println("selectedTutor: " + selectedTutor); // selectedTutor: Kenneth 
                                 break;
                             }
                         }
-
+                        //Check
                         if (selectedTutor != null) {
                             courseList.getEntry(i + 1).addTutor(selectedTutor);
                             msg.setText("Tutor has added to the course successfully.");
@@ -203,19 +204,49 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
                     }
                 }
             } else {
-                errorMsg.setText("Please enter a Tutor ID");
+                errorMsg.setText("Please enter a course ID");
             }
         } else {
             errorMsg.setText("Please select a Course");
         }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
-    private void jtfTutorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorIDActionPerformed
+    private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTutorIDActionPerformed
+        
+         String courseID = jtfCourseID.getText();
+        String courseName = jtfCourseName.getText();
+        String Tutor = TutorJcombo.getItemAt(TutorJcombo.getSelectedIndex());
+        
+        int total = courseList.getNumberOfEntries() + 1;
+        String id = "T" + total;
+
+        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+
+            if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
+                total += 1;
+                id = "T" + total;
+            }
+        }
+
+        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+            if (Tutor.equals(tutorList.getEntry(i + 1).getTutorID())) {
+                Tutor = tutorList.getEntry(i + 1).getCourseID();
+
+            }
+        }
+        
+        jLabel1.setText("Added Successfully");
+        jtfCourseID.setText("");
+        jtfCourseName.setText("");
+
+        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+            System.out.println("tutorID : " + tutorList.getEntry(i + 1).getTutorID());
+        }
+    }//GEN-LAST:event_jtfCourseIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String id = jtfTutorID.getText().trim();
+        String id = jtfCourseID.getText().trim();
 
         if (!id.isEmpty()) {
             errorMsg.setText(""); // Clear any previous error messages
@@ -223,7 +254,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
-                    jtfTutorName.setText(courseList.getEntry(i + 1).getName());
+                    jtfCourseName.setText(courseList.getEntry(i + 1).getName());
                     errorMsg.setText(""); // Clear error message if found
                     found = true;
                     break; // Exit the loop since a match is found
@@ -231,7 +262,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
             }
 
             if (!found) {
-                jtfTutorName.setText("");
+                jtfCourseName.setText("");
                 errorMsg.setText("No such Course");
             }
         } else {
@@ -239,13 +270,13 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void jtfTutorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorNameActionPerformed
+    private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTutorNameActionPerformed
+    }//GEN-LAST:event_jtfCourseNameActionPerformed
 
-    private void JcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcomboActionPerformed
+    private void TutorJcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorJcomboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JcomboActionPerformed
+    }//GEN-LAST:event_TutorJcomboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,8 +326,8 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
-    private javax.swing.JComboBox<String> Jcombo;
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JComboBox<String> TutorJcombo;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel errorMsg1;
@@ -304,8 +335,8 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jtfTutorID;
-    private javax.swing.JTextField jtfTutorName;
+    private javax.swing.JTextField jtfCourseID;
+    private javax.swing.JTextField jtfCourseName;
     private javax.swing.JLabel msg;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
