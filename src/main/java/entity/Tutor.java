@@ -122,4 +122,9 @@ Generate relevant reports
     void addTutorialGroups(TutorialGroup group) {
         tutorialGroups.add(group);
     }
+    
+    public boolean hasCourse(Course course) {
+    // Check if the tutor is assigned to the specified course
+    return course.hasTutor(this);
+    }
 }
