@@ -110,7 +110,7 @@ Generate relevant reports
     public void setAddress(String address) {
         this.address = address;
     }
-
+    
     public void printTutorInfo() {
         System.out.println("Tutor ID: " + tutorID);
         System.out.println("Name: " + name);
@@ -118,4 +118,18 @@ Generate relevant reports
         System.out.println("Address: " + address);
         System.out.println("Position: " + position);
     }
+
+    void addTutorialGroups(TutorialGroup group) {
+        tutorialGroups.add(group);
+    }
+    
+    public void addCourse(Course course) {
+        course.addTutor(this); // Add the tutor to the course
+        this.setCourseID(course.getCourseID()); // Set the courseID for the tutor
+    }
+    
+    public boolean hasCourse(Course course) {
+    // Check if the tutor is assigned to the specified course
+    return course.hasTutor(this);
+}
 }
