@@ -9,6 +9,8 @@ import adt.AdtInterface;
 import entity.Course;
 import java.io.*;
 import javax.swing.JOptionPane;
+import boundary.mainPage;
+
 
 /**
  *
@@ -38,6 +40,7 @@ public class CourseManagement extends javax.swing.JFrame {
         addCourseButton1 = new javax.swing.JButton();
         addProgrammeToCourseButton1 = new javax.swing.JButton();
         removeProgFromCourseButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -127,21 +130,30 @@ public class CourseManagement extends javax.swing.JFrame {
         });
         jPanel1.add(removeProgFromCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, 620, 150));
 
+        backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 730, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -189,6 +201,12 @@ public class CourseManagement extends javax.swing.JFrame {
         t.setVisible(true);
     }//GEN-LAST:event_removeProgFromCourseButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        setVisible(false);
+        mainPage t = new mainPage();
+        t.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -224,6 +242,7 @@ public class CourseManagement extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCourseButton1;
     private javax.swing.JButton addProgrammeToCourseButton1;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton displayAllCourseButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
