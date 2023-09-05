@@ -70,4 +70,8 @@ Generate relevant reports
     public void addTutor(Tutor tutor) {
         tutors.add(tutor);
     }
+    
+    public boolean hasTutor(Tutor tutor) {
+        return tutors.contains(tutor);
+    }
 }
