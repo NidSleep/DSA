@@ -5,8 +5,10 @@ package adt;
  * 
  */
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class ArrayList<T> implements AdtInterface<T>, Serializable {
+public class ArrayList<T> implements AdtInterface<T>, Serializable,Iterable<T> {
 
     private T[] array;
     private int numberOfEntries;
@@ -202,4 +204,27 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable {
     public boolean isExists(String newCode) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public Iterator<T> iterator() {
+       return new ArrayListIterator();
+    }
+    
+    private class ArrayListIterator implements Iterator<T> {
+    private int currentIndex = 0;
+
+    @Override
+    public boolean hasNext() {
+        return currentIndex < numberOfEntries;
+    }
+
+    @Override
+    public T next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        return array[currentIndex++];
+    }
+
+}
 }
