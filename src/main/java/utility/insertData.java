@@ -17,11 +17,13 @@ public class insertData {
     public static AdtInterface<Tutor> tutorList = new ArrayList<>();
     public static AdtInterface<Programme> programmeList = new ArrayList<>();
     public static AdtInterface<Course> courseList = new ArrayList<>();
+    public static AdtInterface<Teaching> teachingList = new ArrayList<>();
 
     public insertData() {
         insertTutor();
         insertProgram();
         insertCourse();
+        insertTeaching();
     }
 
     public void insertTutor() {
@@ -42,6 +44,12 @@ public class insertData {
         courseList.add(new Course("BACS3074", "Artificial Intelligence"));
         courseList.add(new Course("AAMS3184", "Discrete Mathematics"));
         courseList.add(new Course("BACS3013", "Data Science"));
+    }
+
+    private void insertTeaching() {
+       teachingList.add(new Teaching("T1", "kenneth","G1" ,"BAC3074"));
+       teachingList.add(new Teaching("T2", "wei jie","G2" ,"AAMS3184"));
+       teachingList.add(new Teaching("T3", "kenneth","G3" ,"BACS3013"));
     }
 
 }
