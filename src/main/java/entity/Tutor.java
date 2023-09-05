@@ -38,13 +38,13 @@ Generate relevant reports
 
     }
 
-    public Tutor(String tutorID, String name, double salary, String address, String position) {
+    public Tutor(String tutorID, String name, double salary, String address, String position, String programmeID) {
         this.tutorID = tutorID;
         this.name = name;
         this.salary = salary;
         this.address = address;
         this.position = position;
-
+        this.programmeID = programmeID;
     }
 
     public Tutor(String name, double salary, String address, String position) {
@@ -118,4 +118,10 @@ Generate relevant reports
         System.out.println("Address: " + address);
         System.out.println("Position: " + position);
     }
+    
+    
+    
+    
 }
+
+
