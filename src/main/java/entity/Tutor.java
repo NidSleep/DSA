@@ -33,6 +33,7 @@ Generate relevant reports
     private String programmeID;
     public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
     public TutorialGroup tutorialGroup;
+     private ArrayList<Course> courses;
 
     public Tutor() {
 
@@ -119,12 +120,16 @@ Generate relevant reports
         System.out.println("Position: " + position);
     }
 
-    void addTutorialGroups(TutorialGroup group) {
+    public void addTutorialGroups(TutorialGroup group) {
         tutorialGroups.add(group);
     }
     
     public boolean hasCourse(Course course) {
     // Check if the tutor is assigned to the specified course
     return course.hasTutor(this);
+    }
+    
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 }
