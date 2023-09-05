@@ -6,7 +6,9 @@ package boundary.tutor;
 
 import adt.AdtInterface;
 import adt.ArrayList;
+import entity.Programme;
 import entity.Tutor;
+import javax.swing.DefaultComboBoxModel;
 import utility.insertData;
 
 /**
@@ -16,12 +18,14 @@ import utility.insertData;
 public class tutorAdd extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
+    public static AdtInterface<Programme> programmeList = insertData.programmeList;
 
     /**
      * Creates new form tutorAdd
      */
     public tutorAdd() {
         initComponents();
+        setupProgrammeComboBox();
 
     }
 
@@ -40,7 +44,6 @@ public class tutorAdd extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         addressTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         backTextField = new javax.swing.JButton();
@@ -48,6 +51,7 @@ public class tutorAdd extends javax.swing.JFrame {
         add1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         salaryTextField = new javax.swing.JTextField();
+        programmeComboBox = new javax.swing.JComboBox<>();
         positionComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,11 +89,6 @@ public class tutorAdd extends javax.swing.JFrame {
         addressTextField.setToolTipText("");
         addressTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 340, 40));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("COURSE : ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,10 +134,25 @@ public class tutorAdd extends javax.swing.JFrame {
         salaryTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(salaryTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 340, 40));
 
+        programmeComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        programmeComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        programmeComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        programmeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programmeComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(programmeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, -1, -1));
+
         positionComboBox.setBackground(new java.awt.Color(255, 255, 255));
         positionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         positionComboBox.setForeground(new java.awt.Color(0, 0, 0));
         positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LECTURER", "TUTOR" }));
+        positionComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionComboBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(positionComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 340, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +173,17 @@ public class tutorAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setupProgrammeComboBox() {
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+
+        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
+            Programme programme = programmeList.getEntry(i + 1);
+            comboBoxModel.addElement(programme.getProgrammeName());
+        }
+        programmeComboBox.setModel(comboBoxModel); // Set the model for the JComboBox
+
+    }
+
     private void backTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backTextFieldActionPerformed
         // TODO add your handling code here:
         setVisible(false);
@@ -173,6 +198,7 @@ public class tutorAdd extends javax.swing.JFrame {
         String address = addressTextField.getText();
         double salary = Double.parseDouble(salaryTextField.getText());
         String position = positionComboBox.getItemAt(positionComboBox.getSelectedIndex());
+        String programme = programmeComboBox.getItemAt(programmeComboBox.getSelectedIndex());
         int total = tutorList.getNumberOfEntries() + 1;
         String id = "T" + total;
 
@@ -182,10 +208,16 @@ public class tutorAdd extends javax.swing.JFrame {
                 total += 1;
                 id = "T" + total;
             }
-
         }
 
-        tutorList.add(new Tutor("T" + total, name, salary, address, position));
+        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
+            if (programme.equals(programmeList.getEntry(i + 1).getProgrammeName())) {
+                programme = programmeList.getEntry(i + 1).getProgrammeCode();
+
+            }
+        }
+
+        tutorList.add(new Tutor("T" + total, name, salary, address, position, programme));
         jLabel1.setText("Added Successfully");
         nameTextField.setText("");
         addressTextField.setText("");
@@ -195,6 +227,14 @@ public class tutorAdd extends javax.swing.JFrame {
             System.out.println("tutorID : " + tutorList.getEntry(i + 1).getTutorID());
         }
     }//GEN-LAST:event_add1ActionPerformed
+
+    private void programmeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_programmeComboBoxActionPerformed
+
+    private void positionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_positionComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,12 +280,12 @@ public class tutorAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JComboBox<String> positionComboBox;
+    private javax.swing.JComboBox<String> programmeComboBox;
     private javax.swing.JTextField salaryTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,8 @@
 package adt;
 
 /**
- * @author 
- * 
+ * @author
+ *
  */
 import java.io.Serializable;
 import java.util.Iterator;
@@ -116,7 +116,7 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable,Iterable<T> {
         }
         return found;
     }
-    
+
 
     @Override
     public int getNumberOfEntries() {
@@ -187,6 +187,7 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable,Iterable<T> {
             array[index] = array[index + 1];
         }
     }
+
     @Override
     public void listAll() {
         System.out.println("\nList: \n=====================");
