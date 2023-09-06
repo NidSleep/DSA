@@ -4,7 +4,6 @@
  */
 package boundary.course;
 
-import adt.ArrayList;
 import adt.AdtInterface;
 import entity.*;
 import utility.*;
@@ -40,6 +39,11 @@ public class courseUpdate extends javax.swing.JFrame {
         label2 = new javax.swing.JLabel();
         jtfCourseName = new javax.swing.JTextField();
         msg = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jtfCourseFees = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jtfCourseCreditHours = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +120,28 @@ public class courseUpdate extends javax.swing.JFrame {
         jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 340, 40));
         jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 720, 270, 30));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("COURSE FEES : ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel5.setText("RM ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
+
+        jtfCourseFees.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseFees.setToolTipText("");
+        jtfCourseFees.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jtfCourseFees, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 290, 40));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setText("CREDIT HOURS : ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+
+        jtfCourseCreditHours.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jtfCourseCreditHours.setToolTipText("");
+        jtfCourseCreditHours.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jtfCourseCreditHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 340, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,16 +171,15 @@ public class courseUpdate extends javax.swing.JFrame {
         String id = jtfCourseID.getText().trim();
         String name = jtfCourseName.getText().trim();
         String code = jtfCourseCode.getText().trim();
+        double courseFees = Double.parseDouble(jtfCourseFees.getText().trim());
+        double courseCreditHours = Double.parseDouble(jtfCourseCreditHours.getText().trim());
 
-        // Check if any field is empty
         if (id.isEmpty()) {
             errorMsg.setText("Invalid Course ID");
             msg.setText(""); // Clear success message
-        } 
-        else if(name.isEmpty() || code.isEmpty()){
+        } else if (name.isEmpty() || code.isEmpty()) {
             msg.setText("All field is required!");
-        }
-        else {
+        } else {
             errorMsg.setText(""); // Clear any previous error messages
 
             boolean updated = false; // Flag to indicate if a matching course is updated
@@ -163,9 +188,13 @@ public class courseUpdate extends javax.swing.JFrame {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     courseList.getEntry(i + 1).setName(name);
                     courseList.getEntry(i + 1).setCourseID(code);
+                    courseList.getEntry(i + 1).setCourseFees(courseFees);
+                    courseList.getEntry(i + 1).setCourseCreditHours(courseCreditHours);
                     jtfCourseID.setText("");
                     jtfCourseName.setText("");
                     jtfCourseCode.setText("");
+                    jtfCourseFees.setText("");
+                    jtfCourseCreditHours.setText("");
                     msg.setText("Updated Successfully");
                     updated = true;
                     break; // Exit the loop since a match is updated
@@ -197,6 +226,8 @@ public class courseUpdate extends javax.swing.JFrame {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     jtfCourseCode.setText(id);
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
+                    jtfCourseFees.setText(courseList.getEntry(i + 1).getCourseFees().toString());
+                    jtfCourseCreditHours.setText(courseList.getEntry(i + 1).getCourseCreditHours().toString());
                     errorMsg.setText(""); // Clear error message if found
                     found = true;
                     break; // Exit the loop since a match is found
@@ -206,6 +237,8 @@ public class courseUpdate extends javax.swing.JFrame {
             if (!found) {
                 jtfCourseCode.setText("");
                 jtfCourseName.setText("");
+                jtfCourseFees.setText("");
+                jtfCourseCreditHours.setText("");
                 errorMsg.setText("No such Course");
             }
         } else {
@@ -253,8 +286,13 @@ public class courseUpdate extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtfCourseCode;
+    private javax.swing.JTextField jtfCourseCreditHours;
+    private javax.swing.JTextField jtfCourseFees;
     private javax.swing.JTextField jtfCourseID;
     private javax.swing.JTextField jtfCourseName;
     private javax.swing.JLabel label1;
