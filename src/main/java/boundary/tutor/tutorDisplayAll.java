@@ -6,12 +6,9 @@ package boundary.tutor;
 
 import adt.AdtInterface;
 import adt.ArrayList;
-import entity.Programme;
 import entity.Tutor;
-import java.awt.Component;
 import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
 import utility.insertData;
 
 /**
@@ -21,26 +18,38 @@ import utility.insertData;
 public class tutorDisplayAll extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
-    public static AdtInterface<Programme> programmeList = insertData.programmeList;
 
     /**
      * Creates new form tutorAdd
      */
     public tutorDisplayAll() {
 
+//        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+//            String tutorID = tutorList.getEntry(i + 1).getTutorID();
+//            String name = tutorList.getEntry(i + 1).getName();
+//            double salary = tutorList.getEntry(i + 1).getSalary();
+//            String address = tutorList.getEntry(i + 1).getAddress();
+//            String position = tutorList.getEntry(i + 1).getPosition();
+//
+//            Object[] data = {tutorID, name, salary, address, position};
+//
+//            jTable1.setModel(data);
+//
+//        }
         initComponents();
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[5];
         for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
             rowData[0] = tutorList.getEntry(i + 1).getTutorID();
             rowData[1] = tutorList.getEntry(i + 1).getName();
             rowData[2] = tutorList.getEntry(i + 1).getSalary();
-            rowData[3] = tutorList.getEntry(i + 1).getProgrammeID();
+            rowData[3] = tutorList.getEntry(i + 1).getAddress();
             rowData[4] = tutorList.getEntry(i + 1).getPosition();
-
             model.addRow(rowData);
         }
         jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
+
     }
 
     /**
@@ -94,7 +103,7 @@ public class tutorDisplayAll extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAME", "SALARY", "PROGRAMME", "POSITION"
+                "ID", "NAME", "SALARY", "POSITION", "ADDRESS"
             }
         ) {
             Class[] types = new Class [] {
@@ -138,17 +147,6 @@ public class tutorDisplayAll extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-
-    private String getProgrammeID(String name) {
-        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
-            if (name.equals(programmeList.getEntry(i + 1).getProgrammeCode())) {
-                return programmeList.getEntry(i + 1).getProgrammeCode();
-            }
-        }
-        return "";
-    }
-
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:

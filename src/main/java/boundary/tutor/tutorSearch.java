@@ -5,11 +5,7 @@
 package boundary.tutor;
 
 import adt.AdtInterface;
-import static boundary.tutor.tutorUpdate.programmeList;
-import static boundary.tutor.tutorUpdate.tutorList;
-import entity.Programme;
 import entity.Tutor;
-import javax.swing.DefaultComboBoxModel;
 import utility.insertData;
 
 /**
@@ -25,13 +21,6 @@ public class tutorSearch extends javax.swing.JFrame {
      */
     public tutorSearch() {
         initComponents();
-        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-
-        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
-            Programme programme = programmeList.getEntry(i + 1);
-            comboBoxModel.addElement(programme.getProgrammeName());
-        }
-        programmeComboBox.setModel(comboBoxModel); // Set the model for the JComboBox
 
     }
 
@@ -49,6 +38,8 @@ public class tutorSearch extends javax.swing.JFrame {
         nameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        positionTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         backTextField = new javax.swing.JButton();
@@ -58,9 +49,8 @@ public class tutorSearch extends javax.swing.JFrame {
         salaryTextField = new javax.swing.JTextField();
         tutorIDTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        addressTextField = new javax.swing.JTextField();
-        programmeComboBox = new javax.swing.JComboBox<>();
-        positionComboBox = new javax.swing.JComboBox<>();
+        add2 = new javax.swing.JButton();
+        addressTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +61,7 @@ public class tutorSearch extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("TUTOR - SEARCH");
+        jLabel2.setText("TUTOR - REMOVE");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         nameTextField.setEditable(false);
@@ -97,6 +87,19 @@ public class tutorSearch extends javax.swing.JFrame {
         jLabel5.setText("ADDRESS : ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
+        positionTextField.setEditable(false);
+        positionTextField.setBackground(new java.awt.Color(255, 255, 255));
+        positionTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        positionTextField.setForeground(new java.awt.Color(0, 0, 0));
+        positionTextField.setToolTipText("");
+        positionTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(positionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 340, 40));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("COURSE : ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, 40));
+
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("POSITION :");
@@ -114,7 +117,7 @@ public class tutorSearch extends javax.swing.JFrame {
                 backTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(backTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 670, 140, 40));
+        jPanel1.add(backTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 670, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -159,29 +162,22 @@ public class tutorSearch extends javax.swing.JFrame {
         jLabel4.setText("ENTER TUTOR ID : ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 80, -1, -1));
 
-        addressTextField.setEditable(false);
-        addressTextField.setBackground(new java.awt.Color(255, 255, 255));
-        addressTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        addressTextField.setForeground(new java.awt.Color(0, 0, 0));
-        addressTextField.setToolTipText("");
-        addressTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.add(addressTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 340, 40));
-
-        programmeComboBox.setBackground(new java.awt.Color(255, 255, 255));
-        programmeComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        programmeComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        programmeComboBox.addActionListener(new java.awt.event.ActionListener() {
+        add2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        add2.setText("REMOVE");
+        add2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                programmeComboBoxActionPerformed(evt);
+                add2ActionPerformed(evt);
             }
         });
-        jPanel1.add(programmeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, -1, -1));
+        jPanel1.add(add2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
 
-        positionComboBox.setBackground(new java.awt.Color(255, 255, 255));
-        positionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        positionComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LECTURER", "TUTOR" }));
-        jPanel1.add(positionComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 340, -1));
+        addressTextField1.setEditable(false);
+        addressTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        addressTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addressTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        addressTextField1.setToolTipText("");
+        addressTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(addressTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 340, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,7 +208,6 @@ public class tutorSearch extends javax.swing.JFrame {
         // TODO add your handling code here:
         String temp = tutorIDTextField.getText();
         String id = "";
-        String programme="";
         for (int i = 0; i < temp.length(); i++) {
             if (Character.isLetter(temp.charAt(i))) {
                 id += Character.toUpperCase(temp.charAt(i));
@@ -222,30 +217,16 @@ public class tutorSearch extends javax.swing.JFrame {
         }
         tutorIDTextField.setText(id);
         tutorIDTextField.setEditable(false);
-        boolean key = true;
         for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
 
             if (id.equals(tutorList.getEntry(i + 1).getTutorID())) {
                 nameTextField.setText(tutorList.getEntry(i + 1).getName());
-                addressTextField.setText(tutorList.getEntry(i + 1).getAddress());
+                addressTextField1.setText(tutorList.getEntry(i + 1).getAddress());
                 salaryTextField.setText("" + tutorList.getEntry(i + 1).getSalary());
-                positionComboBox.setName(tutorList.getEntry(i + 1).getPosition());
+                positionTextField.setText(tutorList.getEntry(i + 1).getPosition());
 
-                for (int j = 0; j < programmeList.getNumberOfEntries(); j++) {
-                    if (tutorList.getEntry(i + 1).getProgrammeID().equals(programmeList.getEntry(j + 1).getProgrammeCode())) {
-                        programme = programmeList.getEntry(j + 1).getProgrammeName();
-                        System.out.println("programme : " + programme);
-                        programmeComboBox.setSelectedIndex(j);
-                        break;  
-                    }
-                }
-                key = false;
             }
 
-        }
-
-        if (key) {
-            jLabel1.setText("No such tutor ");
         }
 
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -258,9 +239,26 @@ public class tutorSearch extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tutorIDTextFieldActionPerformed
 
-    private void programmeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeComboBoxActionPerformed
+    private void add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_programmeComboBoxActionPerformed
+        String id = tutorIDTextField.getText();
+
+        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+
+            if (id.equals(tutorList.getEntry(i + 1).getTutorID())) {
+                tutorList.remove(i + 1);
+            }
+
+        }
+
+        nameTextField.setText("");
+        addressTextField1.setText("");
+        salaryTextField.setText("");
+        positionTextField.setText("");
+        jLabel1.setText("Removed");
+
+
+    }//GEN-LAST:event_add2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,7 +299,8 @@ public class tutorSearch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressTextField;
+    private javax.swing.JButton add2;
+    private javax.swing.JTextField addressTextField1;
     private javax.swing.JButton backTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -309,12 +308,12 @@ public class tutorSearch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JComboBox<String> positionComboBox;
-    private javax.swing.JComboBox<String> programmeComboBox;
+    private javax.swing.JTextField positionTextField;
     private javax.swing.JTextField salaryTextField;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField tutorIDTextField;
