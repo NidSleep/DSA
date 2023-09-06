@@ -10,25 +10,29 @@ import adt.ArrayList;
 import entity.Course;
 import entity.Tutor;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import utility.insertData;
+import entity.Teaching;
 
 public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
 
     public static AdtInterface<Course> courseList = insertData.courseList;
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
+    public static AdtInterface<Teaching> teachingList = insertData.teachingList; // Add Teaching list
 
     public TeachingDisplayTutorCourse() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) courseTable.getModel();
-
+        DefaultTableModel model = (DefaultTableModel) TutorTable.getModel();
+        model.setColumnIdentifiers(new String[]{"TutorID", "TutorName", "Course"});
+        
         for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
             Tutor tutors = tutorList.getEntry(i + 1);
             String tutorID = tutors.getTutorID();
             String tutorName = tutors.getName();
-
             ArrayList<Course> courses = tutors.getCourses();
 //            System.out.println("programs: " + programs);
+
             StringBuilder coursesName = new StringBuilder();
 
             if (courses != null && !courses.isEmpty()) {
@@ -36,7 +40,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
                     if (j > 0) {
                         coursesName.append(", ");
                     }
-                    coursesName.append(courses.getEntry(j + 1).getName());
+                    coursesName.append(courses.getEntry(j + 1).getCourseID());
                 }
             } else {
                 coursesName.append(""); // or any suitable message
@@ -48,8 +52,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
             model.addRow(rowData);
         }
 
-        courseTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
-
+        TutorTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
     }
 
     /**

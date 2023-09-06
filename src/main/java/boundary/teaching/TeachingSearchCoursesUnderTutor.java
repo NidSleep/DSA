@@ -9,12 +9,12 @@ import adt.ArrayList;
 import entity.Course;
 import entity.Tutor;
 import utility.insertData;
-
-
+import static utility.insertData.courseList;
 
 public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
+
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
-    public static AdtInterface<Course> courseList = insertData.courseList;
+    //public static AdtInterface<Course> courseList = insertData.courseList;
 
     public TeachingSearchCoursesUnderTutor() {
         initComponents();
@@ -134,30 +134,7 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfTutorNameActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        //        String Tutorid = jtfTutorID.getText().trim();
-        //
-        //        if (!Tutorid.isEmpty()) {
-        //            errorMsg.setText(""); // Clear any previous error messages
-        //            boolean found = false; // Flag to indicate if a matching course is found
-        //
-        //            for (int i = 0; i < TutorList.getNumberOfEntries(); i++) {
-        //                if (Tutorid.equals(TutorList.getEntry(i + 1).getTutorID())) {
-        
-        //                    jtfTutorName.setText(tutorList.getEntry(i + 1).getName());
-        //                    errorMsg.setText(""); // Clear error message if found
-        //                    found = true;
-        //                    break; // Exit the loop since a match is found
-        //                }
-        //            }
-        //
-        //            if (!found) {
-        //                jtfTutorName.setText("");
-        //                errorMsg.setText("No such Course");
-        //            }
-        //        } else {
-        //            errorMsg.setText("Please enter a course ID");
-        //        }
-        String Tutorid = jtfTutorID.getText().trim();
+       String Tutorid = jtfTutorID.getText().trim();
 
         if (!Tutorid.isEmpty()) {
             errorMsg.setText(""); // Clear any previous error messages
@@ -165,22 +142,29 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
 
             for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
                 if (Tutorid.equals(tutorList.getEntry(i + 1).getTutorID())) {
-                    
+
                     jtfTutorName.setText(tutorList.getEntry(i + 1).getName());
                     errorMsg.setText(""); // Clear error message if found
                     found = true;
-                       
-                    ArrayList<Course> courses = tutorList.getEntry(i + 1).getCourses();
+
+                    
+                    ArrayList<Tutor> courses = courseList.getEntry(i + 1).getTutors();
+                    System.out.println("g:"+courses);
                     if (courses != null && !courses.isEmpty()) {
-                        String[] courseName = new String[courses.getNumberOfEntries()];
-                        //                        String temp = programs.getNumberOfEntries();
-                        for (int j = 0; j < courses.getNumberOfEntries(); j++) {
-                            courseName[j] = courses.getEntry(j + 1).getCourseID();
+                        if (courses.equals(Tutorid)) {
+                            String[] courseID = new String[courses.getNumberOfEntries()];
+                            //                        String temp = programs.getNumberOfEntries();
+                            System.out.println("h:");
+                            for (int j = 0; j < courses.getNumberOfEntries(); j++) {
+                                courseID[j] = courses.getEntry(j + 1).getCourseID();
+                                System.out.println("hha:" + courseID[j]);
+                            }
+                            coursesList.setListData(courseID);
+                            //System.out.println("hhaha:" +courseID.getClass());
                         }
-                        coursesList.setListData(courseName);
 
                     } else {
-                        coursesList.setListData(new String[]{"No Programs"});
+                        coursesList.setListData(new String[]{"No Course"});
                     }
 
                     break; // Exit the loop since a match is found
@@ -194,6 +178,7 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         } else {
             errorMsg.setText("Please enter a course ID");
         }
+    
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

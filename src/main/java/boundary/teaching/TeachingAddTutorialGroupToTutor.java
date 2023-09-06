@@ -7,6 +7,7 @@ package boundary.teaching;
 import adt.AdtInterface;
 import entity.*;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import utility.insertData;
 
 /**
@@ -155,7 +156,7 @@ public class TeachingAddTutorialGroupToTutor extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
-        String selectedGroup = Jcombo.getSelectedItem().toString(); // Get the selected TutorialGroup name from the combo box
+       String selectedGroup = Jcombo.getSelectedItem().toString(); // Get the selected TutorialGroup name from the combo box
 
         if (!selectedGroup.isEmpty()) {
             String tutorID = jtfTutorID.getText().trim();
@@ -179,7 +180,7 @@ public class TeachingAddTutorialGroupToTutor extends javax.swing.JFrame {
 
                         if (selectedgroups != null) {
                             tutorList.getEntry(i + 1).addTutorialGroups(selectedgroups);
-                            msg.setText("Tutorial Group has added to the course successfully.");
+                            msg.setText("Tutorial Group has added to the Tutor successfully.");
                         }
                         break; // Exit the loop since the course is found
                     }
@@ -194,6 +195,49 @@ public class TeachingAddTutorialGroupToTutor extends javax.swing.JFrame {
 
     private void jtfTutorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorIDActionPerformed
         // TODO add your handling code here:
+        
+         String tutorID = jtfTutorID.getText().trim();
+
+    if (tutorID.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a course ID.", "Error", JOptionPane.ERROR_MESSAGE);
+        errorMsg.setText(""); // Clear any previous error messages
+        return;
+    }
+    
+    
+
+    boolean tutorFound = false;
+
+    for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+        if (tutorID.equals(tutorList.getEntry(i + 1).getTutorID())) {
+            tutorFound = true;
+
+            // Find the tutor and add the selected Course to it
+            String selectedTutorialName = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
+           
+            boolean tutorialFound = false;
+            for (int j = 1; j <= tutorialList.getNumberOfEntries(); j++) {
+                TutorialGroup tutorial = tutorialList.getEntry(j);
+                if (selectedTutorialName.equals(tutorial.getGroupID())) {
+                    tutorialFound = true;
+                    
+                    tutorial.addTutors(tutorList.getEntry(i+1));
+                    JOptionPane.showMessageDialog(this, "Tutor has been added to the course successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+            }
+
+            if (!tutorFound) {
+                JOptionPane.showMessageDialog(this, "Selected tutor not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            break; // Exit the loop since the course is found
+        }
+    }
+
+    if (!tutorFound) {
+        JOptionPane.showMessageDialog(this, "No such course found.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jtfTutorIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed

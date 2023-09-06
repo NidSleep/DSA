@@ -31,11 +31,13 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setColumnIdentifiers(new String[]{"TutorID", "TutorName", "Course"});
+        
         Object rowData[] = new Object[4];
         for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
-            rowData[0] = tutorList.getEntry(i + 1).getCourseID();
+            rowData[0] = tutorList.getEntry(i + 1).getTutorID();
             rowData[1] = tutorList.getEntry(i + 1).getName();
-            rowData[3] = tutorList.getEntry(i + 1).getTutorID();
+            rowData[2] = tutorList.getEntry(i + 1).getCourseID();
 
             model.addRow(rowData);
         }
