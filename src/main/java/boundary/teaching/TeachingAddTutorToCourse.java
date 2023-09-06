@@ -7,7 +7,6 @@ package boundary.teaching;
 import adt.AdtInterface;
 import entity.*;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import utility.insertData;
 
 /**
@@ -35,10 +34,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         }
         TutorJcombo.setModel(comboBoxModel); // Set the model for the JComboBox
 
-//        //Checking - Print the individual programme names
-//        for (int i = 0; i < comboBoxModel.getSize(); i++) {
-//            System.out.println("Tutor Name: " + comboBoxModel.getElementAt(i));
-//        }
     }
 
     /**
@@ -78,7 +73,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Course ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Course NAME :");
@@ -206,13 +201,11 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
                     }
                 }
             } else {
-                errorMsg.setText("Please enter a course ID");
+                errorMsg.setText("Please enter a course ID");              
             }
         } else {
             errorMsg.setText("Please select a Course");
-        }
-   
-    } 
+        }   
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
@@ -268,6 +261,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
             errorMsg.setText(""); // Clear any previous error messages
             boolean found = false; // Flag to indicate if a matching course is found
 
+            //for(int i =0; i< courseList.getNumberOfEntries(); i++){
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
@@ -295,9 +289,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TutorJcomboActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
