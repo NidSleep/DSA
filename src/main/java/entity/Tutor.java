@@ -33,7 +33,7 @@ Generate relevant reports
     private String programmeID;
     public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
     public TutorialGroup tutorialGroup;
-     private ArrayList<Course> courses;
+    private ArrayList<Course> courses;
 
     public Tutor() {
 
@@ -48,23 +48,8 @@ Generate relevant reports
         this.programmeID = programmeID;
     }
 
-    public ArrayList<TutorialGroup> getTutorialGroups() {
-        return tutorialGroups;
-    }
-
-    public void setTutorialGroups(ArrayList<TutorialGroup> tutorialGroups) {
-        this.tutorialGroups = tutorialGroups;
-    }
-
-    public TutorialGroup getTutorialGroup() {
-        return tutorialGroup;
-    }
-
-    public void setTutorialGroup(TutorialGroup tutorialGroup) {
-        this.tutorialGroup = tutorialGroup;
-    }
-
-    public Tutor(String tutorID,String name, double salary, String address, String position) {
+    public Tutor(String tutorID, String name, double salary, String address, String position) {
+        this.tutorID = tutorID;
         this.name = name;
         this.salary = salary;
         this.address = address;
@@ -127,7 +112,7 @@ Generate relevant reports
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public void printTutorInfo() {
         System.out.println("Tutor ID: " + tutorID);
         System.out.println("Name: " + name);
@@ -139,13 +124,14 @@ Generate relevant reports
     public void addTutorialGroups(TutorialGroup group) {
         tutorialGroups.add(group);
     }
-    
+
     public boolean hasCourse(Course course) {
-    // Check if the tutor is assigned to the specified course
-    return course.hasTutor(this);
+        // Check if the tutor is assigned to the specified course
+        return course.hasTutor(this);
     }
-    
+
     public ArrayList<Course> getCourses() {
         return courses;
     }
+
 }

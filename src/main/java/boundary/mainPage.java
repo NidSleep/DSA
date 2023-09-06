@@ -6,17 +6,16 @@ package boundary;
 
 import boundary.programme.ProgrammeManagementMenu;
 import boundary.course.CourseManagement;
+import boundary.teaching.TeachingManagement;
 import boundary.tutor.tutorUI;
 import utility.insertData;
-
 
 /**
  *
  * @author kenne
  */
 public class mainPage extends javax.swing.JFrame {
-    
-    
+
     /**
      * Creates new form mainPage
      */
@@ -107,6 +106,10 @@ public class mainPage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+
+        setVisible(false);
+        TeachingManagement t = new TeachingManagement();
+        t.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
