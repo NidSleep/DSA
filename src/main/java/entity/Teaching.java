@@ -16,23 +16,25 @@ public class Teaching implements Serializable{
     private String tutorID;
     private String groupID;
     private String courseID;
+    
+    
     public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
     public ArrayList<Course> courses = new ArrayList<>();
     public ArrayList<Tutor> tutors = new ArrayList<>();
     
-     public Teaching()
+    public Teaching()
     {
        
     }
-    
-    public Teaching(String tutorID,String groupID, String courseID)
+
+    public Teaching(String tutorID, String courseID ,String groupID)
     {
        this.tutorID = tutorID;
        this.groupID = groupID;
        this.courseID = courseID;   
-       tutorialGroups = new ArrayList<>();
-       courses = new ArrayList<>();
-       tutors = new ArrayList<>();
+//       tutorialGroups = new ArrayList<>();
+//       courses = new ArrayList<>();
+//       tutors = new ArrayList<>();
        
     }
     

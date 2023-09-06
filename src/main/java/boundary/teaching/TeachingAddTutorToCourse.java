@@ -29,10 +29,10 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
 
         for (int i = 1; i <= tutorList.getNumberOfEntries(); i++) {
-            Tutor tutor = tutorList.getEntry(i);
-            comboBoxModel.addElement(tutor.getTutorID());
+            System.out.println("id :" + tutorList.getEntry(i).getTutorID());
+            comboBoxModel.addElement(tutorList.getEntry(i).getTutorID());
         }
-        TutorJcombo.setModel(comboBoxModel); // Set the model for the JComboBox
+        Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
 
     }
 
@@ -50,7 +50,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        TutorJcombo = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         ConfirmButton = new javax.swing.JButton();
         jtfCourseID = new javax.swing.JTextField();
@@ -59,6 +58,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         errorMsg = new javax.swing.JLabel();
         errorMsg1 = new javax.swing.JLabel();
         msg = new javax.swing.JLabel();
+        Jcombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,15 +82,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel3.setText("ADD Tutor :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 180, 50));
-
-        TutorJcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        TutorJcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        TutorJcombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TutorJcomboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TutorJcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         backButton.setText("Back");
@@ -144,6 +135,15 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         jPanel1.add(errorMsg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
         jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 740, 270, 30));
 
+        Jcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Jcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Jcombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JcomboActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Jcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,46 +170,54 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
-        String selectedTutors = TutorJcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
+        String selectedTutors = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
+        String courseID = jtfCourseID.getText();
 
-        if (!selectedTutors.isEmpty()) {
-            String courseID = jtfCourseID.getText().trim();
+        System.out.println("selectedTutors : " + selectedTutors);
+        System.out.println("courseID : " + courseID);
 
-            if (!courseID.isEmpty()) {
-                errorMsg.setText(""); // Clear any previous error messages
+        Teaching t = new Teaching(selectedTutors, courseID, "");
+        teachingList.add(t);
 
-                for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-                    if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-                        
-                        // Find the tutor and add the selected Course to it
-                        Tutor selected = null;
-                        for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
-                            Tutor tutor = tutorList.getEntry(j);
-                            if (selectedTutors.equals(tutor.getTutorID())) {
-                               //selectedTutors = tutor;
-                                System.out.println("selectedTutor: " + selectedTutors); // selectedTutor: Kenneth 
-                                break;
-                            }
-                        }
-                        //Check
-                        if (selected != null) {
-                            //courseList.getEntry(i + 1).addTutor(selectedTutors);
-                            System.out.println("hahah:" +courseList.getEntry(i + 1).getTutors());
-                            msg.setText("Tutor has added to the course successfully.");
-                        }
-                        break; // Exit the loop since the course is found
-                    }
-                }
-            } else {
-                errorMsg.setText("Please enter a course ID");              
-            }
-        } else {
-            errorMsg.setText("Please select a Course");
-        }   
+        System.out.println("tutor id : " + teachingList.getEntry(1).getCourseID());
+
+//        if (!selectedTutors.isEmpty()) {
+//
+//            if (!courseID.isEmpty()) {
+//                errorMsg.setText(""); // Clear any previous error messages
+//
+//                for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+//                    if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
+//
+//                        // Find the tutor and add the selected Course to it
+//                        Tutor selected = null;
+//                        for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
+//                            Tutor tutor = tutorList.getEntry(j);
+//                            if (selectedTutors.equals(tutor.getTutorID())) {
+//                                //selectedTutors = tutor;
+//                                System.out.println("selectedTutor: " + selectedTutors); // selectedTutor: Kenneth 
+//                                break;
+//                            }
+//                        }
+//                        //Check
+//                        if (selected != null) {
+//                            courseList.getEntry(i + 1).addTutor(selectedTutors);
+//                            System.out.println("hahah:" + courseList.getEntry(i + 1).getTutors());
+//                            msg.setText("Tutor has added to the course successfully.");
+//                        }
+//                        break; // Exit the loop since the course is found
+//                    }
+//                }
+//            } else {
+//                errorMsg.setText("Please enter a course ID");
+//            }
+//        } else {
+//            errorMsg.setText("Please select a Course");
+//        }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
 
         /*String courseID = jtfCourseID.getText().trim();
 
@@ -255,7 +263,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCourseIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-       String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim();
 
         if (!id.isEmpty()) {
             errorMsg.setText(""); // Clear any previous error messages
@@ -285,9 +293,9 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCourseNameActionPerformed
 
-    private void TutorJcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorJcomboActionPerformed
+    private void JcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcomboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TutorJcomboActionPerformed
+    }//GEN-LAST:event_JcomboActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -334,8 +342,8 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
+    private javax.swing.JComboBox<String> Jcombo;
     private javax.swing.JLabel TitleLabel;
-    private javax.swing.JComboBox<String> TutorJcombo;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel errorMsg1;

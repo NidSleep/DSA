@@ -21,6 +21,7 @@ public class insertData {
     public static AdtInterface<TutorialGroup> tutorialList = new ArrayList<>();
  
     public insertData() {
+            
         insertTutor();
         insertProgram();
         insertCourse();

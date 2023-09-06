@@ -69,7 +69,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        courseTable = new javax.swing.JTable();
+        TutorTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,10 +94,10 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
         });
         jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
 
-        courseTable.setAutoCreateRowSorter(true);
-        courseTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        courseTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        courseTable.setModel(new javax.swing.table.DefaultTableModel(
+        TutorTable.setAutoCreateRowSorter(true);
+        TutorTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TutorTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        TutorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -120,12 +120,12 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        courseTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        courseTable.setRowHeight(35);
-        courseTable.setRowMargin(5);
-        courseTable.setShowHorizontalLines(true);
-        courseTable.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(courseTable);
+        TutorTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TutorTable.setRowHeight(35);
+        TutorTable.setRowMargin(5);
+        TutorTable.setShowHorizontalLines(true);
+        TutorTable.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(TutorTable);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 1210, -1));
 
@@ -196,8 +196,8 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TableTitle;
+    private javax.swing.JTable TutorTable;
     private javax.swing.JButton backButton;
-    private javax.swing.JTable courseTable;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

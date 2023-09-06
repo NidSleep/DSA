@@ -94,4 +94,8 @@ Generate relevant reports
     public boolean hasTutor(Tutor tutor) {
         return tutors.contains(tutor);
     }
+
+    public String getTutors() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
