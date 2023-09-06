@@ -38,13 +38,13 @@ Generate relevant reports
 
     }
 
-    public Tutor(String tutorID, String name, double salary, String address, String position, String programmeID) {
+    public Tutor(String tutorID, String name, double salary, String address, String position) {
         this.tutorID = tutorID;
         this.name = name;
         this.salary = salary;
         this.address = address;
         this.position = position;
-        this.programmeID = programmeID;
+
     }
 
     public Tutor(String name, double salary, String address, String position) {
@@ -118,8 +118,11 @@ Generate relevant reports
         System.out.println("Address: " + address);
         System.out.println("Position: " + position);
     }
+<<<<<<< HEAD
 
     void addTutorialGroups(TutorialGroup group) {
         tutorialGroups.add(group);
     }
+=======
+>>>>>>> parent of 20cb9de (tutor advanced)
 }

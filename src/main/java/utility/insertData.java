@@ -25,11 +25,9 @@ public class insertData {
     }
 
     public void insertTutor() {
-        tutorList.add(new Tutor("T1", "kenneth", 1200, "kl", "LECTURER","RSW"));
-        tutorList.add(new Tutor("T2", "wei jie", 1500, "selangor", "TUTOR","RIS"));
-        tutorList.add(new Tutor("T3", "kenneth", 2200, "indonesia", "TUTOR","RMM"));
-        tutorList.add(new Tutor("T4", "wei jie", 1500, "selangor", "TUTOR","RIS"));
-        tutorList.add(new Tutor("T5", "kenneth", 2200, "indonesia", "TUTOR","RMM"));
+        tutorList.add(new Tutor("T1", "kenneth", 1200, "kl", "LECTURER"));
+        tutorList.add(new Tutor("T2", "wei jie", 1500, "selangor", "TUTOR"));
+        tutorList.add(new Tutor("T3", "kenneth", 2200, "indonesia", "TUTOR"));
     }
 
     public void insertProgram() {

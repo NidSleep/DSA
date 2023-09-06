@@ -178,9 +178,6 @@ public class tutorUI extends javax.swing.JFrame {
 
     private void add5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add5ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        tutorSearch t = new tutorSearch();
-        t.setVisible(true);
     }//GEN-LAST:event_add5ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
