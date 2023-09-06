@@ -41,9 +41,9 @@ public class insertData {
     }
 
     public void insertCourse() {
-        courseList.add(new Course("BACS3074", "Artificial Intelligence"));
-        courseList.add(new Course("AAMS3184", "Discrete Mathematics"));
-        courseList.add(new Course("BACS3013", "Data Science"));
+        courseList.add(new Course("BACS3074", "Artificial Intelligence", 873.00, 3.0));
+        courseList.add(new Course("AAMS3184", "Discrete Mathematics", 582.00, 2.0));
+        courseList.add(new Course("BACS3013", "Data Science", 692.00, 3.0));
     }
 
     private void insertTeaching() {
