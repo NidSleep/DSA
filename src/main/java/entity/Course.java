@@ -26,15 +26,19 @@ Generate relevant reports
      */
     private String courseID;
     private String name;
+    private Double courseFees;
+    private Double courseCreditHours;
     private ArrayList<Programme> programs;
     private ArrayList<Tutor> tutors; 
 
     public Course() {
     }
 
-    public Course(String courseID, String name) {
+    public Course(String courseID, String name, Double courseFees, Double courseCreditHours) {
         this.courseID = courseID;
         this.name = name;
+        this.courseFees = courseFees;
+        this.courseCreditHours = courseCreditHours;
         this.programs = new ArrayList<>();
         this.tutors = new ArrayList<>();
     }
@@ -53,6 +57,22 @@ Generate relevant reports
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Double getCourseFees() {
+        return courseFees;
+    }
+
+    public void setCourseFees(Double courseFees) {
+        this.courseFees = courseFees;
+    }
+
+    public Double getCourseCreditHours() {
+        return courseCreditHours;
+    }
+
+    public void setCourseCreditHours(Double courseCreditHours) {
+        this.courseCreditHours = courseCreditHours;
     }
 
     public ArrayList<Programme> getPrograms() {

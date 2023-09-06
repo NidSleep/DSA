@@ -30,8 +30,11 @@ public class CourseDisplayAll extends javax.swing.JFrame {
 //        }
         for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
             Course course = courseList.getEntry(i + 1);
+            
             String courseID = course.getCourseID();
             String courseName = course.getName();
+            Double courseFees = course.getCourseFees();
+            Double courseCreditHours = course.getCourseCreditHours();
 
             ArrayList<Programme> programs = course.getPrograms();
 //            System.out.println("programs: " + programs);
@@ -47,10 +50,12 @@ public class CourseDisplayAll extends javax.swing.JFrame {
             } else {
                 programNames.append(""); // or any suitable message
             }
-            Object[] rowData = new Object[3];
+            Object[] rowData = new Object[5];
             rowData[0] = courseID;
             rowData[1] = courseName;
             rowData[2] = programNames.toString();
+            rowData[3] = "RM " + courseFees;
+            rowData[4] = courseCreditHours;
             model.addRow(rowData);
         }
 
@@ -105,14 +110,14 @@ public class CourseDisplayAll extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAME", "PROGRAMMES"
+                "ID", "NAME", "PROGRAMMES", "Fees", "Credit Hours"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

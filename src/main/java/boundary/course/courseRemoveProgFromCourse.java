@@ -166,13 +166,12 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         int ind = Integer.parseInt(jtfProgIndex.getText());
         String id = jtfCourseID.getText();
-        if (ind >= 0) {
-            System.out.println("Hi1");
+        if (ind > 0) {
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     ArrayList<Programme> programs = courseList.getEntry(i + 1).getPrograms();
-                    System.out.println("programs.getNumberOfEntries(): " + programs.getNumberOfEntries());
-                    System.out.println("ind: " + ind);
+//                    System.out.println("programs.getNumberOfEntries(): " + programs.getNumberOfEntries());
+//                    System.out.println("ind: " + ind);
                     if (ind < programs.getNumberOfEntries() + 1) {
                         programs.remove(ind);
                         // RELOAD THE PROGRAMS FIELD 
@@ -181,8 +180,8 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
 
                             for (int j = 0; j < programs.getNumberOfEntries(); j++) {
                                 programNames[j] = (j + 1) + ") " + programs.getEntry(j + 1).getProgrammeName();
-                                System.out.println("j" + j);
-                                System.out.println("programNames[j] :" + programNames[j]);
+//                                System.out.println("j" + j);
+//                                System.out.println("programNames[j] :" + programNames[j]);
                             }
                             programList.setListData(programNames);
                         } else {
@@ -192,14 +191,14 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
                         jtfProgIndex.setText("");
                         errorMsg2.setText("Removed sucessfully");
                     } else {
-                        System.out.println("Hi3");
+                        jtfProgIndex.setText("");
                         errorMsg2.setText("Invalid Program Index");
                     }
                 }
             }
         } else {
             // Handle an invalid index (less than 1)
-            System.out.println("Hi4");
+            jtfProgIndex.setText("");
             errorMsg2.setText("Invalid Program Index");
         }
     }//GEN-LAST:event_removeButtonActionPerformed
@@ -238,8 +237,8 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
 
                         for (int j = 0; j < programs.getNumberOfEntries(); j++) {
                             programNames[j] = (j + 1) + ") " + programs.getEntry(j + 1).getProgrammeName();
-                            System.out.println("j" + j);
-                            System.out.println("programNames[j] :" + programNames[j]);
+//                            System.out.println("j" + j);
+//                            System.out.println("programNames[j] :" + programNames[j]);
                         }
                         programList.setListData(programNames);
                     } else {

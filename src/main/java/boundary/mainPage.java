@@ -46,37 +46,41 @@ public class mainPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jButton2.setText("COURSE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 240, 200));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 330, 200));
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jButton3.setText("TUTOR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 240, 200));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 330, 200));
 
+        jBtProgramme.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jBtProgramme.setText("PROGRAMME");
         jBtProgramme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtProgrammeActionPerformed(evt);
             }
         });
-        jPanel1.add(jBtProgramme, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 240, 200));
+        jPanel1.add(jBtProgramme, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 330, 200));
 
-        jButton5.setText("search");
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jButton5.setText("TEACHING");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 240, 200));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 330, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -16,7 +16,7 @@ import utility.*;
 public class courseAdd extends javax.swing.JFrame {
 
     public static AdtInterface<Course> courseList = insertData.courseList;
-    
+
     /**
      * Creates new form courseAdd
      */
@@ -41,6 +41,11 @@ public class courseAdd extends javax.swing.JFrame {
         jtfCourseCode = new javax.swing.JTextField();
         ConformButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jtfCourseFees = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jtfCourseCreditHours = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +69,7 @@ public class courseAdd extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("COURSE CODE :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
         jtfCourseCode.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jtfCourseCode.setToolTipText("");
@@ -89,21 +94,41 @@ public class courseAdd extends javax.swing.JFrame {
         });
         jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 700, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("COURSE FEES : ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
+
+        jtfCourseFees.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseFees.setToolTipText("");
+        jtfCourseFees.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jtfCourseFees, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 290, 40));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("RM ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel5.setText("CREDIT HOURS : ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
+
+        jtfCourseCreditHours.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jtfCourseCreditHours.setToolTipText("");
+        jtfCourseCreditHours.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(jtfCourseCreditHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 340, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,19 +144,24 @@ public class courseAdd extends javax.swing.JFrame {
 
         String name = jtfCourseName.getText();
         String code = jtfCourseCode.getText();
+        double fees = Double.parseDouble(jtfCourseFees.getText());
+        double creditHours = Double.parseDouble(jtfCourseCreditHours.getText());
 
-        courseList.add(new Course(code, name));
+        courseList.add(new Course(code, name, fees, creditHours));
 
         // Checking - Print all entries in the courseList 
         System.out.println("List of Courses:");
         for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
             Course course = courseList.getEntry(i);
-            System.out.println("ID: " + course.getCourseID() + "\nName: " + course.getName());
+            System.out.println("ID: " + course.getCourseID() + "\nName: " + course.getName() + "\nFees: " + course.getCourseFees() + "\nCredit Hours: " + course.getCourseCreditHours());
             System.out.println("---------------");
         }
 
         jtfCourseName.setText("");
         jtfCourseCode.setText("");
+        jtfCourseFees.setText("");
+        jtfCourseCreditHours.setText("");
+
     }//GEN-LAST:event_ConformButtonActionPerformed
 
     /**
@@ -175,8 +205,13 @@ public class courseAdd extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtfCourseCode;
+    private javax.swing.JTextField jtfCourseCreditHours;
+    private javax.swing.JTextField jtfCourseFees;
     private javax.swing.JTextField jtfCourseName;
     // End of variables declaration//GEN-END:variables
 }
