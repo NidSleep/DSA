@@ -19,9 +19,9 @@ public class insertData {
     public static AdtInterface<Course> courseList = new ArrayList<>();
     public static AdtInterface<Teaching> teachingList = new ArrayList<>();
     public static AdtInterface<TutorialGroup> tutorialList = new ArrayList<>();
- 
+
     public insertData() {
-            
+
         insertTutor();
         insertProgram();
         insertCourse();
@@ -30,9 +30,16 @@ public class insertData {
     }
 
     public void insertTutor() {
-        tutorList.add(new Tutor("T1", "kenneth", 1200, "kl", "LECTURER"));
-        tutorList.add(new Tutor("T2", "wei jie", 1500, "selangor", "TUTOR"));
-        tutorList.add(new Tutor("T3", "kenneth", 2200, "indonesia", "TUTOR"));
+        tutorList.add(new Tutor("T1", "kenneth", 1200, "kl", "LECTURER", "RSW"));
+        tutorList.add(new Tutor("T2", "wei jie", 1500, "selangor", "TUTOR", "RIS"));
+        tutorList.add(new Tutor("T3", "kenneth", 2200, "indonesia", "TUTOR", "RMM"));
+        tutorList.add(new Tutor("T4", "wei jie", 1500, "selangor", "TUTOR", "RIS"));
+        tutorList.add(new Tutor("T5", "kenneth", 2200, "indonesia", "LECTURER", "RMM"));
+        tutorList.add(new Tutor("T6", "kenneth", 1200, "kl", "LECTURER", "RSW"));
+        tutorList.add(new Tutor("T7", "wei jie", 1500, "selangor", "LECTURER", "RIS"));
+        tutorList.add(new Tutor("T8", "kenneth", 2200, "indonesia", "TUTOR", "RMM"));
+        tutorList.add(new Tutor("T9", "wei jie", 1500, "selangor", "TUTOR", "RIS"));
+        tutorList.add(new Tutor("T10", "kenneth", 2200, "indonesia", "TUTOR", "RMM"));
     }
 
     public void insertProgram() {
@@ -48,9 +55,9 @@ public class insertData {
     }
 
     private void insertTeaching() {
-       teachingList.add(new Teaching("T1","G1" ,"BAC3074"));
-       teachingList.add(new Teaching("T2","G2" ,"AAMS3184"));
-       teachingList.add(new Teaching("T3","G3" ,"BACS3013"));
+        teachingList.add(new Teaching("T1", "G1", "BAC3074"));
+        teachingList.add(new Teaching("T2", "G2", "AAMS3184"));
+        teachingList.add(new Teaching("T3", "G3", "BACS3013"));
     }
 
     private void insertTutorial() {
