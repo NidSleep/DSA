@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class Teaching implements Serializable{
     private String tutorID;
-    private String name;
     private String groupID;
     private String courseID;
     public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
@@ -26,10 +25,9 @@ public class Teaching implements Serializable{
        
     }
     
-    public Teaching(String tutorID, String name,String groupID, String courseID)
+    public Teaching(String tutorID,String groupID, String courseID)
     {
        this.tutorID = tutorID;
-       this.name = name;
        this.groupID = groupID;
        this.courseID = courseID;   
        tutorialGroups = new ArrayList<>();
