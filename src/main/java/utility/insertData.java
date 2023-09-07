@@ -55,9 +55,9 @@ public class insertData {
     }
 
     private void insertTeaching() {
-        teachingList.add(new Teaching("T1", "G1", "BAC3074"));
-        teachingList.add(new Teaching("T2", "G2", "AAMS3184"));
-        teachingList.add(new Teaching("T3", "G3", "BACS3013"));
+        teachingList.add(new Teaching("T1", "BAC3074", "G1"));
+        teachingList.add(new Teaching("T2", "AAMS3184", "G2"));
+        teachingList.add(new Teaching("T3", "BACS3013", "G3"));
     }
 
     private void insertTutorial() {

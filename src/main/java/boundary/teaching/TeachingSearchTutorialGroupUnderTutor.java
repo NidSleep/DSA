@@ -6,32 +6,33 @@ package boundary.teaching;
 
 import adt.AdtInterface;
 import adt.ArrayList;
-import entity.Course;
 import static boundary.teaching.TeachingAddTutorToCourse.teachingList;
 import entity.Teaching;
 import entity.Tutor;
+import entity.TutorialGroup;
 import utility.insertData;
 import static utility.insertData.courseList;
+import static utility.insertData.tutorialList;
 
-public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
+public class TeachingSearchTutorialGroupUnderTutor extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     //public static AdtInterface<Course> courseList = insertData.courseList;
 
-    public TeachingDisplayTutorCourse() {
+    public TeachingSearchTutorialGroupUnderTutor() {
         initComponents();
     }
     
-    private Course findCourseByID(String courseID) {
-        AdtInterface<Course> courseList = insertData.courseList;
-        for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
-            Course course = courseList.getEntry(i);
-            if (course.getCourseID().equals(courseID)) {
-                return course;
-            }
-        }
-        return null; // Course not found
-    }
+//    private Course findCourseByID(String courseID) {
+//        AdtInterface<Course> courseList = insertData.courseList;
+//        for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
+//            Course course = courseList.getEntry(i);
+//            if (course.getCourseID().equals(courseID)) {
+//                return course;
+//            }
+//        }
+//        return null; // Course not found
+//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -109,8 +110,8 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
         jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 670, 140, 40));
 
         label4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        label4.setText("Courses :");
-        jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 160, 80));
+        label4.setText("TutorialGroup :");
+        jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 280, 70));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
 
         jtfTutorName1.setEditable(false);
@@ -159,7 +160,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
         //Teaching t = new Teaching(selectedTutors, courseID, "");
         //teachingList.add(t);
         System.out.println("tutor id : " + teachingList.getEntry(1).getTutorID());
-        System.out.println("Course id : " + teachingList.getEntry(1).getCourseID());
+        System.out.println("Tutorial id : " + teachingList.getEntry(1).getGroupID());
         
         for (int i = 1; i <= teachingList.getNumberOfEntries(); i++) {
         Teaching teaching = teachingList.getEntry(i);
@@ -173,11 +174,21 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
                 errorMsg.setText(""); // Clear error message if found
                 //break; // Exit the loop once the tutor is found
                 
+                 // Check if the next entry exists and is not null
+            if (i + 1 < teachingList.getNumberOfEntries()) {
+            jtfCourseName.setText(teachingList.getEntry(i + 1).getGroupID());
+        } else {
+            jtfCourseName.setText(""); // Handle the case where the next entry does not exist
+        }
+        
+        // Exit the loop once the tutor is found (if needed)
+        break;
+                
                //coursesList_Text.setListData();
             }
-            Course courses = courseList.getEntry(i);
-            System.out.println("G:" +teaching.getCourseID());
-           jtfCourseName.setText(teachingList.getEntry(i+1).getCourseID());
+//            TutorialGroup tutorialGroup = tutorialList.getEntry(i);
+//            System.out.println("G:" +teaching.getGroupID());
+//           jtfCourseName.setText(teachingList.getEntry(i+1).getGroupID());
               
     
     }
@@ -254,13 +265,13 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayTutorCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingSearchTutorialGroupUnderTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayTutorCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingSearchTutorialGroupUnderTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayTutorCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingSearchTutorialGroupUnderTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayTutorCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingSearchTutorialGroupUnderTutor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -274,7 +285,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeachingDisplayTutorCourse().setVisible(true);
+                new TeachingSearchTutorialGroupUnderTutor().setVisible(true);
             }
         });
     }
