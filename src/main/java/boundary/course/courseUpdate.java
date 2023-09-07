@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
-
+/**
+ *
+ * @author Tan Ru Poh
+ */
 import adt.AdtInterface;
 import entity.*;
 import utility.*;
@@ -168,22 +171,23 @@ public class courseUpdate extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
 
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
         String name = jtfCourseName.getText().trim();
-        String code = jtfCourseCode.getText().trim();
-        double courseFees = Double.parseDouble(jtfCourseFees.getText().trim());
-        double courseCreditHours = Double.parseDouble(jtfCourseCreditHours.getText().trim());
+        String code = jtfCourseCode.getText().trim().toUpperCase();
+        String feesStr = jtfCourseFees.getText().trim();
+        String creditHoursStr = jtfCourseCreditHours.getText().trim();
 
+        errorMsg.setText("");
+        msg.setText("");
         if (id.isEmpty()) {
             errorMsg.setText("Invalid Course ID");
-            msg.setText(""); // Clear success message
-        } else if (name.isEmpty() || code.isEmpty()) {
+        } else if (name.isEmpty() || code.isEmpty() || feesStr.isEmpty() || creditHoursStr.isEmpty()) {
             msg.setText("All field is required!");
         } else {
-            errorMsg.setText(""); // Clear any previous error messages
+            double courseFees = Double.parseDouble(feesStr);
+            double courseCreditHours = Double.parseDouble(creditHoursStr);
 
-            boolean updated = false; // Flag to indicate if a matching course is updated
-
+            boolean updated = false; 
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     courseList.getEntry(i + 1).setName(name);
@@ -197,13 +201,13 @@ public class courseUpdate extends javax.swing.JFrame {
                     jtfCourseCreditHours.setText("");
                     msg.setText("Updated Successfully");
                     updated = true;
-                    break; // Exit the loop since a match is updated
+                    break; 
                 }
             }
 
             if (!updated) {
                 errorMsg.setText("No such Course");
-                msg.setText(""); // Clear success message
+                msg.setText("");
             }
         }
 
@@ -216,11 +220,11 @@ public class courseUpdate extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
 
         if (!id.isEmpty()) {
-            errorMsg.setText(""); // Clear any previous error messages
-            boolean found = false; // Flag to indicate if a matching course is found
+            errorMsg.setText(""); 
+            boolean found = false; 
 
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
@@ -228,9 +232,9 @@ public class courseUpdate extends javax.swing.JFrame {
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
                     jtfCourseFees.setText(courseList.getEntry(i + 1).getCourseFees().toString());
                     jtfCourseCreditHours.setText(courseList.getEntry(i + 1).getCourseCreditHours().toString());
-                    errorMsg.setText(""); // Clear error message if found
+                    errorMsg.setText("");
                     found = true;
-                    break; // Exit the loop since a match is found
+                    break; 
                 }
             }
 

@@ -6,11 +6,15 @@ package boundary.tutor;
 
 import adt.AdtInterface;
 import adt.ArrayList;
+import static boundary.course.report1.courseList;
 import entity.Programme;
 import entity.Tutor;
-import java.awt.Component;
 import java.awt.Font;
-import javax.swing.JTable;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.table.*;
 import utility.insertData;
 
@@ -18,30 +22,36 @@ import utility.insertData;
  *
  * @author kenne
  */
-public class tutorDisplayAll extends javax.swing.JFrame {
+public class tutorReport extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<Programme> programmeList = insertData.programmeList;
+    private int[] ranking;
 
     /**
      * Creates new form tutorAdd
      */
-    public tutorDisplayAll() {
+    public tutorReport() {
 
         initComponents();
+        sortCourseList();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[5];
-        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
-            rowData[0] = tutorList.getEntry(i + 1).getTutorID();
-            rowData[1] = tutorList.getEntry(i + 1).getName();
-            rowData[2] = tutorList.getEntry(i + 1).getSalary();
-            rowData[3] = tutorList.getEntry(i + 1).getProgrammeID();
-            rowData[4] = tutorList.getEntry(i + 1).getPosition();
 
+        for (int i = 0; i < 10; i++) {
+            System.out.println("ranking[i] :"+ranking[i]);
+            rowData[0] = tutorList.getEntry(ranking[i]).getTutorID();
+            rowData[1] = tutorList.getEntry(ranking[i]).getName();
+            rowData[2] = "RM " + String.valueOf(tutorList.getEntry(ranking[i]).getSalary());
+            rowData[3] = "" + tutorList.getEntry(ranking[i]).getProgrammeID();
+            rowData[4] = "" + tutorList.getEntry(ranking[i]).getPosition();
             model.addRow(rowData);
         }
-        jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
+
+        // Set the preferred scrollable viewport size to match the preferred size
         jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());
+        jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
+
     }
 
     /**
@@ -69,7 +79,7 @@ public class tutorDisplayAll extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("ALL TUTOR");
+        jLabel2.setText("Top 10 Highest Salary ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -99,7 +109,7 @@ public class tutorDisplayAll extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -139,17 +149,36 @@ public class tutorDisplayAll extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void sortCourseList() {
+        double[] salary = new double[tutorList.getNumberOfEntries()];
 
-
-    private String getProgrammeID(String name) {
-        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
-            if (name.equals(programmeList.getEntry(i + 1).getProgrammeCode())) {
-                return programmeList.getEntry(i + 1).getProgrammeCode();
-            }
+        for (int z = 0; z < tutorList.getNumberOfEntries(); z++) {
+            salary[z] = tutorList.getEntry(z + 1).getSalary();
         }
-        return "";
-    }
 
+        // Create a mapping of values to their rankings
+        Map<Double, Integer> rankingMap = new HashMap<>();
+
+        // Sort the courseFee array in descending order while preserving original indices
+        Integer[] indices = new Integer[salary.length];
+        for (int i = 0; i < indices.length; i++) {
+            indices[i] = i;
+        }
+        Arrays.sort(indices, (a, b) -> Double.compare(salary[b], salary[a]));
+
+        // Create the ranking array based on the mapping
+        ranking = new int[salary.length];
+        for (int i = 0; i < indices.length; i++) {
+            ranking[i] = indices[i] + 1;
+        }
+
+        // Print the ranking array
+        System.out.print("Ranking: ");
+        for (int rank : ranking) {
+            System.out.print(rank + " ");
+        }
+
+    }
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
@@ -175,21 +204,23 @@ public class tutorDisplayAll extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tutorDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tutorReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tutorDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tutorReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tutorDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tutorReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tutorDisplayAll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tutorReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tutorDisplayAll().setVisible(true);
+                new tutorReport().setVisible(true);
             }
         });
     }

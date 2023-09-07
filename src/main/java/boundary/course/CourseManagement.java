@@ -14,7 +14,7 @@ import boundary.mainPage;
 
 /**
  *
- * @author
+ * @author Tan Ru Poh
  */
 public class CourseManagement extends javax.swing.JFrame {
 

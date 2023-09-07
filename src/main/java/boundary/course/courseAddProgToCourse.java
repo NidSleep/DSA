@@ -11,7 +11,7 @@ import utility.insertData;
 
 /**
  *
- * @author User
+ * @author Tan Ru Poh
  */
 public class courseAddProgToCourse extends javax.swing.JFrame {
 
@@ -174,6 +174,7 @@ public class courseAddProgToCourse extends javax.swing.JFrame {
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         String selectedProgram = Jcombo.getSelectedItem().toString(); // Get the selected program name from the combo box
+        boolean found = false;
 
         if (!selectedProgram.isEmpty()) {
             String courseID = jtfCourseID.getText().trim();
@@ -181,28 +182,38 @@ public class courseAddProgToCourse extends javax.swing.JFrame {
             if (!courseID.isEmpty()) {
                 errorMsg.setText(""); // Clear any previous error messages
 
-                for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-                    if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-                        // Find the course and add the selected program to it
-                        Programme selectedProgramme = null;
-                        for (int j = 1; j <= programmeList.getNumberOfEntries(); j++) {
-                            Programme programme = programmeList.getEntry(j);
-                            if (selectedProgram.equals(programme.getProgrammeName())) {
-                                selectedProgramme = programme;
-                                System.out.println("selectedProgramme: " + selectedProgramme); // selectedProgramme: RIS 
-                                break;
-                            }
-                        }
-
-                        if (selectedProgramme != null) {
-                            courseList.getEntry(i + 1).addProgram(selectedProgramme);
-                            msg.setText("Program added to the course successfully.");
-                        }
-                        break; // Exit the loop since the course is found
+                for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
+                    if (courseID.toUpperCase().equals(courseList.getEntry(i).getCourseID())) {
+                        found = true;
+                        break;
                     }
                 }
+                if (found) {
+                    for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+                        if (courseID.toUpperCase().equals(courseList.getEntry(i + 1).getCourseID())) {
+                            // Find the course and add the selected program to it
+                            Programme selectedProgramme = null;
+                            for (int j = 1; j <= programmeList.getNumberOfEntries(); j++) {
+                                Programme programme = programmeList.getEntry(j);
+                                if (selectedProgram.equals(programme.getProgrammeName())) {
+                                    selectedProgramme = programme;
+                                    System.out.println("selectedProgramme: " + selectedProgramme); // selectedProgramme: RIS 
+                                    break;
+                                }
+                            }
+
+                            if (selectedProgramme != null) {
+                                courseList.getEntry(i + 1).addProgram(selectedProgramme);
+                                msg.setText("Program added to the course successfully.");
+                            }
+                            break; // Exit the loop since the course is found
+                        }
+                    }
+                } else {
+                    errorMsg.setText("Invalid Course ID");
+                }
             } else {
-                errorMsg.setText("Please enter a course ID");
+                errorMsg.setText("Please enter a couse ID");
             }
         } else {
             errorMsg.setText("Please select a program");
@@ -217,15 +228,15 @@ public class courseAddProgToCourse extends javax.swing.JFrame {
         String id = jtfCourseID.getText().trim();
 
         if (!id.isEmpty()) {
-            errorMsg.setText(""); // Clear any previous error messages
-            boolean found = false; // Flag to indicate if a matching course is found
+            errorMsg.setText("");
+            boolean found = false;
 
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-                if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
+                if (id.toUpperCase().equals(courseList.getEntry(i + 1).getCourseID())) {
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
-                    errorMsg.setText(""); // Clear error message if found
+                    errorMsg.setText("");
                     found = true;
-                    break; // Exit the loop since a match is found
+                    break;
                 }
             }
 

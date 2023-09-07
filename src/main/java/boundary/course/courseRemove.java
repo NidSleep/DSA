@@ -10,7 +10,7 @@ import utility.insertData;
 
 /**
  *
- * @author TRP
+ * @author Tan Ru Poh
  */
 public class courseRemove extends javax.swing.JFrame {
 
@@ -39,6 +39,7 @@ public class courseRemove extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         errorMsg = new javax.swing.JLabel();
+        msg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +98,7 @@ public class courseRemove extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 670, 140, 40));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 670, 140, 40));
 
         removeButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         removeButton.setText("REMOVE");
@@ -106,8 +107,11 @@ public class courseRemove extends javax.swing.JFrame {
                 removeButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
+        jPanel1.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 670, 140, 40));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
+
+        msg.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 720, 270, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,18 +142,18 @@ public class courseRemove extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCourseIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
 
     if (!id.isEmpty()) {
-        errorMsg.setText(""); // Clear any previous error messages
-        boolean found = false; // Flag to indicate if a matching course is found
+        errorMsg.setText(""); 
+        boolean found = false; 
 
         for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
             if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                 jtfCourseName.setText(courseList.getEntry(i + 1).getName());
-                errorMsg.setText(""); // Clear error message if found
+                errorMsg.setText("");
                 found = true;
-                break; // Exit the loop since a match is found
+                break;
             }
         }
 
@@ -169,17 +173,18 @@ public class courseRemove extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
 
     if (!id.isEmpty()) {
-        boolean removed = false; // Flag to indicate if a course is removed
+        boolean removed = false; 
 
         for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
             if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                 courseList.remove(i + 1);
                 removed = true;
-                errorMsg.setText(""); // Clear error message if removed
-                break; // Exit the loop since the course is removed
+                errorMsg.setText("");
+                msg.setText("Removed successfully");
+                break; 
             }
         }
 
@@ -239,6 +244,7 @@ public class courseRemove extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCourseName;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
+    private javax.swing.JLabel msg;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JLabel titleLabel;

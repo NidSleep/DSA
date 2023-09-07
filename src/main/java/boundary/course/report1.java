@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
-
+/**
+ *
+ * @author Tan Ru Poh
+ */
 import adt.AdtInterface;
 import entity.Course;
 import javax.swing.*;
@@ -28,8 +31,8 @@ public class report1 extends javax.swing.JFrame {
         for (int i = 0; i < 3; i++) {
             rowData[0] = courseList.getEntry(ranking[i]).getCourseID();
             rowData[1] = courseList.getEntry(ranking[i]).getName();
-            rowData[2] = "RM " + courseList.getEntry(ranking[i]).getCourseFees();
-            rowData[3] = "" + courseList.getEntry(ranking[i]).getCourseCreditHours();
+            rowData[2] = "" + courseList.getEntry(ranking[i]).getCourseCreditHours();
+            rowData[3] = "RM " + courseList.getEntry(ranking[i]).getCourseFees();
             model.addRow(rowData);
         }
 
@@ -123,7 +126,7 @@ public class report1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAME", "Fees", "Credit Hours"
+                "ID", "NAME", "Credit Hours", "Fees"
             }
         ) {
             Class[] types = new Class [] {
@@ -147,12 +150,6 @@ public class report1 extends javax.swing.JFrame {
         table.setShowHorizontalLines(true);
         table.setShowVerticalLines(true);
         jScrollPane1.setViewportView(table);
-        if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setHeaderValue("ID");
-            table.getColumnModel().getColumn(1).setHeaderValue("NAME");
-            table.getColumnModel().getColumn(2).setHeaderValue("Fees");
-            table.getColumnModel().getColumn(3).setHeaderValue("Credit Hours");
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 510, -1));
 

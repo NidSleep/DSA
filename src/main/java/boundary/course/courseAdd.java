@@ -8,10 +8,9 @@ import adt.ArrayList;
 import adt.AdtInterface;
 import entity.*;
 import utility.*;
-
 /**
  *
- * @author TRP
+ * @author Tan Ru Poh
  */
 public class courseAdd extends javax.swing.JFrame {
 
@@ -46,6 +45,7 @@ public class courseAdd extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jtfCourseCreditHours = new javax.swing.JTextField();
+        msg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +116,9 @@ public class courseAdd extends javax.swing.JFrame {
         jtfCourseCreditHours.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(jtfCourseCreditHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 340, 40));
 
+        msg.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 740, 270, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,11 +147,33 @@ public class courseAdd extends javax.swing.JFrame {
 
         String name = jtfCourseName.getText();
         String code = jtfCourseCode.getText();
-        double fees = Double.parseDouble(jtfCourseFees.getText());
-        double creditHours = Double.parseDouble(jtfCourseCreditHours.getText());
+        String feesStr = jtfCourseFees.getText();
+        String creditHoursStr = jtfCourseCreditHours.getText();
+        boolean hasDuplicate = false;
 
-        courseList.add(new Course(code, name, fees, creditHours));
+        for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
+            if (code.toUpperCase().equals(courseList.getEntry(i).getCourseID())) {
+                hasDuplicate = true;
+                break; 
+            }
+        }
 
+        if (hasDuplicate) {
+            msg.setText("Duplicated ID found");
+        } else if (name.isEmpty() || code.isEmpty() || feesStr.isEmpty() || creditHoursStr.isEmpty()) {
+            msg.setText("All Fields are required");
+        } else {
+            msg.setText(""); 
+
+            try {
+                double fees = Double.parseDouble(feesStr);
+                double creditHours = Double.parseDouble(creditHoursStr);
+                courseList.add(new Course(code.toUpperCase(), name, fees, creditHours));
+                msg.setText("Added successfully");
+            } catch (NumberFormatException e) {
+                msg.setText("Invalid number values");
+            }
+        }
         // Checking - Print all entries in the courseList 
         System.out.println("List of Courses:");
         for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
@@ -213,5 +238,6 @@ public class courseAdd extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCourseCreditHours;
     private javax.swing.JTextField jtfCourseFees;
     private javax.swing.JTextField jtfCourseName;
+    private javax.swing.JLabel msg;
     // End of variables declaration//GEN-END:variables
 }

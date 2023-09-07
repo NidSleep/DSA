@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
-
+/**
+ *
+ * @author Tan Ru Poh
+ */
 import adt.AdtInterface;
 import adt.ArrayList;
 import entity.*;
@@ -16,7 +19,6 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
     public static AdtInterface<Course> courseList = insertData.courseList;
     public static AdtInterface<Programme> programmeList = insertData.programmeList;
     private DefaultListModel<String> programListModel;
-    private Course selectedCourse;
 
     public courseRemoveProgFromCourse() {
         initComponents();
@@ -164,42 +166,59 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        int ind = Integer.parseInt(jtfProgIndex.getText());
-        String id = jtfCourseID.getText();
-        if (ind > 0) {
-            for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-                if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
-                    ArrayList<Programme> programs = courseList.getEntry(i + 1).getPrograms();
-//                    System.out.println("programs.getNumberOfEntries(): " + programs.getNumberOfEntries());
-//                    System.out.println("ind: " + ind);
-                    if (ind < programs.getNumberOfEntries() + 1) {
-                        programs.remove(ind);
-                        // RELOAD THE PROGRAMS FIELD 
-                        if (programs != null && !programs.isEmpty()) {
-                            String[] programNames = new String[programs.getNumberOfEntries()];
+        
+        String id = jtfCourseID.getText().toUpperCase();
+        boolean found = false;
+        if (!id.isEmpty()) {
+            try {
+                for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
+                    if (id.equals(courseList.getEntry(i).getCourseID())) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    int ind = Integer.parseInt(jtfProgIndex.getText());
+                    if (ind > 0) {
+                        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+                            if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
+                                ArrayList<Programme> programs = courseList.getEntry(i + 1).getPrograms();
 
-                            for (int j = 0; j < programs.getNumberOfEntries(); j++) {
-                                programNames[j] = (j + 1) + ") " + programs.getEntry(j + 1).getProgrammeName();
-//                                System.out.println("j" + j);
-//                                System.out.println("programNames[j] :" + programNames[j]);
+                                if (ind < programs.getNumberOfEntries() + 1) {
+                                    programs.remove(ind);
+                                    // RELOAD THE PROGRAMS FIELD 
+                                    if (programs != null && !programs.isEmpty()) {
+                                        String[] programNames = new String[programs.getNumberOfEntries()];
+
+                                        for (int j = 0; j < programs.getNumberOfEntries(); j++) {
+                                            programNames[j] = (j + 1) + ") " + programs.getEntry(j + 1).getProgrammeName();
+                                        }
+                                        programList.setListData(programNames);
+                                    } else {
+                                        programList.setListData(new String[]{"No Programs"});
+                                    }
+                                    // END OF RELOAD
+                                    jtfProgIndex.setText("");
+                                    errorMsg2.setText("Removed sucessfully");
+                                } else {
+                                    jtfProgIndex.setText("");
+                                    errorMsg2.setText("Invalid Program Index");
+                                }
                             }
-                            programList.setListData(programNames);
-                        } else {
-                            programList.setListData(new String[]{"No Programs"});
                         }
-                        // END OF RELOAD
-                        jtfProgIndex.setText("");
-                        errorMsg2.setText("Removed sucessfully");
                     } else {
+                        // Handle an invalid index (less than 1)
                         jtfProgIndex.setText("");
                         errorMsg2.setText("Invalid Program Index");
                     }
+                } else {
+                    errorMsg.setText("Invalid courseID");
                 }
+            } catch (NumberFormatException e) {
+                errorMsg2.setText("Numerical value only");
             }
         } else {
-            // Handle an invalid index (less than 1)
-            jtfProgIndex.setText("");
-            errorMsg2.setText("Invalid Program Index");
+            errorMsg.setText("Please enter a course ID");
         }
     }//GEN-LAST:event_removeButtonActionPerformed
 
@@ -219,7 +238,7 @@ public class courseRemoveProgFromCourse extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
 
         if (!id.isEmpty()) {
             errorMsg.setText(""); // Clear any previous error messages
