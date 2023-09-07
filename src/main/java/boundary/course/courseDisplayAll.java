@@ -1,10 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- * AAMS3184
+ * 
  */
 package boundary.course;
-
+/**
+ *
+ * @author Tan Ru Poh
+ */
 import adt.AdtInterface;
 import adt.ArrayList;
 import entity.Course;
@@ -21,13 +24,6 @@ public class CourseDisplayAll extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) courseTable.getModel();
 
-//        Object rowData[] = new Object[3];
-//        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-//            rowData[0] = courseList.getEntry(i + 1).getCourseID()+ "\n";
-//            rowData[1] = courseList.getEntry(i + 1).getName();
-//            rowData[2] = courseList.getEntry(i + 1).getPrograms()+ "\n";
-//            model.addRow(rowData);
-//        }
         for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
             Course course = courseList.getEntry(i + 1);
             
@@ -37,7 +33,6 @@ public class CourseDisplayAll extends javax.swing.JFrame {
             Double courseCreditHours = course.getCourseCreditHours();
 
             ArrayList<Programme> programs = course.getPrograms();
-//            System.out.println("programs: " + programs);
             StringBuilder programNames = new StringBuilder();
 
             if (programs != null && !programs.isEmpty()) {
@@ -58,7 +53,7 @@ public class CourseDisplayAll extends javax.swing.JFrame {
             rowData[4] = courseCreditHours;
             model.addRow(rowData);
         }
-
+        courseTable.setPreferredScrollableViewportSize(courseTable.getPreferredSize());
         courseTable.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
 
     }

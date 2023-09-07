@@ -6,7 +6,7 @@ package adt;
 
 /**
  *
- * @author
+ * @author all
  */
 public interface AdtInterface<T> {
     

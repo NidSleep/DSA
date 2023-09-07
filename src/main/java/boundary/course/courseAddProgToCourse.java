@@ -11,7 +11,7 @@ import utility.insertData;
 
 /**
  *
- * @author User
+ * @author Tan Ru Poh
  */
 public class courseAddProgToCourse extends javax.swing.JFrame {
 

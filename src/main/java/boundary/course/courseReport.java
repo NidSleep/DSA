@@ -6,13 +6,10 @@ package boundary.course;
 
 /**
  *
- * @author User
+ * @author Tan Ru Poh
  */
 public class courseReport extends javax.swing.JFrame {
 
-    /**
-     * Creates new form courseReport
-     */
     public courseReport() {
         initComponents();
     }

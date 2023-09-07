@@ -10,7 +10,7 @@ import entity.*;
 
 /**
  *
- * @author kenne
+ * @author all
  */
 public class insertData {
 
