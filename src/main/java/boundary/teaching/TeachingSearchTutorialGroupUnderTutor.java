@@ -174,11 +174,21 @@ public class TeachingSearchTutorialGroupUnderTutor extends javax.swing.JFrame {
                 errorMsg.setText(""); // Clear error message if found
                 //break; // Exit the loop once the tutor is found
                 
+                 // Check if the next entry exists and is not null
+            if (i + 1 < teachingList.getNumberOfEntries()) {
+            jtfCourseName.setText(teachingList.getEntry(i + 1).getGroupID());
+        } else {
+            jtfCourseName.setText(""); // Handle the case where the next entry does not exist
+        }
+        
+        // Exit the loop once the tutor is found (if needed)
+        break;
+                
                //coursesList_Text.setListData();
             }
-            TutorialGroup tutorialGroup = tutorialList.getEntry(i);
-            System.out.println("G:" +teaching.getGroupID());
-           jtfCourseName.setText(teachingList.getEntry(i+1).getGroupID());
+//            TutorialGroup tutorialGroup = tutorialList.getEntry(i);
+//            System.out.println("G:" +teaching.getGroupID());
+//           jtfCourseName.setText(teachingList.getEntry(i+1).getGroupID());
               
     
     }

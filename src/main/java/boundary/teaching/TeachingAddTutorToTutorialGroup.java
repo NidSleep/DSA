@@ -172,10 +172,10 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         System.out.println("t:" +t);
 
         // You can display a success message here or perform any other actions
-        msg.setText("Tutor has been assigned to the course successfully.");
+        msg.setText("Tutor has been assigned to the TutorialGroup successfully.");
     } else {
         // Tutor or course not found
-        msg.setText("Tutor or course not found.");
+        msg.setText("Tutor or TutorialGroup not found.");
     }
         
 
@@ -279,10 +279,10 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
 
             if (!found) {
                 //jtfCourseName.setText("");
-                errorMsg.setText("No such Course");
+                errorMsg.setText("No such TutorialGroup");
             }
         } else {
-            errorMsg.setText("Please enter a course ID");
+            errorMsg.setText("Please enter a TutorialGroup ID");
         }
 
     }//GEN-LAST:event_searchButtonActionPerformed
