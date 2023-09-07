@@ -16,7 +16,7 @@ import utility.insertData;
 public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
-    public static AdtInterface<Course> courseList = insertData.courseList;
+    public static AdtInterface<TutorialGroup> tutorialList = insertData.tutorialList;
     public static AdtInterface<Teaching> teachingList = insertData.teachingList;
 
     public TeachingAddTutorToTutorialGroup() {
@@ -48,13 +48,11 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         ConfirmButton = new javax.swing.JButton();
         jtfCourseID = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        jtfCourseName = new javax.swing.JTextField();
         errorMsg = new javax.swing.JLabel();
         errorMsg1 = new javax.swing.JLabel();
         msg = new javax.swing.JLabel();
@@ -68,16 +66,12 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
 
         TitleLabel.setBackground(new java.awt.Color(255, 255, 255));
         TitleLabel.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        TitleLabel.setText("Teaching Add Tutor To Course");
+        TitleLabel.setText("Teaching Add Tutor To TutorialGroup");
         jPanel1.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Course ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, 40));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Course NAME :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, -1, -1));
+        jLabel1.setText("TutorialGroup ID :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 230, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel3.setText("ADD Tutor :");
@@ -119,18 +113,6 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
             }
         });
         jPanel1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 100, 40));
-
-        jtfCourseName.setEditable(false);
-        jtfCourseName.setBackground(new java.awt.Color(255, 255, 255));
-        jtfCourseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfCourseName.setToolTipText("");
-        jtfCourseName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfCourseName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCourseNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 340, 40));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 340, 20));
         jPanel1.add(errorMsg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
         jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 740, 270, 30));
@@ -286,9 +268,9 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
             boolean found = false; // Flag to indicate if a matching course is found
 
             //for(int i =0; i< courseList.getNumberOfEntries(); i++){
-            for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-                if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
-                    jtfCourseName.setText(courseList.getEntry(i + 1).getName());
+            for (int i = 0; i < tutorialList.getNumberOfEntries(); i++) {
+                if (id.equals(tutorialList.getEntry(i + 1).getGroupID())) {
+                    //jtfCourseName.setText(courseList.getEntry(i + 1).getName());
                     errorMsg.setText(""); // Clear error message if found
                     found = true;
                     break; // Exit the loop since a match is found
@@ -296,7 +278,7 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
             }
 
             if (!found) {
-                jtfCourseName.setText("");
+                //jtfCourseName.setText("");
                 errorMsg.setText("No such Course");
             }
         } else {
@@ -304,10 +286,6 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCourseNameActionPerformed
 
     private void JcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcomboActionPerformed
         // TODO add your handling code here:
@@ -368,11 +346,9 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel errorMsg1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtfCourseID;
-    private javax.swing.JTextField jtfCourseName;
     private javax.swing.JLabel msg;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables

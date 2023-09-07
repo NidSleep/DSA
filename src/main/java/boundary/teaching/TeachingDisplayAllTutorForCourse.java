@@ -32,21 +32,21 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
     public TeachingDisplayAllTutorForCourse() {
 
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        //DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DefaultTableModel models = (DefaultTableModel) jTable2.getModel();
         
         Teaching teaches = new Teaching("", "", ""); 
         
-        Object rowData[] = new Object[4];
-         for(int j=1; j< teachingList.getNumberOfEntries(); j++){
-                
-            rowData[0] = teachingList.getEntry(j+1).getTutorID();
-            rowData[1] = teaches.getCourseID();
-           // rowData[2] = teachingList.getEntry(j+1).getTutorID();
-           // rowData[3] = teachingList.getEntry(j+1).getCourseID();
-
-            model.addRow(rowData);
-        }
+//        Object rowData[] = new Object[4];
+//         for(int j=1; j< teachingList.getNumberOfEntries(); j++){
+//                
+//            rowData[0] = teachingList.getEntry(j+1).getTutorID();
+//            rowData[1] = teaches.getCourseID();
+//           // rowData[2] = teachingList.getEntry(j+1).getTutorID();
+//           // rowData[3] = teachingList.getEntry(j+1).getCourseID();
+//
+//            model.addRow(rowData);
+//        }
          
           Object rowDatass[] = new Object[4];
         //for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
@@ -60,7 +60,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
             models.addRow(rowDatass);
             }
             
-        jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
+        //jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
         jTable2.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
     }
 
@@ -77,8 +77,6 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -105,41 +103,6 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "OriginalTutorID", "OriginalTutorName"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setRowHeight(35);
-        jTable1.setRowMargin(5);
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 520, 390));
-
         jTable2.setAutoCreateRowSorter(true);
         jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -148,7 +111,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NewTutorID", "NewTutorName"
+                "TutorID", "CourseID"
             }
         ) {
             Class[] types = new Class [] {
@@ -173,7 +136,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         jTable2.setShowVerticalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 520, 390));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 560, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,9 +221,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

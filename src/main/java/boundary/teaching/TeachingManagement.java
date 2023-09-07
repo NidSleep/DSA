@@ -77,6 +77,11 @@ public class TeachingManagement extends javax.swing.JFrame {
         reportCourseButton.setBackground(new java.awt.Color(204, 204, 204));
         reportCourseButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         reportCourseButton.setText("REPORT");
+        reportCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportCourseButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(reportCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 330, 150));
 
         SearchCourseUnderTutor.setBackground(new java.awt.Color(204, 204, 204));
@@ -173,6 +178,13 @@ public class TeachingManagement extends javax.swing.JFrame {
         TeachingAddTutorToTutorialGroup t = new TeachingAddTutorToTutorialGroup();
         t.setVisible(true);
     }//GEN-LAST:event_AddTutorialGroupToTutor1ActionPerformed
+
+    private void reportCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportCourseButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        TeachingSearchTutorialGroupUnderTutor t = new TeachingSearchTutorialGroupUnderTutor();
+        t.setVisible(true);
+    }//GEN-LAST:event_reportCourseButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
