@@ -6,7 +6,9 @@ package boundary.teaching;
 
 import adt.AdtInterface;
 import adt.ArrayList;
+import static boundary.teaching.TeachingAddTutorToCourse.teachingList;
 import entity.Course;
+import entity.Teaching;
 import entity.Tutor;
 import utility.insertData;
 import static utility.insertData.courseList;
@@ -19,6 +21,17 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
     public TeachingSearchCoursesUnderTutor() {
         initComponents();
     }
+    
+    private Course findCourseByID(String courseID) {
+        AdtInterface<Course> courseList = insertData.courseList;
+        for (int i = 1; i <= courseList.getNumberOfEntries(); i++) {
+            Course course = courseList.getEntry(i);
+            if (course.getCourseID().equals(courseID)) {
+                return course;
+            }
+        }
+        return null; // Course not found
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,13 +42,12 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
         jtfTutorID = new javax.swing.JTextField();
-        jtfTutorName = new javax.swing.JTextField();
+        jtfCourseName = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        coursesList = new javax.swing.JList<>();
         errorMsg = new javax.swing.JLabel();
+        jtfTutorName1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,17 +78,17 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         });
         jPanel1.add(jtfTutorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 340, 40));
 
-        jtfTutorName.setEditable(false);
-        jtfTutorName.setBackground(new java.awt.Color(255, 255, 255));
-        jtfTutorName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfTutorName.setToolTipText("");
-        jtfTutorName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfTutorName.addActionListener(new java.awt.event.ActionListener() {
+        jtfCourseName.setEditable(false);
+        jtfCourseName.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCourseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfCourseName.setToolTipText("");
+        jtfCourseName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfCourseName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfTutorNameActionPerformed(evt);
+                jtfCourseNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfTutorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 340, 40));
+        jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 340, 40));
 
         searchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         searchButton.setText("SEARCH");
@@ -99,13 +111,19 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         label4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         label4.setText("Courses :");
         jPanel1.add(label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 160, 80));
-
-        coursesList.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        coursesList.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(coursesList);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 640, 110));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
+
+        jtfTutorName1.setEditable(false);
+        jtfTutorName1.setBackground(new java.awt.Color(255, 255, 255));
+        jtfTutorName1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfTutorName1.setToolTipText("");
+        jtfTutorName1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfTutorName1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfTutorName1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtfTutorName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 340, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,12 +147,42 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfTutorIDActionPerformed
 
-    private void jtfTutorNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorNameActionPerformed
+    private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfTutorNameActionPerformed
+    }//GEN-LAST:event_jtfCourseNameActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
        String Tutorid = jtfTutorID.getText().trim();
+
+        System.out.println("selectedTutors : " + Tutorid);
+
+        //Teaching t = new Teaching(selectedTutors, courseID, "");
+        //teachingList.add(t);
+        System.out.println("tutor id : " + teachingList.getEntry(1).getTutorID());
+        System.out.println("Course id : " + teachingList.getEntry(1).getCourseID());
+        
+        for (int i = 1; i <= teachingList.getNumberOfEntries(); i++) {
+        Teaching teaching = teachingList.getEntry(i);
+
+          // Use the TutorID to find the tutor's name in the tutorList
+            if (Tutorid.equals(teaching.getTutorID())) {
+                
+                // Display the tutor's name in the jtfTutorName field
+                Tutor tutor = tutorList.getEntry(i);
+                jtfTutorName1.setText(tutor.getName());
+                errorMsg.setText(""); // Clear error message if found
+                //break; // Exit the loop once the tutor is found
+                
+               //coursesList_Text.setListData();
+            }
+            Course courses = courseList.getEntry(i);
+            System.out.println("G:" +teaching.getCourseID());
+           jtfCourseName.setText(teachingList.getEntry(i+1).getCourseID());
+              
+    
+    }
+        
+        
 
 //        if (!Tutorid.isEmpty()) {
 //            errorMsg.setText(""); // Clear any previous error messages
@@ -187,6 +235,10 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
         t.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void jtfTutorName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorName1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfTutorName1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,20 +275,21 @@ public class TeachingSearchCoursesUnderTutor extends javax.swing.JFrame {
                 new TeachingSearchCoursesUnderTutor().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JList<String> coursesList;
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jtfCourseName;
     private javax.swing.JTextField jtfTutorID;
-    private javax.swing.JTextField jtfTutorName;
+    private javax.swing.JTextField jtfTutorName1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
+
 }

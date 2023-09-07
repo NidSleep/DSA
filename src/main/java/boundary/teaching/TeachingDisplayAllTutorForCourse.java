@@ -8,6 +8,7 @@ import boundary.tutor.*;
 import adt.AdtInterface;
 import adt.ArrayList;
 import entity.Course;
+import entity.Teaching;
 import entity.Tutor;
 import java.awt.Component;
 import java.awt.Font;
@@ -23,6 +24,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<Course> courseList = insertData.courseList;
+    public static AdtInterface<Teaching> teachingList = insertData.teachingList;
 
     /**
      * Creates new form tutorAdd
@@ -31,17 +33,36 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setColumnIdentifiers(new String[]{"TutorID", "TutorName", "Course"});
+        DefaultTableModel models = (DefaultTableModel) jTable2.getModel();
+        
+        Teaching teaches = new Teaching("", "", ""); 
         
         Object rowData[] = new Object[4];
-        for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
-            rowData[0] = tutorList.getEntry(i + 1).getTutorID();
-            rowData[1] = tutorList.getEntry(i + 1).getName();
-            rowData[2] = tutorList.getEntry(i + 1).getCourseID();
+        //for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+            for(int j=1; j< teachingList.getNumberOfEntries(); j++){
+                
+            rowData[0] = teachingList.getEntry(j+1).getTutorID();
+            rowData[1] = teaches.getCourseID();
+           // rowData[2] = teachingList.getEntry(j+1).getTutorID();
+           // rowData[3] = teachingList.getEntry(j+1).getCourseID();
 
             model.addRow(rowData);
-        }
+            }
+            
+            Object rowDatass[] = new Object[4];
+        //for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+            for(int i=0; i< teachingList.getNumberOfEntries(); i++){
+                
+            rowDatass[0] = teachingList.getEntry(i+1).getTutorID();
+            rowDatass[1] = teachingList.getEntry(i+1).getCourseID();
+           // rowData[2] = teachingList.getEntry(j+1).getTutorID();
+           // rowData[3] = teachingList.getEntry(j+1).getCourseID();
+
+            models.addRow(rowDatass);
+            }
+        //}
         jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
+        jTable2.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
     }
 
     /**
@@ -59,6 +80,8 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +92,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel2.setText("All Tutor For a Course");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 720, -1, -1));
@@ -91,14 +114,14 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAME", "SALARY", "PROGRAMME", "POSITION"
+                "OriginalTutorID", "OriginalCourseID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -116,7 +139,42 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         jTable1.setShowVerticalLines(true);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 1210, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 140, 700, 440));
+
+        jTable2.setAutoCreateRowSorter(true);
+        jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NewTutorID", "NewCourseID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable2.setRowHeight(35);
+        jTable2.setRowMargin(5);
+        jTable2.setShowHorizontalLines(true);
+        jTable2.setShowVerticalLines(true);
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 700, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,17 +193,6 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-
-    private String getCourseID(String id) {
-        for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-            if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
-                return courseList.getEntry(i + 1).getCourseID();
-            }
-        }
-        return "";
-    }
-
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
@@ -202,6 +249,8 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
