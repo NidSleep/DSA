@@ -56,7 +56,7 @@ public class TeachingManagement extends javax.swing.JFrame {
 
         DisplayAllTutorForCourse.setBackground(new java.awt.Color(204, 204, 204));
         DisplayAllTutorForCourse.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        DisplayAllTutorForCourse.setText("Display All Tutor For Course");
+        DisplayAllTutorForCourse.setText("Search All Tutor For Course");
         DisplayAllTutorForCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DisplayAllTutorForCourseActionPerformed(evt);
@@ -110,7 +110,7 @@ public class TeachingManagement extends javax.swing.JFrame {
 
         AddTutorialGroupToTutor1.setBackground(new java.awt.Color(204, 204, 204));
         AddTutorialGroupToTutor1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        AddTutorialGroupToTutor1.setText("Add Tutor To TutorialGroup");
+        AddTutorialGroupToTutor1.setText("Add TutorialGroup To Tutor");
         AddTutorialGroupToTutor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddTutorialGroupToTutor1ActionPerformed(evt);
@@ -170,7 +170,7 @@ public class TeachingManagement extends javax.swing.JFrame {
 
     private void AddTutorialGroupToTutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorialGroupToTutor1ActionPerformed
         setVisible(false);
-        TeachingAddTutorToTutorialGroup t = new TeachingAddTutorToTutorialGroup();
+        TeachingAddTutorialGroupToTutor t = new TeachingAddTutorialGroupToTutor();
         t.setVisible(true);
     }//GEN-LAST:event_AddTutorialGroupToTutor1ActionPerformed
 

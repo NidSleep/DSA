@@ -7,33 +7,37 @@ package boundary.teaching;
 import adt.AdtInterface;
 import entity.*;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import utility.insertData;
 
 /**
  *
  * @author User
  */
-public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
+public class TeachingAddTutorialGroupToTutor extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<TutorialGroup> tutorialList = insertData.tutorialList;
-    public static AdtInterface<Teaching> teachingList = insertData.teachingList;
 
-    public TeachingAddTutorToTutorialGroup() {
+    public TeachingAddTutorialGroupToTutor() {
         initComponents();
-        setupCourseComboBox(); // Call the method to set up the combobox
+        setupProgrammeComboBox(); // Call the method to set up the combobox
 
     }
 
-    private void setupCourseComboBox() {
+    private void setupProgrammeComboBox() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
 
-        for (int i = 1; i <= tutorList.getNumberOfEntries(); i++) {
-            System.out.println("id :" + tutorList.getEntry(i).getTutorID());
-            comboBoxModel.addElement(tutorList.getEntry(i).getTutorID());
+        for (int i = 1; i <= tutorialList.getNumberOfEntries(); i++) {
+            TutorialGroup tutorialgroup = tutorialList.getEntry(i);
+            comboBoxModel.addElement(tutorialgroup.getGroupID());
         }
         Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
 
+//        //Checking - Print the individual TutorialGroup names
+//        for (int i = 0; i < comboBoxModel.getSize(); i++) {
+//            System.out.println("TutorialGroup Name: " + comboBoxModel.getElementAt(i));
+//        }
     }
 
     /**
@@ -48,17 +52,15 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         TitleLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        Jcombo = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         ConfirmButton = new javax.swing.JButton();
-        jtfCourseID = new javax.swing.JTextField();
+        jtfTutorID = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        jtfCourseName = new javax.swing.JTextField();
         errorMsg = new javax.swing.JLabel();
         errorMsg1 = new javax.swing.JLabel();
         msg = new javax.swing.JLabel();
-        Jcombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,20 +70,25 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
 
         TitleLabel.setBackground(new java.awt.Color(255, 255, 255));
         TitleLabel.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        TitleLabel.setText("Teaching Add Tutor To TutorialGroup");
+        TitleLabel.setText("Teaching Add TutorialGroup To Tutor");
         jPanel1.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Tutorial ID");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, 40));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Tutorial Attendance :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
+        jLabel1.setText("TutorID:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 150, 60));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel3.setText("ADD Tutor :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 180, 50));
+        jLabel3.setText("ADD TutorialGroup :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 270, 70));
+
+        Jcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Jcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Jcombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JcomboActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Jcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         backButton.setText("Back");
@@ -101,15 +108,15 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         });
         jPanel1.add(ConfirmButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 700, 150, -1));
 
-        jtfCourseID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfCourseID.setToolTipText("");
-        jtfCourseID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfCourseID.addActionListener(new java.awt.event.ActionListener() {
+        jtfTutorID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtfTutorID.setToolTipText("");
+        jtfTutorID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jtfTutorID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCourseIDActionPerformed(evt);
+                jtfTutorIDActionPerformed(evt);
             }
         });
-        jPanel1.add(jtfCourseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 340, 40));
+        jPanel1.add(jtfTutorID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 340, 40));
 
         searchButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         searchButton.setText("SEARCH");
@@ -119,30 +126,9 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
             }
         });
         jPanel1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 100, 40));
-
-        jtfCourseName.setEditable(false);
-        jtfCourseName.setBackground(new java.awt.Color(255, 255, 255));
-        jtfCourseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtfCourseName.setToolTipText("");
-        jtfCourseName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jtfCourseName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCourseNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jtfCourseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 340, 40));
         jPanel1.add(errorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 340, 20));
         jPanel1.add(errorMsg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 340, 20));
         jPanel1.add(msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 740, 270, 30));
-
-        Jcombo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Jcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Jcombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JcomboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Jcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 720, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,40 +156,49 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
-        String selectedTutors = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
-        String tutorialID = jtfCourseID.getText();
+       String selectedGroup = Jcombo.getSelectedItem().toString(); // Get the selected TutorialGroup name from the combo box
 
-        System.out.println("selectedTutors : " + selectedTutors);
-        System.out.println("TutorialID : " + tutorialID);
+        if (!selectedGroup.isEmpty()) {
+            String tutorID = jtfTutorID.getText().trim();
 
-        //Teaching t = new Teaching(selectedTutors, courseID, "");
-        //teachingList.add(t);
+            if (!tutorID.isEmpty()) {
+                errorMsg.setText(""); // Clear any previous error messages
 
-        System.out.println("tutor id : " + teachingList.getEntry(1).getGroupID());
+                for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+                    if (tutorID.equals(tutorList.getEntry(i + 1).getTutorID())) {
+                        
+                        // Find Tutor and add the selected TutorialGroup to it
+                        TutorialGroup selectedgroups = null;
+                        for (int j = 1; j <= tutorialList.getNumberOfEntries(); j++) {
+                            TutorialGroup tutorialgroup = tutorialList.getEntry(j);
+                            if (selectedGroup.equals(tutorialgroup.getGroupID())) {
+                                selectedgroups = tutorialgroup;
+                                System.out.println("selected TutorialGroups: " + selectedgroups); // selectedGroups:G1
+                                break;
+                            }
+                        }
 
-    if (selectedTutors != null && tutorialID != null) {
-        // Create a Teaching object and add it to the list of teachings
-       Teaching t = new Teaching(selectedTutors, "", tutorialID);
-
-        // Add the teaching to your teachingList
-        teachingList.add(t);
-        System.out.println("t:" +t);
-
-        // You can display a success message here or perform any other actions
-        msg.setText("Tutor has been assigned to the TutorialGroup successfully.");
-    } else {
-        // Tutor or course not found
-        msg.setText("Tutor or course not found.");
-    }
-             
+                        if (selectedgroups != null) {
+                            tutorList.getEntry(i + 1).addTutorialGroups(selectedgroups);
+                            msg.setText("Tutorial Group has added to the Tutor successfully.");
+                        }
+                        break; // Exit the loop since the course is found
+                    }
+                }
+            } else {
+                errorMsg.setText("Please enter a Tutor ID");
+            }
+        } else {
+            errorMsg.setText("Please select a TutorialGroup");
+        }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
-    private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
+    private void jtfTutorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfTutorIDActionPerformed
         // TODO add your handling code here:
+        
+         String tutorID = jtfTutorID.getText().trim();
 
-        /*String courseID = jtfCourseID.getText().trim();
-
-    if (courseID.isEmpty()) {
+    if (tutorID.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please enter a course ID.", "Error", JOptionPane.ERROR_MESSAGE);
         errorMsg.setText(""); // Clear any previous error messages
         return;
@@ -211,21 +206,22 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
     
     
 
-    boolean courseFound = false;
+    boolean tutorFound = false;
 
-    for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-        if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-            courseFound = true;
+    for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
+        if (tutorID.equals(tutorList.getEntry(i + 1).getTutorID())) {
+            tutorFound = true;
 
             // Find the tutor and add the selected Course to it
-            String selectedTutorName = TutorJcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
-            boolean tutorFound = false;
-
-            for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
-                Tutor tutor = tutorList.getEntry(j);
-                if (selectedTutorName.equals(tutor.getTutorID())) {
-                    tutorFound = true;
-                    tutor.addCourse(courseList.getEntry(i + 1));
+            String selectedTutorialName = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
+           
+            boolean tutorialFound = false;
+            for (int j = 1; j <= tutorialList.getNumberOfEntries(); j++) {
+                TutorialGroup tutorial = tutorialList.getEntry(j);
+                if (selectedTutorialName.equals(tutorial.getGroupID())) {
+                    tutorialFound = true;
+                    
+                    tutorial.addTutors(tutorList.getEntry(i+1));
                     JOptionPane.showMessageDialog(this, "Tutor has been added to the course successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
@@ -239,46 +235,22 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         }
     }
 
-    if (!courseFound) {
+    if (!tutorFound) {
         JOptionPane.showMessageDialog(this, "No such course found.", "Error", JOptionPane.ERROR_MESSAGE);
-    } */
-    }//GEN-LAST:event_jtfCourseIDActionPerformed
+    }
+    }//GEN-LAST:event_jtfTutorIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String id = jtfCourseID.getText().trim();
-
-        if (!id.isEmpty()) {
-            errorMsg.setText(""); // Clear any previous error messages
-            boolean found = false; // Flag to indicate if a matching course is found
-
-            //for(int i =0; i< courseList.getNumberOfEntries(); i++){
-            for (int i = 0; i < tutorialList.getNumberOfEntries(); i++) {
-                if (id.equals(tutorialList.getEntry(i + 1).getGroupID())) {
-                    //jtfCourseName.setText(tutorialList.getEntry(i + 1).getGroupAverageAttendace());
-                    errorMsg.setText(""); // Clear error message if found
-                    found = true;
-                    break; // Exit the loop since a match is found
-                }
-            }
-
-            if (!found) {
-                jtfCourseName.setText("");
-                errorMsg.setText("No such Tutorial");
-            }
-        } else {
-            errorMsg.setText("Please enter a Tutorial ID");
-        }
-
+        
     }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCourseNameActionPerformed
 
     private void JcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JcomboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JcomboActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -294,19 +266,19 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeachingAddTutorToTutorialGroup.class
+            java.util.logging.Logger.getLogger(TeachingAddTutorialGroupToTutor.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeachingAddTutorToTutorialGroup.class
+            java.util.logging.Logger.getLogger(TeachingAddTutorialGroupToTutor.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeachingAddTutorToTutorialGroup.class
+            java.util.logging.Logger.getLogger(TeachingAddTutorialGroupToTutor.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeachingAddTutorToTutorialGroup.class
+            java.util.logging.Logger.getLogger(TeachingAddTutorialGroupToTutor.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -321,7 +293,7 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeachingAddTutorToTutorialGroup().setVisible(true);
+                new TeachingAddTutorialGroupToTutor().setVisible(true);
             }
         });
     }
@@ -334,11 +306,9 @@ public class TeachingAddTutorToTutorialGroup extends javax.swing.JFrame {
     private javax.swing.JLabel errorMsg;
     private javax.swing.JLabel errorMsg1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jtfCourseID;
-    private javax.swing.JTextField jtfCourseName;
+    private javax.swing.JTextField jtfTutorID;
     private javax.swing.JLabel msg;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables

@@ -176,26 +176,44 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         System.out.println("selectedTutors : " + selectedTutors);
         System.out.println("courseID : " + courseID);
 
-        //Teaching t = new Teaching(selectedTutors, courseID, "");
-        //teachingList.add(t);
+        Teaching t = new Teaching(selectedTutors, courseID, "");
+        teachingList.add(t);
 
         System.out.println("tutor id : " + teachingList.getEntry(1).getCourseID());
 
-    if (selectedTutors != null && courseID != null) {
-        // Create a Teaching object and add it to the list of teachings
-       Teaching t = new Teaching(selectedTutors, courseID, "");
-
-        // Add the teaching to your teachingList
-        teachingList.add(t);
-        System.out.println("t:" +t);
-
-        // You can display a success message here or perform any other actions
-        msg.setText("Tutor has been assigned to the course successfully.");
-    } else {
-        // Tutor or course not found
-        msg.setText("Tutor or course not found.");
-    }
-             
+//        if (!selectedTutors.isEmpty()) {
+//
+//            if (!courseID.isEmpty()) {
+//                errorMsg.setText(""); // Clear any previous error messages
+//
+//                for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
+//                    if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
+//
+//                        // Find the tutor and add the selected Course to it
+//                        Tutor selected = null;
+//                        for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
+//                            Tutor tutor = tutorList.getEntry(j);
+//                            if (selectedTutors.equals(tutor.getTutorID())) {
+//                                //selectedTutors = tutor;
+//                                System.out.println("selectedTutor: " + selectedTutors); // selectedTutor: Kenneth 
+//                                break;
+//                            }
+//                        }
+//                        //Check
+//                        if (selected != null) {
+//                            courseList.getEntry(i + 1).addTutor(selectedTutors);
+//                            System.out.println("hahah:" + courseList.getEntry(i + 1).getTutors());
+//                            msg.setText("Tutor has added to the course successfully.");
+//                        }
+//                        break; // Exit the loop since the course is found
+//                    }
+//                }
+//            } else {
+//                errorMsg.setText("Please enter a course ID");
+//            }
+//        } else {
+//            errorMsg.setText("Please select a Course");
+//        }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
