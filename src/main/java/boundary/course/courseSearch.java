@@ -164,11 +164,11 @@ public class courseSearch extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
-        String id = jtfCourseID.getText().trim();
+        String id = jtfCourseID.getText().trim().toUpperCase();
 
         if (!id.isEmpty()) {
-            errorMsg.setText(""); // Clear any previous error messages
-            boolean found = false; // Flag to indicate if a matching course is found
+            errorMsg.setText(""); 
+            boolean found = false; 
 
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
@@ -176,7 +176,7 @@ public class courseSearch extends javax.swing.JFrame {
                     jtfCourseFees.setText("" + courseList.getEntry(i+1).getCourseFees());
                     jtfCourseCreditHours.setText("" + courseList.getEntry(i+1).getCourseCreditHours());
                     
-                    errorMsg.setText(""); // Clear error message if found
+                    errorMsg.setText(""); 
                     found = true;
 
                     ArrayList<Programme> programs = courseList.getEntry(i + 1).getPrograms();
@@ -191,7 +191,7 @@ public class courseSearch extends javax.swing.JFrame {
                         programList.setListData(new String[]{"No Programs"});
                     }
 
-                    break; // Exit the loop since a match is found
+                    break; 
                 }
             }
 
