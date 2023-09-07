@@ -12,10 +12,9 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import boundary.mainPage;
 
-
 /**
  *
- * @author
+ * @author Roy Teh Chong Perng
  */
 public class TeachingManagement extends javax.swing.JFrame {
 
@@ -23,7 +22,6 @@ public class TeachingManagement extends javax.swing.JFrame {
 
     public TeachingManagement() {
         initComponents();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -33,13 +31,14 @@ public class TeachingManagement extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        DisplayAllTutorForCourse = new javax.swing.JButton();
+        DisplayAllTutorForTutorial = new javax.swing.JButton();
         DisplayTutorCourse = new javax.swing.JButton();
         reportCourseButton = new javax.swing.JButton();
         SearchCourseUnderTutor = new javax.swing.JButton();
         addTeachingButton1 = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         AddTutorialGroupToTutor1 = new javax.swing.JButton();
+        DisplayAllTutorForCourse1 = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -54,15 +53,15 @@ public class TeachingManagement extends javax.swing.JFrame {
         jLabel1.setText("Teaching");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
-        DisplayAllTutorForCourse.setBackground(new java.awt.Color(204, 204, 204));
-        DisplayAllTutorForCourse.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        DisplayAllTutorForCourse.setText("Search All Tutor For Course");
-        DisplayAllTutorForCourse.addActionListener(new java.awt.event.ActionListener() {
+        DisplayAllTutorForTutorial.setBackground(new java.awt.Color(204, 204, 204));
+        DisplayAllTutorForTutorial.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        DisplayAllTutorForTutorial.setText("Generate Report");
+        DisplayAllTutorForTutorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DisplayAllTutorForCourseActionPerformed(evt);
+                DisplayAllTutorForTutorialActionPerformed(evt);
             }
         });
-        jPanel1.add(DisplayAllTutorForCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 170, 370, 150));
+        jPanel1.add(DisplayAllTutorForTutorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 490, 150));
 
         DisplayTutorCourse.setBackground(new java.awt.Color(204, 204, 204));
         DisplayTutorCourse.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -76,13 +75,13 @@ public class TeachingManagement extends javax.swing.JFrame {
 
         reportCourseButton.setBackground(new java.awt.Color(204, 204, 204));
         reportCourseButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        reportCourseButton.setText("REPORT");
+        reportCourseButton.setText("Search TutorialGroup To Tutor");
         reportCourseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportCourseButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(reportCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 330, 150));
+        jPanel1.add(reportCourseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 780, 150));
 
         SearchCourseUnderTutor.setBackground(new java.awt.Color(204, 204, 204));
         SearchCourseUnderTutor.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -92,7 +91,7 @@ public class TeachingManagement extends javax.swing.JFrame {
                 SearchCourseUnderTutorActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchCourseUnderTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 370, 150));
+        jPanel1.add(SearchCourseUnderTutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 370, 150));
 
         addTeachingButton1.setBackground(new java.awt.Color(204, 204, 204));
         addTeachingButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -115,13 +114,23 @@ public class TeachingManagement extends javax.swing.JFrame {
 
         AddTutorialGroupToTutor1.setBackground(new java.awt.Color(204, 204, 204));
         AddTutorialGroupToTutor1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        AddTutorialGroupToTutor1.setText("Add TutorialGroup To Tutor");
+        AddTutorialGroupToTutor1.setText("Add Tutor To TutorialGroup");
         AddTutorialGroupToTutor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddTutorialGroupToTutor1ActionPerformed(evt);
             }
         });
         jPanel1.add(AddTutorialGroupToTutor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 370, 150));
+
+        DisplayAllTutorForCourse1.setBackground(new java.awt.Color(204, 204, 204));
+        DisplayAllTutorForCourse1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        DisplayAllTutorForCourse1.setText("Display All Tutor For Course");
+        DisplayAllTutorForCourse1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisplayAllTutorForCourse1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DisplayAllTutorForCourse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 170, 370, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,10 +143,9 @@ public class TeachingManagement extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -162,10 +170,10 @@ public class TeachingManagement extends javax.swing.JFrame {
         t.setVisible(true);
     }//GEN-LAST:event_SearchCourseUnderTutorActionPerformed
 
-    private void DisplayAllTutorForCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayAllTutorForCourseActionPerformed
+    private void DisplayAllTutorForTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayAllTutorForTutorialActionPerformed
         setVisible(false);
-        TeachingDisplayAllTutorForCourse t = new TeachingDisplayAllTutorForCourse();
-        t.setVisible(true);    }//GEN-LAST:event_DisplayAllTutorForCourseActionPerformed
+        TeachingReport t = new TeachingReport();
+        t.setVisible(true);    }//GEN-LAST:event_DisplayAllTutorForTutorialActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         setVisible(false);
@@ -185,6 +193,13 @@ public class TeachingManagement extends javax.swing.JFrame {
         TeachingSearchTutorialGroupUnderTutor t = new TeachingSearchTutorialGroupUnderTutor();
         t.setVisible(true);
     }//GEN-LAST:event_reportCourseButtonActionPerformed
+
+    private void DisplayAllTutorForCourse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayAllTutorForCourse1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        TeachingDisplayAllTutorForCourse t = new TeachingDisplayAllTutorForCourse();
+        t.setVisible(true);
+    }//GEN-LAST:event_DisplayAllTutorForCourse1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -218,10 +233,10 @@ public class TeachingManagement extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddTutorialGroupToTutor1;
-    private javax.swing.JButton DisplayAllTutorForCourse;
+    private javax.swing.JButton DisplayAllTutorForCourse1;
+    private javax.swing.JButton DisplayAllTutorForTutorial;
     private javax.swing.JButton DisplayTutorCourse;
     private javax.swing.JButton SearchCourseUnderTutor;
     private javax.swing.JButton addTeachingButton1;

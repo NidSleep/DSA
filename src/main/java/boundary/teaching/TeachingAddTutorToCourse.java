@@ -11,7 +11,7 @@ import utility.insertData;
 
 /**
  *
- * @author User
+ * @author Roy Teh Chong Perng
  */
 public class TeachingAddTutorToCourse extends javax.swing.JFrame {
 
@@ -22,18 +22,15 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
     public TeachingAddTutorToCourse() {
         initComponents();
         setupCourseComboBox(); // Call the method to set up the combobox
-
     }
 
     private void setupCourseComboBox() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-
         for (int i = 1; i <= tutorList.getNumberOfEntries(); i++) {
             System.out.println("id :" + tutorList.getEntry(i).getTutorID());
             comboBoxModel.addElement(tutorList.getEntry(i).getTutorID());
         }
         Jcombo.setModel(comboBoxModel); // Set the model for the JComboBox
-
     }
 
     /**
@@ -173,14 +170,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         String selectedTutors = Jcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
         String courseID = jtfCourseID.getText();
 
-        System.out.println("selectedTutors : " + selectedTutors);
-        System.out.println("courseID : " + courseID);
-
-        //Teaching t = new Teaching(selectedTutors, courseID, "");
-        //teachingList.add(t);
-
-        System.out.println("tutor id : " + teachingList.getEntry(1).getCourseID());
-        
         if (selectedTutors != null && courseID != null) {
         // Create a Teaching object and add it to the list of teachings
        Teaching t = new Teaching(selectedTutors, courseID, "");
@@ -195,87 +184,10 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         // Tutor or course not found
         msg.setText("Tutor or course not found.");
     }
-        
-
-//        if (!selectedTutors.isEmpty()) {
-//
-//            if (!courseID.isEmpty()) {
-//                errorMsg.setText(""); // Clear any previous error messages
-//
-//                for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-//                    if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-//
-//                        // Find the tutor and add the selected Course to it
-//                        Tutor selected = null;
-//                        for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
-//                            Tutor tutor = tutorList.getEntry(j);
-//                            if (selectedTutors.equals(tutor.getTutorID())) {
-//                                //selectedTutors = tutor;
-//                                System.out.println("selectedTutor: " + selectedTutors); // selectedTutor: Kenneth 
-//                                break;
-//                            }
-//                        }
-//                        //Check
-//                        if (selected != null) {
-//                            courseList.getEntry(i + 1).addTutor(selectedTutors);
-//                            System.out.println("hahah:" + courseList.getEntry(i + 1).getTutors());
-//                            msg.setText("Tutor has added to the course successfully.");
-//                        }
-//                        break; // Exit the loop since the course is found
-//                    }
-//                }
-//            } else {
-//                errorMsg.setText("Please enter a course ID");
-//            }
-//        } else {
-//            errorMsg.setText("Please select a Course");
-//        }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void jtfCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseIDActionPerformed
-        // TODO add your handling code here:
 
-        /*String courseID = jtfCourseID.getText().trim();
-
-    if (courseID.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please enter a course ID.", "Error", JOptionPane.ERROR_MESSAGE);
-        errorMsg.setText(""); // Clear any previous error messages
-        return;
-    }
-    
-    
-
-    boolean courseFound = false;
-
-    for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
-        if (courseID.equals(courseList.getEntry(i + 1).getCourseID())) {
-            courseFound = true;
-
-            // Find the tutor and add the selected Course to it
-            String selectedTutorName = TutorJcombo.getSelectedItem().toString(); // Get the selected Tutor name from the combo box
-            boolean tutorFound = false;
-
-            for (int j = 1; j <= tutorList.getNumberOfEntries(); j++) {
-                Tutor tutor = tutorList.getEntry(j);
-                if (selectedTutorName.equals(tutor.getTutorID())) {
-                    tutorFound = true;
-                    tutor.addCourse(courseList.getEntry(i + 1));
-                    JOptionPane.showMessageDialog(this, "Tutor has been added to the course successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                }
-            }
-
-            if (!tutorFound) {
-                JOptionPane.showMessageDialog(this, "Selected tutor not found.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-            break; // Exit the loop since the course is found
-        }
-    }
-
-    if (!courseFound) {
-        JOptionPane.showMessageDialog(this, "No such course found.", "Error", JOptionPane.ERROR_MESSAGE);
-    } */
     }//GEN-LAST:event_jtfCourseIDActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -284,8 +196,7 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         if (!id.isEmpty()) {
             errorMsg.setText(""); // Clear any previous error messages
             boolean found = false; // Flag to indicate if a matching course is found
-
-            //for(int i =0; i< courseList.getNumberOfEntries(); i++){
+            
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
@@ -302,7 +213,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         } else {
             errorMsg.setText("Please enter a course ID");
         }
-
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jtfCourseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCourseNameActionPerformed
@@ -355,7 +265,6 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConfirmButton;
     private javax.swing.JComboBox<String> Jcombo;
