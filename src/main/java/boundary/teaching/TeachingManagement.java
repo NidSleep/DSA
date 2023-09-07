@@ -170,7 +170,7 @@ public class TeachingManagement extends javax.swing.JFrame {
 
     private void AddTutorialGroupToTutor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorialGroupToTutor1ActionPerformed
         setVisible(false);
-        TeachingAddTutorialGroupToTutor t = new TeachingAddTutorialGroupToTutor();
+        TeachingAddTutorToTutorialGroup t = new TeachingAddTutorToTutorialGroup();
         t.setVisible(true);
     }//GEN-LAST:event_AddTutorialGroupToTutor1ActionPerformed
 

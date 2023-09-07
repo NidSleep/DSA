@@ -176,10 +176,26 @@ public class TeachingAddTutorToCourse extends javax.swing.JFrame {
         System.out.println("selectedTutors : " + selectedTutors);
         System.out.println("courseID : " + courseID);
 
-        Teaching t = new Teaching(selectedTutors, courseID, "");
-        teachingList.add(t);
+        //Teaching t = new Teaching(selectedTutors, courseID, "");
+        //teachingList.add(t);
 
         System.out.println("tutor id : " + teachingList.getEntry(1).getCourseID());
+        
+        if (selectedTutors != null && courseID != null) {
+        // Create a Teaching object and add it to the list of teachings
+       Teaching t = new Teaching(selectedTutors, courseID, "");
+
+        // Add the teaching to your teachingList
+        teachingList.add(t);
+        System.out.println("t:" +t);
+
+        // You can display a success message here or perform any other actions
+        msg.setText("Tutor has been assigned to the course successfully.");
+    } else {
+        // Tutor or course not found
+        msg.setText("Tutor or course not found.");
+    }
+        
 
 //        if (!selectedTutors.isEmpty()) {
 //
