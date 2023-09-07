@@ -8,10 +8,9 @@ import adt.ArrayList;
 import adt.AdtInterface;
 import entity.*;
 import utility.*;
-
 /**
  *
- * @author TRP
+ * @author Tan Ru Poh
  */
 public class courseAdd extends javax.swing.JFrame {
 

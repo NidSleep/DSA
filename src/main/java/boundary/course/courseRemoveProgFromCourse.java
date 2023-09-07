@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
-
+/**
+ *
+ * @author Tan Ru Poh
+ */
 import adt.AdtInterface;
 import adt.ArrayList;
 import entity.*;

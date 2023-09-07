@@ -10,7 +10,7 @@ import utility.insertData;
 
 /**
  *
- * @author TRP
+ * @author Tan Ru Poh
  */
 public class courseRemove extends javax.swing.JFrame {
 

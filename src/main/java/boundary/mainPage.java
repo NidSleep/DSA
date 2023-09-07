@@ -12,7 +12,7 @@ import utility.insertData;
 
 /**
  *
- * @author kenne
+ * @author all
  */
 public class mainPage extends javax.swing.JFrame {
 

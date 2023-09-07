@@ -8,7 +8,7 @@ import adt.ArrayList;
 
 /**
  *
- * @author Ru Poh
+ * @author Tan Ru Poh
  */
 public class Course {
 
