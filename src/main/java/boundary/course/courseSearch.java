@@ -14,13 +14,10 @@ import entity.Programme;
 import utility.insertData;
 
 public class courseSearch extends javax.swing.JFrame {
-
     public static AdtInterface<Course> courseList = insertData.courseList;
-
     public courseSearch() {
         initComponents();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -168,36 +165,36 @@ public class courseSearch extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
 
         String id = jtfCourseID.getText().trim().toUpperCase();
-
         if (!id.isEmpty()) {
             errorMsg.setText(""); 
             boolean found = false; 
-
             for (int i = 0; i < courseList.getNumberOfEntries(); i++) {
                 if (id.equals(courseList.getEntry(i + 1).getCourseID())) {
                     jtfCourseName.setText(courseList.getEntry(i + 1).getName());
-                    jtfCourseFees.setText("" + courseList.getEntry(i+1).getCourseFees());
-                    jtfCourseCreditHours.setText("" + courseList.getEntry(i+1).getCourseCreditHours());
+                    jtfCourseFees.setText("" + courseList.getEntry(i+1)
+                            .getCourseFees());
+                    jtfCourseCreditHours.setText("" + courseList.getEntry(i+1)
+                            .getCourseCreditHours());
                     
                     errorMsg.setText(""); 
                     found = true;
 
-                    ArrayList<Programme> programs = courseList.getEntry(i + 1).getPrograms();
+                    ArrayList<Programme> programs = courseList.getEntry(i + 1)
+                            .getPrograms();
                     if (programs != null && !programs.isEmpty()) {
-                        String[] programNames = new String[programs.getNumberOfEntries()];
+                        String[] programNames = new String[programs
+                                .getNumberOfEntries()];
                         for (int j = 0; j < programs.getNumberOfEntries(); j++) {
-                            programNames[j] = programs.getEntry(j + 1).getProgrammeName();
+                            programNames[j] = programs.getEntry(j + 1)
+                                    .getProgrammeName();
                         }
                         programList.setListData(programNames);
-
                     } else {
                         programList.setListData(new String[]{"No Programs"});
                     }
-
                     break; 
                 }
             }
-
             if (!found) {
                 jtfCourseName.setText("");
                 jtfCourseFees.setText("");
@@ -216,9 +213,6 @@ public class courseSearch extends javax.swing.JFrame {
         t.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
