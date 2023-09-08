@@ -168,28 +168,28 @@ public class programmeSearchGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfProgrammeCodeActionPerformed
 
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
-        String id = jtfProgrammeCode.getText().trim();
+       String id = jtfProgrammeCode.getText().trim();
 
-        // Create an instance of ProgrammeManagement to search for the program
-        ProgrammeManagement search = new ProgrammeManagement();
+    // Assuming you have a ProgrammeManagement instance correctly initialized, if not, initialize it.
+    ProgrammeManagement search = new ProgrammeManagement();
 
-        // Call the searchProgram method to find the program
-        Programme programMatched = search.searchProgram(id);
+    // Call the searchProgramBinary method to find the program
+    Programme programMatched = search.searchProgram(id);
 
-        if (programMatched != null) {
-            // If the program is found, update the text fields with its details
-            jtfProgrammeName.setText(programMatched.getProgrammeName());
-            jTextArea1.setText(programMatched.getProgrammeDescription());
-        } else {
-            // If the program is not found, display an error message
-            JOptionPane.showMessageDialog(
-                    null, "Program with ID " + id + " was not found.", "Program Not Found", JOptionPane.INFORMATION_MESSAGE
-            );
+    if (programMatched != null) {
+        // If the program is found, update the text fields with its details
+        jtfProgrammeName.setText(programMatched.getProgrammeName());
+        jTextArea1.setText(programMatched.getProgrammeDescription());
+    } else {
+        // If the program is not found, display an error message
+        JOptionPane.showMessageDialog(
+                null, "Program with ID " + id + " was not found.", "Program Not Found", JOptionPane.INFORMATION_MESSAGE
+        );
 
-            // Clear the text fields
-            jtfProgrammeName.setText("");
-            jTextArea1.setText("");
-        }
+        // Clear the text fields
+        jtfProgrammeName.setText("");
+        jTextArea1.setText("");
+    }
     }//GEN-LAST:event_searchButton1ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

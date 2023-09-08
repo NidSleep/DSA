@@ -5,7 +5,9 @@
 package boundary.programme;
 
 import adt.AdtInterface;
+import adt.ArrayList;
 import control.ProgrammeManagement;
+import static control.ProgrammeManagement.programmeList;
 import entity.Course;
 import entity.Programme;
 import entity.TutorialGroup;
@@ -238,56 +240,84 @@ public class programmeRemoveTutGrpFromProgrammeGUI extends javax.swing.JFrame {
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         String selectedTutorialGroup = Jcombo.getSelectedItem().toString(); // Get the selected tutorial group from the combo box
-        String inputID = jtfProgrammeCode.getText();
+    String inputID = jtfProgrammeCode.getText();
 
-        // Validate input
-        if (inputID.isEmpty() || selectedTutorialGroup.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter both a Program Code and select a Tutorial Group.",
-                    "Input Error", JOptionPane.ERROR_MESSAGE);
-            return;
+    // Validate input
+    if (inputID.isEmpty() || selectedTutorialGroup.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter both a Program Code and select a Tutorial Group.",
+                "Input Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Find the selected tutorial group's object
+    TutorialGroup selectedTutorialGroupObject = null;
+    for (int i = 1; i <= tutorialList.getNumberOfEntries(); i++) {
+        TutorialGroup tutorialGroup = tutorialList.getEntry(i);
+        if (tutorialGroup.getGroupID().equals(selectedTutorialGroup)) {
+            selectedTutorialGroupObject = tutorialGroup;
+            break; // Found the selected tutorial group, exit the loop
         }
+    }
 
-        // Find the selected tutorial group's object
-        TutorialGroup selectedTutorialGroupObject = null;
-        for (int i = 1; i <= tutorialList.getNumberOfEntries(); i++) {
-            TutorialGroup tutorialGroup = tutorialList.getEntry(i);
-            if (tutorialGroup.getGroupID().equals(selectedTutorialGroup)) {
-                selectedTutorialGroupObject = tutorialGroup;
-                break; // Found the selected tutorial group, exit the loop
+    if (selectedTutorialGroupObject == null) {
+        JOptionPane.showMessageDialog(this, "Selected Tutorial Group not found.",
+                "Tutorial Group Not Found", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Find and update the program
+    boolean foundProgramme = false, foundTutorialGroup = false;
+    for (int j = 1; j <= programmeList.getNumberOfEntries(); j++) {
+        Programme userfind = programmeList.getEntry(j);
+        if (userfind != null && userfind.getProgrammeCode().equals(inputID)) {
+            String whichGroup = selectedTutorialGroup;
+            for (int i = 1; i <= userfind.getTutorialGroups().getNumberOfEntries(); i++) {
+                ArrayList<TutorialGroup> whichTutorialGroups = userfind.getTutorialGroups();
+                String findTutorialGroupID = whichTutorialGroups.getEntry(i).getGroupID();
+                System.out.println("CheckPoint:" + whichTutorialGroups.getEntry(i));
+                //System.out.println("Num:" + whichTutorialGroups.getNumberOfEntries());
+                if (findTutorialGroupID.equals(whichGroup)) {
+                    TutorialGroup theTutorialGroup = whichTutorialGroups.getEntry(i);
+                    System.out.println("## Tutorial Found");
+                    System.out.println(theTutorialGroup);
+                    userfind.getTutorialGroups().remove(i);
+                    System.out.println(userfind);
+                    //ArrayList<TutorialGroup> allGroupInAProgramme = programme.getTutorialGroups();
+                    //System.out.println(allGroupInAProgramme);
+                    //selectTutorialGroup(allGroupInAProgramme);
+                    System.out.println("Deleting...");
+                    System.out.println("Operation completed.");
+                    foundTutorialGroup = true;
+                    break; // Exit the loop after removing the tutorial group
+                }
             }
+
+            foundProgramme = true; // Mark that the program was found
+
+            // Clear the input fields
+            jtfProgrammeName.setText("");
+            jtfProgrammeCode.setText("");
+            String item = Jcombo.getEditor().getItem().toString();
+            Jcombo.getEditor().setItem("Text Has Changed");
+
+            // Display a success message
+            successMessageLabel.setText("Program updated successfully!");
+            successMessageLabel.setForeground(Color.GREEN); // Set the message color
+
+            break; // Exit the loop after updating the program
         }
+    }
 
-        if (selectedTutorialGroupObject == null) {
-            JOptionPane.showMessageDialog(this, "Selected Tutorial Group not found.",
-                    "Tutorial Group Not Found", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Find and update the program
-        for (int j = 1; j <= programmeList.getNumberOfEntries(); j++) {
-            Programme program = programmeList.getEntry(j);
-            if (program.getProgrammeCode().equals(inputID)) {
-                //program.removeTutorialGroup(j);
-                program.getTutorialGroups().remove(j);
-                
-
-                // Clear the input fields
-                jtfProgrammeName.setText("");
-                jtfProgrammeCode.setText("");
-                String item = Jcombo.getEditor().getItem().toString();
-                Jcombo.getEditor().setItem("Text Has Changed");
-
-                // Display a success message
-                successMessageLabel.setText("Program updated successfully!");
-                successMessageLabel.setForeground(Color.GREEN); // Set the message color
-
-                return; // Exit the loop after updating
-            }
-        }
-
-        // If the program is not found, display an error message
+    // Check if the program was not found
+    if (!foundProgramme) {
         JOptionPane.showMessageDialog(this, "Program with Code " + inputID + " was not found.",
                 "Program Not Found", JOptionPane.ERROR_MESSAGE);
+    }
+
+    // Check if the tutorial group was not found
+    if (!foundTutorialGroup) {
+        System.out.println("Tutorial Group not found in any program.");
+    }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

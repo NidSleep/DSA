@@ -29,8 +29,6 @@ public class programmeReportGUI extends javax.swing.JFrame {
 
     public static AdtInterface<TutorialGroup> tutorialList = insertData.tutorialList;
     private final ProgrammeComparators code = new ProgrammeComparators();
-    private final GroupIDComparator groupID = new GroupIDComparator();
-    private final AverageAttendanceComparator groupAttendance = new AverageAttendanceComparator();
 
     /**
      * Creates new form programmeReportGUI
@@ -50,7 +48,6 @@ public class programmeReportGUI extends javax.swing.JFrame {
 
         TitleLabel1 = new javax.swing.JLabel();
         sortByProgrammeIDButton = new javax.swing.JButton();
-        programmeSortByTutorialGroupIDButton1 = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,15 +66,6 @@ public class programmeReportGUI extends javax.swing.JFrame {
             }
         });
 
-        programmeSortByTutorialGroupIDButton1.setBackground(new java.awt.Color(204, 204, 204));
-        programmeSortByTutorialGroupIDButton1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        programmeSortByTutorialGroupIDButton1.setText("<html><div style='text-align:center;'>REPORT SORT BY<br>TUTORIAL GROUP ID</div></html>");
-        programmeSortByTutorialGroupIDButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                programmeSortByTutorialGroupIDButton1ActionPerformed(evt);
-            }
-        });
-
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,13 +81,11 @@ public class programmeReportGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(TitleLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(sortByProgrammeIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(programmeSortByTutorialGroupIDButton1)
-                .addGap(30, 30, 30))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backButton)
@@ -110,9 +96,7 @@ public class programmeReportGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(TitleLabel1)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sortByProgrammeIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(programmeSortByTutorialGroupIDButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sortByProgrammeIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(28, 28, 28))
@@ -177,99 +161,6 @@ private int sortingOption = -1; // Default to no sorting
         // Make the report frame visible
         reportFrame.setVisible(true);
     }//GEN-LAST:event_sortByProgrammeIDButtonActionPerformed
-//private void createSortingButton(Container container, String label, int option) {
-//        JButton button = new JButton(label);
-//        container.add(button);
-//
-//        button.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // Set the sorting option based on the button clicked
-//                sortingOption = option;
-//            }
-//        });
-//    }
-    private void programmeSortByTutorialGroupIDButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeSortByTutorialGroupIDButton1ActionPerformed
-// Sort the list based on Tutorial Group ID
-        //ArrayList.insertionSort(programmeList, groupID);
-// Sort programmeList
-        ArrayList.insertionSort(programmeList, code);
-
-// Create a mapping of programme IDs to their original indices
-        Map<String, Integer> programmeIndexMap = new HashMap<>();
-        for (int i = 0; i < programmeList.getNumberOfEntries(); i++) {
-            Programme programme = programmeList.getEntry(i);if (programme != null) {
-    programmeIndexMap.put(programme.getProgrammeCode(), i);
-} else {
-                
-            }
-        }
-
-// Sort tutorialList
-        ArrayList.insertionSort(tutorialList, groupAttendance);
-
-// Rearrange tutorialList based on the sorting order of programmeList
-        ArrayList<TutorialGroup> sortedTutorialList = new ArrayList<>(tutorialList.getNumberOfEntries());
-        for (Programme programme : programmeList) {
-            Integer originalIndex = programmeIndexMap.get(programme.getProgrammeCode());
-            if (originalIndex != null && originalIndex < tutorialList.getNumberOfEntries()) {
-                sortedTutorialList.add(tutorialList.getEntry(originalIndex));
-            }
-        }
-
-// Now, sortedTutorialList contains TutorialGroup objects sorted by programmeList order.
-        // Generate the report text
-        StringBuilder report = new StringBuilder();
-        for (Programme programme : programmeList) {
-            report.append("Programme Code: ").append(programme.getProgrammeCode()).append("\n");
-            report.append("Programme Name: ").append(programme.getProgrammeName()).append("\n");
-            report.append("Tutorial Group: ").append(programme.getTutorialString()).append("\n");
-            // Add more fields as needed
-            report.append("\n");
-        }
-
-        // Create a new JFrame to display the sorted report
-        JFrame sortedReportFrame = new JFrame("Sorted Programme Report by Tutorial Group ID");
-        sortedReportFrame.setSize(400, 200);
-        sortedReportFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only the report window when closed
-
-        // Create a JTextArea to display the sorted report
-        JTextArea sortedReportTextArea = new JTextArea();
-        sortedReportTextArea.setText(report.toString());
-        System.out.println(report.toString());
-        sortedReportTextArea.setWrapStyleWord(true);
-        sortedReportTextArea.setLineWrap(true);
-        // Add the JTextArea to a JScrollPane for scrolling if needed
-        JScrollPane sortedScrollPane = new JScrollPane(sortedReportTextArea);
-
-        // Create a "Print" button for the sorted report
-        JButton printButton = new JButton("Print");
-        printButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Print the contents of the JTextArea
-                try {
-                    sortedReportTextArea.print();
-                } catch (PrinterException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        // Create a JPanel for the buttons (e.g., the "Print" button)
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(printButton);
-
-        // Add the sorted report scroll pane and button panel to the sorted report frame
-        sortedReportFrame.add(sortedScrollPane, BorderLayout.CENTER);
-        sortedReportFrame.add(buttonPanel, BorderLayout.SOUTH);
-        // Set the size of the dialog (adjust as needed)
-        sortedReportFrame.setSize(400, 300);
-
-        // Center the dialog on the screen
-        sortedReportFrame.setLocationRelativeTo(null);    // Make the sorted report frame visible
-        sortedReportFrame.setVisible(true);
-    }//GEN-LAST:event_programmeSortByTutorialGroupIDButton1ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         setVisible(false);
@@ -323,7 +214,6 @@ private int sortingOption = -1; // Default to no sorting
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitleLabel1;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton programmeSortByTutorialGroupIDButton1;
     private javax.swing.JButton sortByProgrammeIDButton;
     // End of variables declaration//GEN-END:variables
 }

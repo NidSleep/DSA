@@ -6,7 +6,7 @@ package entity;
 
 import adt.ArrayList;
 import java.io.Serializable;
-import utility.GroupIDComparator;
+import utility.*;
 
 /**
  *
@@ -22,7 +22,7 @@ public class Programme implements Serializable, Comparable<Programme> {
     public ArrayList<TutorialGroup> tutorialGroups = new ArrayList<>();
     public static ArrayList<Programme> programmeList = new ArrayList<>();
     public TutorialGroup tutorialGroup;
-    private final GroupIDComparator groupID = new GroupIDComparator();
+    private final ProgrammeComparators groupID = new ProgrammeComparators();
 
     public Programme() {
     }
