@@ -14,7 +14,7 @@ import utility.insertData;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class programmeUpdateGUI extends javax.swing.JFrame {
 
@@ -68,7 +68,9 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
         jLabel1.setText("PROGRAMME CODE :");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
         jtfProgrammeName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -128,21 +130,16 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(backButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(successMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfProgrammeCode)
-                                    .addComponent(jtfProgrammeName)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfProgrammeName)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                            .addComponent(jtfProgrammeCode))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(searchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -150,6 +147,10 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(TitleLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(successMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,59 +170,17 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(successMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(successMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ConfirmButton)
                     .addComponent(backButton))
-                .addGap(34, 34, 34))
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
- String newCode = jtfProgrammeCode.getText();
-    String newName = jtfProgrammeName.getText();
-    String newDesc = jTextArea1.getText();
-
-    // Create an instance of ProgrammeManagement to search for the program
-    ProgrammeManagement programManagement = new ProgrammeManagement();
-    
-    // Search for the program by code
-    Programme programToUpdate = programManagement.searchProgram(newCode);
-
-    if (programToUpdate != null) {
-        // If the program is found, update its details
-        programToUpdate.setProgrammeName(newName);
-        programToUpdate.setProgrammeDescription(newDesc);
-
-        // Clear the input fields
-        jtfProgrammeName.setText("");
-        jtfProgrammeCode.setText("");
-        jTextArea1.setText("");
-
-        // Display a success message
-        successMessageLabel.setText("Programme updated successfully!");
-        successMessageLabel.setForeground(Color.GREEN); // Set the message color
-    } else {
-        // If the program is not found, display an error message
-        JOptionPane.showMessageDialog(
-            null, "Program with Code " + newCode + " was not found.", "Program Not Found", JOptionPane.ERROR_MESSAGE
-        );
-    }
-    }//GEN-LAST:event_ConfirmButtonActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        setVisible(false);
-        ProgrammeManagementMenu t = new ProgrammeManagementMenu();
-        t.setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void jtfProgrammeCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfProgrammeCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfProgrammeCodeActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String id = jtfProgrammeCode.getText().trim();
@@ -264,7 +223,7 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
         } else {
             // If the program is not found, display an error message
             JOptionPane.showMessageDialog(
-                    null, "Program with ID " + id + " was not found.", "Program Not Found", JOptionPane.INFORMATION_MESSAGE
+                null, "Program with ID " + id + " was not found.", "Program Not Found", JOptionPane.INFORMATION_MESSAGE
             );
 
             // Clear the text fields
@@ -272,6 +231,48 @@ public class programmeUpdateGUI extends javax.swing.JFrame {
             jTextArea1.setText("");
         }
     }//GEN-LAST:event_searchButton1ActionPerformed
+
+    private void jtfProgrammeCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfProgrammeCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfProgrammeCodeActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        setVisible(false);
+        ProgrammeManagementMenu t = new ProgrammeManagementMenu();
+        t.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+        String newCode = jtfProgrammeCode.getText();
+        String newName = jtfProgrammeName.getText();
+        String newDesc = jTextArea1.getText();
+
+        // Create an instance of ProgrammeManagement to search for the program
+        ProgrammeManagement programManagement = new ProgrammeManagement();
+
+        // Search for the program by code
+        Programme programToUpdate = programManagement.searchProgram(newCode);
+
+        if (programToUpdate != null) {
+            // If the program is found, update its details
+            programToUpdate.setProgrammeName(newName);
+            programToUpdate.setProgrammeDescription(newDesc);
+
+            // Clear the input fields
+            jtfProgrammeName.setText("");
+            jtfProgrammeCode.setText("");
+            jTextArea1.setText("");
+
+            // Display a success message
+            successMessageLabel.setText("Programme updated successfully!");
+            successMessageLabel.setForeground(Color.GREEN); // Set the message color
+        } else {
+            // If the program is not found, display an error message
+            JOptionPane.showMessageDialog(
+                null, "Program with Code " + newCode + " was not found.", "Program Not Found", JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class programmeRemoveGUI extends javax.swing.JFrame {
 
@@ -78,10 +78,14 @@ public class programmeRemoveGUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("PROGRAMME CODE :");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jtfProgrammeName.setEditable(false);
         jtfProgrammeName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jtfProgrammeName.setToolTipText("");
         jtfProgrammeName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));

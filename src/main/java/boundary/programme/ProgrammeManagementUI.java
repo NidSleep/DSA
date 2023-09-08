@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class ProgrammeManagementUI {
 

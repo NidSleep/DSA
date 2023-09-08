@@ -5,6 +5,7 @@ package adt;
  * 
  */
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -204,6 +205,44 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable,Iterable<T> {
     public boolean isExists(String newCode) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+//    public static void insertionSort(AdtInterface<T> list, Comparator<T> comparator) {
+//    int n = list.size();
+//    for (int i = 1; i < n; i++) {
+//        Programme key = list.get(i);
+//        int j = i - 1;
+//
+//        while (j >= 0 && comparator.compare(list.get(j), key) > 0) {
+//            list.set(j + 1, list.get(j));
+//            j = j - 1;
+//        }
+//        list.set(j + 1, key);
+//    }
+//}
+    public static <T extends Comparable<T>> void insertionSort(AdtInterface<T> a, Comparator<T> comparator) {
+        for (int unsorted = 1; unsorted < a.getNumberOfEntries(); unsorted++) {
+            T firstUnsorted = a.getEntry(unsorted + 1);
+            insertInOrder(firstUnsorted, a, unsorted, comparator);
+        }
+    }
+    
+    
+
+    //inserts element at the correct index within thes sorted subarray
+    private static <T extends Comparable<T>> int insertInOrder(T element, AdtInterface<T> a, int end, Comparator<T> comparator) {
+        int index = end;
+
+            while ((index > 0) && (comparator.compare(element, a.getEntry(index)) < 0)) {
+                a.replace(index + 1, a.getEntry(index)); //shifting
+                index--;
+            }
+ 
+        a.replace(index + 1, element);
+        return 0;
+    }
+
+
+
 
     @Override
     public Iterator<T> iterator() {
@@ -223,8 +262,10 @@ public class ArrayList<T> implements AdtInterface<T>, Serializable,Iterable<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return array[currentIndex++];
+        T currentItem = array[currentIndex];
+        currentIndex++;
+        return currentItem;
     }
-
 }
+
 }
