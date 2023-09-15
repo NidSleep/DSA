@@ -3,26 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
-
-import adt.ArrayList;
-import adt.AdtInterface;
-import entity.Course;
-import java.io.*;
-import javax.swing.JOptionPane;
 import boundary.mainPage;
-
-
 /**
  *
  * @author Tan Ru Poh
  */
 public class CourseManagement extends javax.swing.JFrame {
 
-    private AdtInterface<Course> courseList = new ArrayList<>();
-
     public CourseManagement() {
         initComponents();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -168,7 +157,6 @@ public class CourseManagement extends javax.swing.JFrame {
         setVisible(false);
         courseAdd t = new courseAdd();
         t.setVisible(true);
-
     }//GEN-LAST:event_addCourseButton1ActionPerformed
 
     private void displayAllCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayAllCourseButtonActionPerformed
