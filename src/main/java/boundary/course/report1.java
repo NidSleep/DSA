@@ -3,67 +3,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package boundary.course;
+
 /**
  *
  * @author Tan Ru Poh
  */
 import adt.AdtInterface;
+import adt.ArrayList;
 import entity.Course;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.print.*;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import utility.CourseFeeComparators;
 import utility.insertData;
 
 public class report1 extends javax.swing.JFrame {
 
     public static AdtInterface<Course> courseList = insertData.courseList;
-    private int[] ranking;
+    private final CourseFeeComparators fees = new CourseFeeComparators();
 
     public report1() {
         initComponents();
-        sortCourseList();
+        ArrayList.insertionSort(courseList, fees);
+        System.out.println("Sorted: " + courseList.getEntry(1).getCourseFees());
+
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         Object rowData[] = new Object[4];
-       for (int i = 0; i < 3; i++) {
-        rowData[0] = courseList.getEntry(ranking[i]).getCourseID();
-        rowData[1] = courseList.getEntry(ranking[i]).getName();
-        rowData[2] = "" + courseList.getEntry(ranking[i]).getCourseCreditHours();
-        rowData[3] = "RM " + courseList.getEntry(ranking[i]).getCourseFees();
-        model.addRow(rowData);
-       }
+        for (int i = courseList.getNumberOfEntries(); i > 0 && i > courseList.getNumberOfEntries() - 3; i--) {
+            rowData[0] = courseList.getEntry(i).getCourseID();
+            rowData[1] = courseList.getEntry(i).getName();
+            rowData[2] = "" + courseList.getEntry(i).getCourseCreditHours();
+            rowData[3] = "RM " + courseList.getEntry(i).getCourseFees();
+            model.addRow(rowData);
+        }
         // Set the preferred scrollable viewport size to match the preferred size
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
-        table.getTableHeader().setFont(new Font("SansSerif", 
+        table.getTableHeader().setFont(new Font("SansSerif",
                 Font.BOLD, 14));
-    }
-
-    private void sortCourseList() {
-        double[] courseFee = new double[courseList.getNumberOfEntries()];
-
-        for (int z = 0; z < courseList.getNumberOfEntries(); z++) {
-            courseFee[z] = courseList.getEntry(z + 1).getCourseFees();
-        }
-        Map<Double, Integer> rankingMap = new HashMap<>();
-
-        Integer[] indices = new Integer[courseFee.length];
-        for (int i = 0; i < indices.length; i++) {
-            indices[i] = i;
-        }
-        Arrays.sort(indices, (a, b) -> Double.compare(courseFee[b],
-                courseFee[a]));
-
-        ranking = new int[courseFee.length];
-        for (int i = 0; i < indices.length; i++) {
-            ranking[i] = indices[i] + 1;
-        }
-        System.out.print("Ranking: ");
-        for (int rank : ranking) {
-            System.out.print(rank + " ");
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -199,8 +176,8 @@ public class report1 extends javax.swing.JFrame {
             try {
                 job.print();
             } catch (PrinterException e) {
-                JOptionPane.showMessageDialog(this, "Printing failed: " 
-                        + e.getMessage(), "Error", 
+                JOptionPane.showMessageDialog(this, "Printing failed: "
+                        + e.getMessage(), "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
         }

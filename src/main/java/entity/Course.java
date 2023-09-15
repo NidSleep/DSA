@@ -5,12 +5,13 @@
 package entity;
 
 import adt.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Tan Ru Poh
  */
-public class Course {
+public class Course implements Serializable, Comparable<Course> {
 
     /*
     Course Management Subsystem
@@ -96,6 +97,11 @@ Generate relevant reports
     }
 
     public String getTutors() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int compareTo(Course o) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
