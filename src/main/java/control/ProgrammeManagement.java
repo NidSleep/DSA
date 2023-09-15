@@ -17,7 +17,7 @@ import utility.insertData;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class ProgrammeManagement {
 
@@ -163,8 +163,53 @@ public class ProgrammeManagement {
         }
 
     }
+    // Search Algorithm
+    public Programme searchProgramBinary(String programmeID) {
+        String code = programmeID;
+    if (programmeID == null) {
+        MessageUI.displayInvalidInputMessage(); // Handle invalid input if necessary
+        return null;
+    }
 
-    public Programme searchProgram(String programmeID) {
+    // Ensure that programmeList is properly initialized and not null
+    if (programmeList == null) {
+        // Handle the case where programmeList is null
+        return null;
+    }
+
+    int left = 0;
+    int right = programmeList.getNumberOfEntries() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        // Ensure that midProgramme is properly initialized and not null
+        Programme midProgramme = programmeList.getEntry(mid);
+        if (midProgramme == null) {
+            // Handle the case where midProgramme is null
+            return null;
+        }
+
+        int comparison = midProgramme.getProgrammeCode().compareTo(code);
+
+        if (comparison == 0) {
+            // Found a match
+            return midProgramme;
+        } else if (comparison < 0) {
+            // The target is greater, so search the right half
+            left = mid + 1;
+        } else {
+            // The target is smaller, so search the left half
+            right = mid - 1;
+        }
+    }
+
+    // Handle the case where no matching programme is found
+    return null;
+}
+
+
+    public Programme searchProgram(String programmeID) { 
         String code = programmeID;
         boolean found = false;
         if (code == null) {
@@ -183,6 +228,7 @@ public class ProgrammeManagement {
         }
         return null;
     }
+    
 
     //    Amend programme details
     public boolean editProgram() {
@@ -407,6 +453,29 @@ public class ProgrammeManagement {
         //return outputStr;
         System.out.println("\nList of Tutorial Group for " + whichProgramme + ":\n" + outputStr);
     }
+
+public AdtInterface<TutorialGroup> getTutorialGroupsByProgrammeName(String programmeName) {
+    AdtInterface<TutorialGroup> result = new ArrayList<>();
+
+    // Iterate through your custom AdtInterface of Programme objects
+    for (Programme program : programmeList) {
+        if (program.getProgrammeName().equals(programmeName)) {
+            // Found the selected program, get its associated tutorial groups
+            AdtInterface<TutorialGroup> tutorialGroups = program.getTutorialGroups();
+
+            // Iterate through the tutorial groups and add them to the result
+            for (TutorialGroup tutorialGroup : tutorialGroups) {
+                result.add(tutorialGroup);
+            }
+
+            break; // Assuming each program name is unique, exit the loop
+        }
+    }
+
+    return result;
+}
+
+
     //    Generate relevant reports. 
     //    Attendance Report by Tutorial Group
 
@@ -422,29 +491,28 @@ public class ProgrammeManagement {
         return similarityScore;
     }
      */
-//    public static void main(String[] args) {
-//        ProgrammeManagement test1 = new ProgrammeManagement();
-//
-////        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
-////        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
-////        programme1.addTutorialGroup(tutorialGroup);
-////        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
-////        programme1.addTutorialGroup(tutorialGroup2);
-////        programmeList.add(programme1);
-////        System.out.println(programme1);
-////        
-////        // Add the initial data with useful descriptions
-////        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
-////        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
-////
-////        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
-////
-////        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
-//        insertData dataInitializer = new insertData();
-//
-//        // Call the initialize method to populate the data
+    public static void main(String[] args) {
+        ProgrammeManagement test1 = new ProgrammeManagement();
+
+        Programme programme1 = new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science");
+        TutorialGroup tutorialGroup = new TutorialGroup("G1", 3.7, 0.7);
+        programme1.addTutorialGroup(tutorialGroup);
+        TutorialGroup tutorialGroup2 = new TutorialGroup("G2", 3.7, 0.7);
+        programme1.addTutorialGroup(tutorialGroup2);
+        programmeList.add(programme1);
+        System.out.println(programme1);
+        
+        // Add the initial data with useful descriptions
+        //programmeList.add(new Programme("RDS", "Bachelor of Computer Science (Honours) in Data", "This programme is designed to train students in both computer science and data science"));
+        programmeList.add(new Programme("RSW", "Bachelor of Software Engineering (Honours)", "Data visualization is the process of representing data in a visual format to help in understanding patterns, trends, and insights. This course explores techniques to create informative and visually appealing charts, graphs, and dashboards for effective data analysis."));
+
+        programmeList.add(new Programme("RIS", "Bachelor of Information Technology (Honours)", "Artificial Intelligence (AI) focuses on creating intelligent machines that can simulate human-like behaviors and decision-making. This course delves into AI algorithms, machine learning, natural language processing, and robotics, paving the way for advanced applications."));
+
+        programmeList.add(new Programme("RMM", "Bachelor of Science (Honours) in Management Mathematics", "Statistics is a fundamental tool in data science that involves collecting, analyzing, and interpreting data to make informed decisions. This course covers concepts like probability, hypothesis testing, regression analysis, and statistical inference used in data-driven insights."));
+        insertData dataInitializer = new insertData();
+//         Call the initialize method to populate the data
 //        dataInitializer.initialize();
-//        //tutorialGroupList.add(new TutorialGroup("G7", 3.7, 0.7));
-//        test1.runProgrammeManagement();
-//    }
+        //tutorialGroupList.add(new TutorialGroup("G7", 3.7, 0.7));
+        test1.runProgrammeManagement();
+    }
 }

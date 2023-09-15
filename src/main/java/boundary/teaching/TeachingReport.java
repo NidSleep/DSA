@@ -6,9 +6,11 @@ package boundary.teaching;
 
 import boundary.tutor.*;
 import adt.AdtInterface;
+import adt.ArrayList;
 import entity.Course;
 import entity.Teaching;
 import entity.Tutor;
+import entity.TutorialGroup;
 import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JTable;
@@ -19,28 +21,34 @@ import utility.insertData;
  *
  * @author Roy Teh Chong Perng
  */
-public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
+public class TeachingReport extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<Course> courseList = insertData.courseList;
      public static AdtInterface<Teaching> teachingList = insertData.teachingList;
+     public static AdtInterface<TutorialGroup> tutorialList = insertData.tutorialList;
 
-    public TeachingDisplayAllTutorForCourse() {
+    /**
+     * Creates new form tutorAdd
+     */
+    public TeachingReport() {
+
         initComponents();
         DefaultTableModel models = (DefaultTableModel) jTable2.getModel();
         
         Teaching teaches = new Teaching("", "", ""); 
          
           Object rowDatass[] = new Object[4];
-            for(int i=0; i< teachingList.getNumberOfEntries(); i++){
+            for(int i=0; i< teachingList.getNumberOfEntries(); i++){  
                 rowDatass[0] = teachingList.getEntry(i+1).getTutorID();
                 rowDatass[1] = teachingList.getEntry(i+1).getCourseID();
+                rowDatass[2] = teachingList.getEntry(i+1).getGroupID();
 
             models.addRow(rowDatass);
             }
-
         jTable2.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 18));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,8 +73,8 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        jLabel2.setText("All Tutor For a Course");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        jLabel2.setText("Report");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 720, -1, -1));
@@ -88,14 +96,14 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
 
             },
             new String [] {
-                "TutorID", "CourseID"
+                "TutorID", "CourseID", "TutorialID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -157,14 +165,38 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayAllTutorForCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayAllTutorForCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayAllTutorForCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeachingDisplayAllTutorForCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeachingReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -177,7 +209,7 @@ public class TeachingDisplayAllTutorForCourse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeachingDisplayAllTutorForCourse().setVisible(true);
+                new TeachingReport().setVisible(true);
             }
         });
     }

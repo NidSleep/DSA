@@ -13,10 +13,14 @@ import entity.Tutor;
 import utility.insertData;
 import static utility.insertData.courseList;
 
+/**
+ *
+ * @author Roy Teh Chong Perng
+ */
+
 public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
-    //public static AdtInterface<Course> courseList = insertData.courseList;
 
     public TeachingDisplayTutorCourse() {
         initComponents();
@@ -57,7 +61,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel3.setText("Teaching - Search Course Under Tutor");
+        jLabel3.setText("Teaching - Display Course Under Tutor");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
         label2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -154,10 +158,7 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
        String Tutorid = jtfTutorID.getText().trim();
        
-       System.out.println("selectedTutors : " + Tutorid);
-
-        //Teaching t = new Teaching(selectedTutors, courseID, "");
-        //teachingList.add(t);
+        System.out.println("selectedTutors : " + Tutorid);
         System.out.println("tutor id : " + teachingList.getEntry(1).getTutorID());
         System.out.println("Course id : " + teachingList.getEntry(1).getCourseID());
         
@@ -171,60 +172,11 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
                 Tutor tutor = tutorList.getEntry(i);
                 jtfTutorName1.setText(tutor.getName());
                 errorMsg.setText(""); // Clear error message if found
-                //break; // Exit the loop once the tutor is found
-                
-               //coursesList_Text.setListData();
             }
             Course courses = courseList.getEntry(i);
             System.out.println("G:" +teaching.getCourseID());
-           jtfCourseName.setText(teachingList.getEntry(i+1).getCourseID());
-              
-    
+           jtfCourseName.setText(teachingList.getEntry(i+1).getCourseID()); 
     }
-
-//        if (!Tutorid.isEmpty()) {
-//            errorMsg.setText(""); // Clear any previous error messages
-//            boolean found = false; // Flag to indicate if a matching course is found
-//
-//            for (int i = 0; i < tutorList.getNumberOfEntries(); i++) {
-//                if (Tutorid.equals(tutorList.getEntry(i + 1).getTutorID())) {
-//
-//                    jtfTutorName.setText(tutorList.getEntry(i + 1).getName());
-//                    errorMsg.setText(""); // Clear error message if found
-//                    found = true;
-//
-//                    
-////                    ArrayList<Tutor> courses = courseList.getEntry(i + 1).getTutors();
-//                    System.out.println("g:"+courses);
-//                    if (courses != null && !courses.isEmpty()) {
-//                        if (courses.equals(Tutorid)) {
-//                            String[] courseID = new String[courses.getNumberOfEntries()];
-//                            //                        String temp = programs.getNumberOfEntries();
-//                            System.out.println("h:");
-//                            for (int j = 0; j < courses.getNumberOfEntries(); j++) {
-//                                courseID[j] = courses.getEntry(j + 1).getCourseID();
-//                                System.out.println("hha:" + courseID[j]);
-//                            }
-//                            coursesList.setListData(courseID);
-//                            //System.out.println("hhaha:" +courseID.getClass());
-//                        }
-//
-//                    } else {
-//                        coursesList.setListData(new String[]{"No Course"});
-//                    }
-//
-//                    break; // Exit the loop since a match is found
-//                }
-//            }
-//            if (!found) {
-//                jtfTutorName.setText("");
-//                errorMsg.setText("No such Tutor");
-//                coursesList.setListData(new String[0]); // Clear program list
-//            }
-//        } else {
-//            errorMsg.setText("Please enter a course ID");
-//        }
-    
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -278,7 +230,6 @@ public class TeachingDisplayTutorCourse extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel errorMsg;

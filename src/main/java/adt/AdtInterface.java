@@ -4,11 +4,13 @@
  */
 package adt;
 
+import java.util.Iterator;
+
 /**
  *
  * @author all
  */
-public interface AdtInterface<T> {
+public interface AdtInterface<T> extends Iterable<T>{
     
   /**
    * Task: Adds a new entry to the end of the list. Entries currently in the
@@ -111,5 +113,12 @@ public interface AdtInterface<T> {
    * @return true if the list's code is duplicated, or false if not
    */
   public boolean isExists(String newCode);
-
+  
+   /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    Iterator<T> iterator();
 }

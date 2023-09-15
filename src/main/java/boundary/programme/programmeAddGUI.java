@@ -13,7 +13,7 @@ import utility.insertData;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class programmeAddGUI extends javax.swing.JFrame {
 
@@ -72,7 +72,10 @@ public class programmeAddGUI extends javax.swing.JFrame {
         jLabel3.setText("PROGRAMME DESCRIPTION :");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -200,32 +203,31 @@ public class programmeAddGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
-    private void validateInput(String code, String name, String desc) throws ValidationException {
-        // Check if the code is alphanumeric
-        if(!code.isEmpty()){
+private void validateInput(String code, String name, String desc) throws ValidationException {
+    // Check if the code is alphanumeric
+    if (!code.isEmpty()) {
         if (!code.matches("^[a-zA-Z0-9]+$")) {
             throw new ValidationException("Code must contain only alphabets or numbers.");
-        }}
-
-        // Check if the name contains only alphabet characters
-        if(!name.isEmpty()){
-        if (!name.matches("^[a-zA-Z]+$")) {
-            throw new ValidationException("Name must contain only alphabet characters.");
         }
-        }
-
-        // Add more validation rules as needed
-        // Check if the description is empty (optional)
-        if (code.isEmpty()) {
-            throw new ValidationException("Code cannot be empty.");
-        }
-        if (name.isEmpty()) {
-            throw new ValidationException("Programme name cannot be empty.");
-        }
-        if (desc.isEmpty()) {
-            throw new ValidationException("Description cannot be empty.");
-        }
+    } else {
+        throw new ValidationException("Code cannot be empty.");
     }
+
+    // Check if the name contains alphabet characters and punctuation
+    if (!name.isEmpty()) {
+        if (!name.matches("^[a-zA-Z0-9\\s.,!?()&-]+$")) {
+            throw new ValidationException("Name can only contain alphabet characters and common punctuation.");
+        }
+    } else {
+        throw new ValidationException("Programme name cannot be empty.");
+    }
+
+    // Check if the description is empty (optional)
+    if (desc.isEmpty()) {
+        throw new ValidationException("Description cannot be empty.");
+    }
+}
+
 
     private boolean isDuplicateCode(String code) {
         for (int i = 1; i <= programmeList.getNumberOfEntries(); i++) {

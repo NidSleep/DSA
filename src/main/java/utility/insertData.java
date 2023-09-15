@@ -61,7 +61,7 @@ public class insertData {
     }
 
     private void insertTutorial() {
-        tutorialList.add(new TutorialGroup("G1", 3.7, 0.7));
+        tutorialList.add(new TutorialGroup("G1", 32, 1.6));
         tutorialList.add(new TutorialGroup("G2", 3.7, 0.7));
     }
 

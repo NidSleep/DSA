@@ -5,6 +5,7 @@
 package entity;
 
 import adt.ArrayList;
+import java.io.Serializable;
 import utility.insertData;
 
 
@@ -12,12 +13,32 @@ import utility.insertData;
  *
  * @author user
  */
-public class TutorialGroup {
+public class TutorialGroup implements Serializable, Comparable<TutorialGroup>{
     
     private String groupID;
     private double groupAverageGrade;
     private double groupAverageAttendace;
-    private ArrayList<Tutor> tutors; 
+    private ArrayList<Tutor> tutors;
+    private Programme programme;
+
+    public ArrayList<Tutor> getTutors() {
+        return tutors;
+    }
+@Override
+    public int compareTo(TutorialGroup o){
+        return this.groupID.compareTo(o.groupID);
+    }
+    public void setTutors(ArrayList<Tutor> tutors) {
+        this.tutors = tutors;
+    }
+
+    public Programme getProgramme() {
+        return programme;
+    }
+
+    public void setProgramme(Programme programme) {
+        this.programme = programme;
+    }
 
     public TutorialGroup() {
     }
@@ -45,7 +66,7 @@ public class TutorialGroup {
         this.groupAverageGrade = groupAverageGrade;
     }
 
-    public double getGroupAverageAttendace() {
+    public double getGroupAverageAttendance() {
         return groupAverageAttendace;
     }
 

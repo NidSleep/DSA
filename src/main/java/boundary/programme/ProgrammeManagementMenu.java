@@ -6,9 +6,8 @@ package boundary.programme;
 
 import adt.AdtInterface;
 import boundary.mainPage;
-import boundary.tutor.*;
 import control.ProgrammeManagement;
-import entity.Programme;
+import entity.*;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,7 +18,7 @@ import utility.insertData;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class ProgrammeManagementMenu extends javax.swing.JFrame {
 
@@ -47,9 +46,12 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
         addProgrammeButton = new javax.swing.JButton();
         updateProgrammeButton = new javax.swing.JButton();
         displayAllProgrammeButton = new javax.swing.JButton();
-        programmeReportButton = new javax.swing.JButton();
+        searchTutorialByProgrammeButton = new javax.swing.JButton();
         searchProgrammeButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        removeTutorialGroupButton = new javax.swing.JButton();
+        programmeReportButton = new javax.swing.JButton();
+        addTutorialGroupButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +72,7 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
                 removeProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(removeProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 170, 330, 230));
+        jPanel5.add(removeProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 170, 380, 90));
 
         addProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
         addProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -80,7 +82,7 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
                 addProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(addProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 330, 230));
+        jPanel5.add(addProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 380, 90));
 
         updateProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
         updateProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -90,7 +92,7 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
                 updateProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(updateProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 330, 230));
+        jPanel5.add(updateProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 380, 90));
 
         displayAllProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
         displayAllProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -100,17 +102,17 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
                 displayAllProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(displayAllProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 450, 330, 230));
+        jPanel5.add(displayAllProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 340, 380, 90));
 
-        programmeReportButton.setBackground(new java.awt.Color(204, 204, 204));
-        programmeReportButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        programmeReportButton.setText("REPORT");
-        programmeReportButton.addActionListener(new java.awt.event.ActionListener() {
+        searchTutorialByProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
+        searchTutorialByProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        searchTutorialByProgrammeButton.setText("<html><div style='text-align:center;'>LIST<br>TUTORIAL GROUP</div></html>");
+        searchTutorialByProgrammeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                programmeReportButtonActionPerformed(evt);
+                searchTutorialByProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(programmeReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 330, 230));
+        jPanel5.add(searchTutorialByProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 490, 380, 200));
 
         searchProgrammeButton.setBackground(new java.awt.Color(204, 204, 204));
         searchProgrammeButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -120,7 +122,7 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
                 searchProgrammeButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(searchProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 330, 230));
+        jPanel5.add(searchProgrammeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 380, 90));
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         backButton.setText("Back");
@@ -131,19 +133,45 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
         });
         jPanel5.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 720, -1, -1));
 
+        removeTutorialGroupButton.setBackground(new java.awt.Color(204, 204, 204));
+        removeTutorialGroupButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        removeTutorialGroupButton.setText("<html><div style='text-align:center;'>REMOVE<br>TUTORIAL GROUP</div></html>");
+        removeTutorialGroupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeTutorialGroupButtonActionPerformed(evt);
+            }
+        });
+        jPanel5.add(removeTutorialGroupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 380, 200));
+
+        programmeReportButton.setBackground(new java.awt.Color(204, 204, 204));
+        programmeReportButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        programmeReportButton.setText("REPORT");
+        programmeReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programmeReportButtonActionPerformed(evt);
+            }
+        });
+        jPanel5.add(programmeReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 380, 90));
+
+        addTutorialGroupButton.setBackground(new java.awt.Color(204, 204, 204));
+        addTutorialGroupButton.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        addTutorialGroupButton.setText("<html><div style='text-align:center;'>ADD<br>TUTORIAL GROUP</div></html>");
+        addTutorialGroupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTutorialGroupButtonActionPerformed(evt);
+            }
+        });
+        jPanel5.add(addTutorialGroupButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 380, 200));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,6 +204,8 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
         textArea.setEditable(false);
         // Set the text of the JTextArea to the list of programs
         textArea.setText(ProgrammeManagement.getAllProgramme());
+        textArea.setLineWrap(true); // Enable line wrapping
+        textArea.setWrapStyleWord(true);
 
         // Create a JScrollPane to scroll through the programs if needed
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -190,14 +220,9 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, panel, "Programme List", JOptionPane.PLAIN_MESSAGE);
 
-        JOptionPane.showMessageDialog(null, ProgrammeManagement.getAllProgramme());
-
+        //JOptionPane.showMessageDialog(null, ProgrammeManagement.getAllProgramme());
 
     }//GEN-LAST:event_displayAllProgrammeButtonActionPerformed
-
-    private void programmeReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeReportButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_programmeReportButtonActionPerformed
 
     private void searchProgrammeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProgrammeButtonActionPerformed
         setVisible(false);
@@ -210,6 +235,30 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
         mainPage t = new mainPage();
         t.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void removeTutorialGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTutorialGroupButtonActionPerformed
+        setVisible(false);
+        programmeRemoveTutGrpFromProgrammeGUI t = new programmeRemoveTutGrpFromProgrammeGUI();
+        t.setVisible(true);
+    }//GEN-LAST:event_removeTutorialGroupButtonActionPerformed
+
+    private void addTutorialGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTutorialGroupButtonActionPerformed
+        setVisible(false);
+        programmeAddTutGrpToProgrammeGUI t = new programmeAddTutGrpToProgrammeGUI();
+        t.setVisible(true);
+    }//GEN-LAST:event_addTutorialGroupButtonActionPerformed
+
+    private void programmeReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeReportButtonActionPerformed
+        setVisible(false);
+        programmeReportGUI t = new programmeReportGUI();
+        t.setVisible(true);
+    }//GEN-LAST:event_programmeReportButtonActionPerformed
+
+    private void searchTutorialByProgrammeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTutorialByProgrammeButtonActionPerformed
+        setVisible(false);
+        programmeDisplayAllByProgramme t = new programmeDisplayAllByProgramme();
+        t.setVisible(true);
+    }//GEN-LAST:event_searchTutorialByProgrammeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,12 +298,15 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitleLable;
     private javax.swing.JButton addProgrammeButton;
+    private javax.swing.JButton addTutorialGroupButton;
     private javax.swing.JButton backButton;
     private javax.swing.JButton displayAllProgrammeButton;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JButton programmeReportButton;
     private javax.swing.JButton removeProgrammeButton;
+    private javax.swing.JButton removeTutorialGroupButton;
     private javax.swing.JButton searchProgrammeButton;
+    private javax.swing.JButton searchTutorialByProgrammeButton;
     private javax.swing.JButton updateProgrammeButton;
     // End of variables declaration//GEN-END:variables
 }
