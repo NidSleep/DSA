@@ -6,6 +6,7 @@ package entity;
 
 import adt.ArrayList;
 import java.io.Serializable;
+import java.util.Comparator;
 import utility.*;
 
 /**
@@ -84,7 +85,7 @@ public class Programme implements Serializable, Comparable<Programme> {
         // Sort the tutorialGroups within this programme by groupID
         ArrayList.insertionSort(tutorialGroups, new Comparator<TutorialGroup>() {
             @Override
-            public int compare(TutorialGroup group1, TutorialGroup group2 {
+            public int compare(TutorialGroup group1, TutorialGroup group2) {
                 return group1.getGroupID().compareTo(group2.getGroupID());
             }
         }

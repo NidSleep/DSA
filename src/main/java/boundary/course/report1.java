@@ -28,17 +28,17 @@ public class report1 extends javax.swing.JFrame {
         sortCourseList();
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         Object rowData[] = new Object[4];
-        for (int i = 0; i < 3; i++) {
-            rowData[0] = courseList.getEntry(ranking[i]).getCourseID();
-            rowData[1] = courseList.getEntry(ranking[i]).getName();
-            rowData[2] = "" + courseList.getEntry(ranking[i]).getCourseCreditHours();
-            rowData[3] = "RM " + courseList.getEntry(ranking[i]).getCourseFees();
-            model.addRow(rowData);
-        }
-
+       for (int i = 0; i < 3; i++) {
+        rowData[0] = courseList.getEntry(ranking[i]).getCourseID();
+        rowData[1] = courseList.getEntry(ranking[i]).getName();
+        rowData[2] = "" + courseList.getEntry(ranking[i]).getCourseCreditHours();
+        rowData[3] = "RM " + courseList.getEntry(ranking[i]).getCourseFees();
+        model.addRow(rowData);
+       }
         // Set the preferred scrollable viewport size to match the preferred size
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
-        table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
+        table.getTableHeader().setFont(new Font("SansSerif", 
+                Font.BOLD, 14));
     }
 
     private void sortCourseList() {
@@ -47,29 +47,23 @@ public class report1 extends javax.swing.JFrame {
         for (int z = 0; z < courseList.getNumberOfEntries(); z++) {
             courseFee[z] = courseList.getEntry(z + 1).getCourseFees();
         }
-
-        // Create a mapping of values to their rankings
         Map<Double, Integer> rankingMap = new HashMap<>();
 
-        // Sort the courseFee array in descending order while preserving original indices
         Integer[] indices = new Integer[courseFee.length];
         for (int i = 0; i < indices.length; i++) {
             indices[i] = i;
         }
-        Arrays.sort(indices, (a, b) -> Double.compare(courseFee[b], courseFee[a]));
+        Arrays.sort(indices, (a, b) -> Double.compare(courseFee[b],
+                courseFee[a]));
 
-        // Create the ranking array based on the mapping
         ranking = new int[courseFee.length];
         for (int i = 0; i < indices.length; i++) {
             ranking[i] = indices[i] + 1;
         }
-
-        // Print the ranking array
         System.out.print("Ranking: ");
         for (int rank : ranking) {
             System.out.print(rank + " ");
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -197,18 +191,17 @@ public class report1 extends javax.swing.JFrame {
                 if (page > 0) {
                     return Printable.NO_SUCH_PAGE;
                 }
-                // Print the content of your JFrame
                 jPanel1.print(g);
-
                 return Printable.PAGE_EXISTS;
             }
         });
-
         if (job.printDialog()) {
             try {
                 job.print();
             } catch (PrinterException e) {
-                JOptionPane.showMessageDialog(this, "Printing failed: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Printing failed: " 
+                        + e.getMessage(), "Error", 
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
         // Show the buttons again after printing
@@ -216,9 +209,6 @@ public class report1 extends javax.swing.JFrame {
         printButton.setVisible(true);
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
