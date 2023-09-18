@@ -6,16 +6,14 @@ package boundary.tutor;
 
 import adt.AdtInterface;
 import adt.ArrayList;
-import static boundary.course.report1.courseList;
 import entity.Programme;
 import entity.Tutor;
-import java.awt.Font;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.swing.table.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
+import javax.swing.*;
+import utility.*;
 import utility.insertData;
 
 /**
@@ -26,7 +24,7 @@ public class tutorReport extends javax.swing.JFrame {
 
     public static AdtInterface<Tutor> tutorList = insertData.tutorList;
     public static AdtInterface<Programme> programmeList = insertData.programmeList;
-    private int[] ranking;
+    private final TutorSalaryComparator code = new TutorSalaryComparator();
 
     /**
      * Creates new form tutorAdd
@@ -34,23 +32,22 @@ public class tutorReport extends javax.swing.JFrame {
     public tutorReport() {
 
         initComponents();
-        sortCourseList();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[5];
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println("ranking[i] :"+ranking[i]);
-            rowData[0] = tutorList.getEntry(ranking[i]).getTutorID();
-            rowData[1] = tutorList.getEntry(ranking[i]).getName();
-            rowData[2] = "RM " + String.valueOf(tutorList.getEntry(ranking[i]).getSalary());
-            rowData[3] = "" + tutorList.getEntry(ranking[i]).getProgrammeID();
-            rowData[4] = "" + tutorList.getEntry(ranking[i]).getPosition();
-            model.addRow(rowData);
-        }
-
-        // Set the preferred scrollable viewport size to match the preferred size
-        jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());
-        jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
+//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        Object rowData[] = new Object[5];
+//
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println("ranking[i] :" + ranking[i]);
+//            rowData[0] = tutorList.getEntry(ranking[i]).getTutorID();
+//            rowData[1] = tutorList.getEntry(ranking[i]).getName();
+//            rowData[2] = "RM " + String.valueOf(tutorList.getEntry(ranking[i]).getSalary());
+//            rowData[3] = "" + tutorList.getEntry(ranking[i]).getProgrammeID();
+//            rowData[4] = "" + tutorList.getEntry(ranking[i]).getPosition();
+//            model.addRow(rowData);
+//        }
+//
+//        // Set the preferred scrollable viewport size to match the preferred size
+//        jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());
+//        jTable1.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 14));
 
     }
 
@@ -67,8 +64,7 @@ public class tutorReport extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,42 +91,13 @@ public class tutorReport extends javax.swing.JFrame {
         });
         jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 670, 140, 40));
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "NAME", "SALARY", "PROGRAMME", "POSITION"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jButton1.setText("Sort By Salary");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setRowHeight(35);
-        jTable1.setRowMargin(5);
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 1210, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 280, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,36 +116,95 @@ public class tutorReport extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void sortCourseList() {
-        double[] salary = new double[tutorList.getNumberOfEntries()];
+private int sortingOption = -1; // Default to no sorting
 
-        for (int z = 0; z < tutorList.getNumberOfEntries(); z++) {
-            salary[z] = tutorList.getEntry(z + 1).getSalary();
+    private void sortByProgrammeIDButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Sort the list based on Programme Code
+        ArrayList.insertionSort(tutorList, code);
+
+        // Generate the report text
+        StringBuilder report = new StringBuilder();
+        for (Tutor tutor : tutorList) {
+            report.append("Tutor ID: ").append(tutor.getTutorID()).append("\n");
+            report.append("Salary: RM ").append(tutor.getSalary()).append("\n");
+            // Add more fields as needed
+            report.append("\n");
         }
 
-        // Create a mapping of values to their rankings
-        Map<Double, Integer> rankingMap = new HashMap<>();
+        // Create a new JFrame to display the report
+        JFrame reportFrame = new JFrame("Salary Report");
+        reportFrame.setSize(400, 200);
+        reportFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only the report window when closed
 
-        // Sort the courseFee array in descending order while preserving original indices
-        Integer[] indices = new Integer[salary.length];
-        for (int i = 0; i < indices.length; i++) {
-            indices[i] = i;
-        }
-        Arrays.sort(indices, (a, b) -> Double.compare(salary[b], salary[a]));
+        // Create a JTextArea to display the report
+        JTextArea reportTextArea = new JTextArea();
+        reportTextArea.setText(report.toString());
+        reportTextArea.setWrapStyleWord(true);
+        reportTextArea.setLineWrap(true);
 
-        // Create the ranking array based on the mapping
-        ranking = new int[salary.length];
-        for (int i = 0; i < indices.length; i++) {
-            ranking[i] = indices[i] + 1;
-        }
+        // Add the JTextArea to a JScrollPane for scrolling if needed
+        JScrollPane scrollPane = new JScrollPane(reportTextArea);
 
-        // Print the ranking array
-        System.out.print("Ranking: ");
-        for (int rank : ranking) {
-            System.out.print(rank + " ");
-        }
+        // Create a "Print" button
+        JButton printButton = new JButton("Print");
+        printButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Print the contents of the JTextArea
+                try {
+                    reportTextArea.print();
+                } catch (PrinterException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
+        // Create a JPanel for the buttons
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(printButton);
+
+        // Add the scroll pane and button panel to the report frame
+        reportFrame.add(scrollPane, BorderLayout.CENTER);
+        reportFrame.add(buttonPanel, BorderLayout.SOUTH);
+        // Set the size of the dialog (adjust as needed)
+        reportFrame.setSize(400, 300);
+
+        // Center the dialog on the screen
+        reportFrame.setLocationRelativeTo(null);
+        // Make the report frame visible
+        reportFrame.setVisible(true);
     }
+
+//    private void sortCourseList() {
+//        double[] salary = new double[tutorList.getNumberOfEntries()];
+//
+//        for (int z = 0; z < tutorList.getNumberOfEntries(); z++) {
+//            salary[z] = tutorList.getEntry(z + 1).getSalary();
+//        }
+//
+//        // Create a mapping of values to their rankings
+//        Map<Double, Integer> rankingMap = new HashMap<>();
+//
+//        // Sort the courseFee array in descending order while preserving original indices
+//        Integer[] indices = new Integer[salary.length];
+//        for (int i = 0; i < indices.length; i++) {
+//            indices[i] = i;
+//        }
+//        Arrays.sort(indices, (a, b) -> Double.compare(salary[b], salary[a]));
+//
+//        // Create the ranking array based on the mapping
+//        ranking = new int[salary.length];
+//        for (int i = 0; i < indices.length; i++) {
+//            ranking[i] = indices[i] + 1;
+//        }
+//
+//        // Print the ranking array
+//        System.out.print("Ranking: ");
+//        for (int rank : ranking) {
+//            System.out.print(rank + " ");
+//        }
+//
+//    }
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
@@ -186,6 +212,11 @@ private void sortCourseList() {
         tutorUI t = new tutorUI();
         t.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        sortByProgrammeIDButtonActionPerformed(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,10 +258,9 @@ private void sortCourseList() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,8 @@
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Component id="sortByProgrammeIDButton" min="-2" pref="344" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="sortByProgrammeIDButton1" min="-2" pref="344" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -45,8 +47,11 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="TitleLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="sortByProgrammeIDButton" min="-2" pref="151" max="-2" attributes="0"/>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sortByProgrammeIDButton" alignment="3" min="-2" pref="259" max="-2" attributes="0"/>
+                  <Component id="sortByProgrammeIDButton1" alignment="3" min="-2" pref="259" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -74,7 +79,7 @@
           <Font name="Segoe UI" size="48" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;REPORT SORT BY&lt;br&gt;PROGRAMME ID&quot;&#xa;    + &quot;&lt;/div&gt;&lt;/html&gt;&quot;" type="code"/>
+          <Connection code="&quot;&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;REPORT SORT BY&lt;br&gt;PROGRAMME&lt;br&gt;ID&quot;&#xa;    + &quot;&lt;/div&gt;&lt;/html&gt;&quot;" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -94,6 +99,25 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="sortByProgrammeIDButton1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="48" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;REPORT SORT BY&lt;br&gt;PROGRAMME&lt;br&gt;NAME&quot;&#xa;    + &quot;&lt;/div&gt;&lt;/html&gt;&quot;" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortByProgrammeIDButton1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
