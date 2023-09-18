@@ -29,7 +29,7 @@ import utility.insertData;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class programmeDisplayAllByProgramme extends javax.swing.JFrame {
 

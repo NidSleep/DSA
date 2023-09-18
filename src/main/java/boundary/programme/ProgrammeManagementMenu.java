@@ -187,8 +187,8 @@ public class ProgrammeManagementMenu extends javax.swing.JFrame {
     private void addProgrammeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProgrammeButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        programmeAddGUI t = new programmeAddGUI();
-        t.setVisible(true);
+        programeAddGUI o= new programeAddGUI();
+        o.setVisible(true);
     }//GEN-LAST:event_addProgrammeButtonActionPerformed
 
     private void updateProgrammeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProgrammeButtonActionPerformed

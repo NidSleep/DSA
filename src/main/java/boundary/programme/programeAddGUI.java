@@ -15,14 +15,14 @@ import utility.insertData;
  *
  * @author: Er Qing Yap
  */
-public class programmeAddGUI extends javax.swing.JFrame {
+public class programeAddGUI extends javax.swing.JFrame {
 
     public static AdtInterface<Programme> programmeList = insertData.programmeList;
 
     /**
      * Creates new form programmeAddGUI
      */
-    public programmeAddGUI() {
+    public programeAddGUI() {
         initComponents();
     }
 

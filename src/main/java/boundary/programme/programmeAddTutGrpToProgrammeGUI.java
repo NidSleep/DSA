@@ -19,7 +19,7 @@ import static utility.insertData.tutorialList;
 
 /**
  *
- * @author user
+ * @author: Er Qing Yap
  */
 public class programmeAddTutGrpToProgrammeGUI extends javax.swing.JFrame {
 
